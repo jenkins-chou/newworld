@@ -5,17 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="#fff"
     tools:context="com.jenkins.newworld.activity.MainActivity">
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/frag_content"
         android:layout_alignParentTop="true"
         android:layout_above="@+id/footer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:text="123"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+        android:layout_height="match_parent" />
     <RelativeLayout
         android:id="@+id/footer"
         android:layout_alignParentBottom="true"
@@ -32,28 +29,33 @@
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="35dp">
+            android:layout_height="40dp">
             <ImageView
+                android:id="@+id/homepage_btn"
                 android:layout_weight="1"
                 android:src="@mipmap/main_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <ImageView
+                android:id="@+id/search_btn"
                 android:layout_weight="1"
                 android:src="@mipmap/main_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <ImageView
+                android:id="@+id/share_btn"
                 android:layout_weight="1"
                 android:src="@mipmap/main_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <ImageView
+                android:id="@+id/attention_btn"
                 android:layout_weight="1"
                 android:src="@mipmap/main_attention"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <ImageView
+                android:id="@+id/personal_btn"
                 android:layout_weight="1"
                 android:src="@mipmap/main_account"
                 android:layout_width="wrap_content"

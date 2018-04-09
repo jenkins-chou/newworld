@@ -2,19 +2,150 @@ package com.jenkins.newworld.activity;
 
 import android.app.Activity;
 import android.os.Build;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RadioGroup;
 
 import com.jenkins.newworld.R;
+import com.jenkins.newworld.fragment.main.FragAttention;
+import com.jenkins.newworld.fragment.main.FragHomePage;
+import com.jenkins.newworld.fragment.main.FragPersonal;
+import com.jenkins.newworld.fragment.main.FragSearch;
+import com.jenkins.newworld.fragment.main.FragShare;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+
+    public final static int PAGER_COUNT = 5;
+    public final static int PAGE_ONE = 0;
+    public final static int PAGE_TWO = 1;
+    public final static int PAGE_THREE = 2;
+    public final static int PAGE_FOUR = 3;
+    public final static int PAGE_FIVE = 4;
+    private FragmentManager fManager;
+    private FragAttention fragAttention;
+    private FragHomePage fragHomePage;
+    private FragPersonal fragPersonal;
+    private FragSearch fragSearch;
+    private FragShare fragShare;
+    //view
+    @BindView(R.id.homepage_btn)
+    ImageView homepage_btn;
+    @BindView(R.id.search_btn)
+    ImageView search_btn;
+    @BindView(R.id.share_btn)
+    ImageView share_btn;
+    @BindView(R.id.attention_btn)
+    ImageView attention_btn;
+    @BindView(R.id.personal_btn)
+    ImageView personal_btn;
+    @BindView(R.id.frag_content)
+    FrameLayout frameLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //dsadsadsasdsdjajjajjajdsadsa
-        //哈哈哈
+        //状态栏文字深色
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        //状态栏文字浅色
+        //getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        ButterKnife.bind(this);
+        init();
+        homepage_btn.performClick();
+    }
+
+    public void init(){
+        fManager = getSupportFragmentManager();
+        homepage_btn.setOnClickListener(this);
+        search_btn.setOnClickListener(this);
+        share_btn.setOnClickListener(this);
+        attention_btn.setOnClickListener(this);
+        personal_btn.setOnClickListener(this);
+    }
+    //重置所有文本的选中状态
+    private void setSelected(){
+        homepage_btn.setSelected(false);
+        search_btn.setSelected(false);
+        share_btn.setSelected(false);
+        attention_btn.setSelected(false);
+        personal_btn.setSelected(false);
+    }
+
+    //隐藏所有Fragment
+    private void hideAllFragment(FragmentTransaction fragmentTransaction){
+        if(fragAttention != null)fragmentTransaction.hide(fragAttention);
+        if(fragHomePage != null)fragmentTransaction.hide(fragPersonal);
+        if(fragPersonal != null)fragmentTransaction.hide(fragPersonal);
+        if(fragSearch != null)fragmentTransaction.hide(fragSearch);
+        if(fragShare != null)fragmentTransaction.hide(fragShare);
+    }
+
+    @Override
+    public void onClick(View view) {
+        FragmentTransaction fTransaction = fManager.beginTransaction();
+        hideAllFragment(fTransaction);
+        switch (view.getId()){
+            case R.id.homepage_btn:
+                setSelected();
+                homepage_btn.setSelected(true);
+                if(fragHomePage == null){
+                    fragHomePage = new FragHomePage();
+                    fTransaction.add(R.id.frag_content,fragHomePage);
+                }else{
+                    fTransaction.show(fragHomePage);
+                }
+                break;
+            case R.id.search_btn:
+                setSelected();
+                search_btn.setSelected(true);
+                if(fragSearch == null){
+                    fragSearch = new FragSearch();
+                    fTransaction.add(R.id.frag_content,fragSearch);
+                }else{
+                    fTransaction.show(fragSearch);
+                }
+                break;
+            case R.id.share_btn:
+                setSelected();
+                share_btn.setSelected(true);
+                if(fragShare == null){
+                    fragShare = new FragShare();
+                    fTransaction.add(R.id.frag_content,fragShare);
+                }else{
+                    fTransaction.show(fragShare);
+                }
+                break;
+            case R.id.attention_btn:
+                setSelected();
+                attention_btn.setSelected(true);
+                if(fragAttention == null){
+                    fragAttention = new FragAttention();
+                    fTransaction.add(R.id.frag_content,fragAttention);
+                }else{
+                    fTransaction.show(fragAttention);
+                }
+                break;
+            case R.id.personal_btn:
+                setSelected();
+                personal_btn.setSelected(true);
+                if(fragPersonal == null){
+                    fragPersonal = new FragPersonal();
+                    fTransaction.add(R.id.frag_content,fragPersonal);
+                }else{
+                    fTransaction.show(fragPersonal);
+                }
+                break;
+        }
+        fTransaction.commit();
     }
 }
