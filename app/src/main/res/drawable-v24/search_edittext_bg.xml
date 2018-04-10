@@ -8,12 +8,6 @@
         android:radius="15dp"
         android:topLeftRadius="15dp"
         android:topRightRadius="15dp" />
-    <!-- Button里面的文字与Button边界的间隔-->
-    <padding
-        android:bottom="2dp"
-        android:left="2dp"
-        android:right="2dp"
-        android:top="2dp" />
     <!--内部填充颜色-->
     <solid android:color="#eee" />
     <!--边框-->
