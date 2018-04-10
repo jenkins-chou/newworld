@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
 import com.jenkins.newworld.R;
@@ -54,13 +55,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView attention_btn;
     @BindView(R.id.personal_btn)
     ImageView personal_btn;
+
+    @BindView(R.id.homepage_btn_bar)
+    LinearLayout homepage_btn_bar;
+    @BindView(R.id.search_btn_bar)
+    LinearLayout search_btn_bar;
+    @BindView(R.id.share_btn_bar)
+    LinearLayout share_btn_bar;
+    @BindView(R.id.attention_btn_bar)
+    LinearLayout attention_btn_bar;
+    @BindView(R.id.personal_btn_bar)
+    LinearLayout personal_btn_bar;
+
 //    @BindView(R.id.frag_content)
 //    FrameLayout frameLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //状态栏文字深色
-        //getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         init();
@@ -74,6 +87,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         share_btn.setOnClickListener(this);
         attention_btn.setOnClickListener(this);
         personal_btn.setOnClickListener(this);
+
+        homepage_btn_bar.setOnClickListener(this);
+        search_btn_bar.setOnClickListener(this);
+        share_btn_bar.setOnClickListener(this);
+        attention_btn_bar.setOnClickListener(this);
+        personal_btn_bar.setOnClickListener(this);
     }
     //重置所有文本的选中状态
     private void setSelected(){
@@ -99,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         hideAllFragment(fTransaction);
         setSelected();
         switch (view.getId()){
-            case R.id.homepage_btn:
+            case R.id.homepage_btn_bar:case R.id.homepage_btn:
                 //frameLayout.setBackgroundColor(Color.BLUE);
                 homepage_btn.setSelected(true);
                 if(fragHomePage == null){
@@ -109,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     fTransaction.show(fragHomePage);
                 }
                 break;
-            case R.id.search_btn:
+            case R.id.search_btn_bar:case R.id.search_btn:
                 search_btn.setSelected(true);
                 if(fragSearch == null){
                     fragSearch = new FragSearch();
@@ -118,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     fTransaction.show(fragSearch);
                 }
                 break;
-            case R.id.share_btn:
+            case R.id.share_btn_bar:case R.id.share_btn:
                 share_btn.setSelected(true);
                 if(fragShare == null){
                     fragShare = new FragShare();
@@ -127,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     fTransaction.show(fragShare);
                 }
                 break;
-            case R.id.attention_btn:
+            case R.id.attention_btn_bar:case R.id.attention_btn:
                 attention_btn.setSelected(true);
                 if(fragAttention == null){
                     fragAttention = new FragAttention();
@@ -136,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     fTransaction.show(fragAttention);
                 }
                 break;
-            case R.id.personal_btn:
+            case R.id.personal_btn_bar:case R.id.personal_btn:
                 personal_btn.setSelected(true);
                 if(fragPersonal == null){
                     fragPersonal = new FragPersonal();

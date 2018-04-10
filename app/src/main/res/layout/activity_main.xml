@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/timg"
+    android:background="@color/mainBgColor"
     android:fitsSystemWindows="true"
     tools:context="com.jenkins.newworld.activity.MainActivity">
     <FrameLayout
@@ -13,13 +13,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     </FrameLayout>
+    <!--底部导航菜单-->
     <RelativeLayout
         android:id="@+id/footer"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <!--分割线-->
         <View
-            android:background="#eee"
+            android:background="@color/lineBgColor"
             android:layout_above="@+id/nav_bar"
             android:layout_width="match_parent"
             android:layout_height="1sp"></View>
@@ -31,36 +33,72 @@
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="45dp">
-            <ImageView
-                android:id="@+id/homepage_btn"
+            <LinearLayout
+                android:id="@+id/homepage_btn_bar"
                 android:layout_weight="1"
-                android:src="@mipmap/main_home"
+                android:gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <ImageView
-                android:id="@+id/search_btn"
+                android:layout_height="match_parent">
+                <ImageView
+
+                    android:clickable="true"
+                    android:id="@+id/homepage_btn"
+                    android:background="@drawable/main_nav_homepage_btn"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/search_btn_bar"
                 android:layout_weight="1"
-                android:src="@mipmap/main_search"
+                android:gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <ImageView
-                android:id="@+id/share_btn"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:clickable="true"
+                    android:id="@+id/search_btn"
+                    android:background="@drawable/main_nav_search_btn"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/share_btn_bar"
                 android:layout_weight="1"
-                android:src="@mipmap/main_add"
+                android:gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <ImageView
-                android:id="@+id/attention_btn"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:clickable="true"
+                    android:id="@+id/share_btn"
+                    android:background="@drawable/main_nav_share_btn"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/attention_btn_bar"
                 android:layout_weight="1"
-                android:src="@mipmap/main_attention"
+                android:gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <ImageView
-                android:id="@+id/personal_btn"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:clickable="true"
+                    android:id="@+id/attention_btn"
+                    android:background="@drawable/main_nav_attention_btn"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/personal_btn_bar"
                 android:layout_weight="1"
-                android:src="@mipmap/main_account"
+                android:gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent">
+                <ImageView
+                    android:clickable="true"
+                    android:id="@+id/personal_btn"
+                    android:background="@drawable/main_nav_account_btn"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp" />
+            </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>
