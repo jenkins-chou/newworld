@@ -1,6 +1,7 @@
 package com.jenkins.newworld.activity;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,7 +9,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -20,6 +23,8 @@ import com.jenkins.newworld.fragment.main.FragHomePage;
 import com.jenkins.newworld.fragment.main.FragPersonal;
 import com.jenkins.newworld.fragment.main.FragSearch;
 import com.jenkins.newworld.fragment.main.FragShare;
+
+import java.lang.reflect.Field;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,16 +54,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView attention_btn;
     @BindView(R.id.personal_btn)
     ImageView personal_btn;
-    @BindView(R.id.frag_content)
-    FrameLayout frameLayout;
+//    @BindView(R.id.frag_content)
+//    FrameLayout frameLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         //状态栏文字深色
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        //状态栏文字浅色
-        //getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        //getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         init();
         homepage_btn.performClick();
@@ -84,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //隐藏所有Fragment
     private void hideAllFragment(FragmentTransaction fragmentTransaction){
         if(fragAttention != null)fragmentTransaction.hide(fragAttention);
-        if(fragHomePage != null)fragmentTransaction.hide(fragPersonal);
+        if(fragHomePage != null)fragmentTransaction.hide(fragHomePage);
         if(fragPersonal != null)fragmentTransaction.hide(fragPersonal);
         if(fragSearch != null)fragmentTransaction.hide(fragSearch);
         if(fragShare != null)fragmentTransaction.hide(fragShare);
@@ -94,9 +97,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         FragmentTransaction fTransaction = fManager.beginTransaction();
         hideAllFragment(fTransaction);
+        setSelected();
         switch (view.getId()){
             case R.id.homepage_btn:
-                setSelected();
+                //frameLayout.setBackgroundColor(Color.BLUE);
                 homepage_btn.setSelected(true);
                 if(fragHomePage == null){
                     fragHomePage = new FragHomePage();
@@ -106,7 +110,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.search_btn:
-                setSelected();
                 search_btn.setSelected(true);
                 if(fragSearch == null){
                     fragSearch = new FragSearch();
@@ -116,7 +119,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.share_btn:
-                setSelected();
                 share_btn.setSelected(true);
                 if(fragShare == null){
                     fragShare = new FragShare();
@@ -126,7 +128,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.attention_btn:
-                setSelected();
                 attention_btn.setSelected(true);
                 if(fragAttention == null){
                     fragAttention = new FragAttention();
@@ -136,7 +137,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.personal_btn:
-                setSelected();
                 personal_btn.setSelected(true);
                 if(fragPersonal == null){
                     fragPersonal = new FragPersonal();

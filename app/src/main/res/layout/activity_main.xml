@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/timg"
     android:fitsSystemWindows="true"
-    android:background="#fff"
     tools:context="com.jenkins.newworld.activity.MainActivity">
     <FrameLayout
         android:id="@+id/frag_content"
         android:layout_alignParentTop="true"
-        android:layout_above="@+id/footer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" >
+    </FrameLayout>
     <RelativeLayout
         android:id="@+id/footer"
         android:layout_alignParentBottom="true"
@@ -22,14 +22,15 @@
             android:background="#eee"
             android:layout_above="@+id/nav_bar"
             android:layout_width="match_parent"
-            android:layout_height="1px"></View>
+            android:layout_height="1sp"></View>
         <LinearLayout
             android:id="@+id/nav_bar"
+            android:background="#fff"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="40dp">
+            android:layout_height="45dp">
             <ImageView
                 android:id="@+id/homepage_btn"
                 android:layout_weight="1"
