@@ -1,13 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
     defaultConfig {
         applicationId "com.jenkins.newworld"
-        minSdkVersion 19
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -16,14 +18,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        abortOnError false
+    }
+
+    productFlavors {
+    }
+    buildToolsVersion '26.0.2'
 }
 
 dependencies {
+    androidTestCompile(rootProject.ext.dependencies.espresso, {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     //butterknife
@@ -33,4 +43,16 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     //sweetalert : github address---->https://github.com/pedant/sweet-alert-dialog
     compile 'com.github.f0ris.sweetalert:library:1.5.1'
+    //SmartRefreshLayout
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7'
+    compile 'com.google.code.gson:gson:2.8.0'
+
+    compile project(path: ':nicevideoplayer')
+    compile rootProject.ext.dependencies.appcompatV7
+    compile rootProject.ext.dependencies.rxpermissions
+    compile rootProject.ext.dependencies.rxjava
+    testCompile rootProject.ext.dependencies.junit
+    compile rootProject.ext.dependencies.recyclerview
+    compile rootProject.ext.dependencies.glide
 }
