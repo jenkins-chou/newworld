@@ -29,12 +29,12 @@
     <RelativeLayout
         android:background="@color/lineBgColor"
         android:layout_width="match_parent"
-        android:layout_height="1px">
+        android:layout_height="1sp">
         <TextView
             android:id="@+id/text_cursor"
-            android:background="#aaa"
+            android:background="#000"
             android:layout_width="40dp"
-            android:layout_height="1px" />
+            android:layout_height="1sp" />
     </RelativeLayout>
 
 

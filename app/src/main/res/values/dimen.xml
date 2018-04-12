@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--个人页topbar的文字大小-->
+    <dimen name="personal_topbar_num">17sp</dimen>
+    <dimen name="personal_topbar_tip">13sp</dimen>
+</resources>

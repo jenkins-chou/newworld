@@ -5,14 +5,14 @@
     android:layout_height="40dp">
     <ImageView
         android:id="@+id/personal_attention_more"
-        android:src="@drawable/frag_homapage_camera_btn"
+        android:src="@mipmap/personal_attention_more"
         android:layout_marginLeft="10dp"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_width="25dp"
         android:layout_height="25dp" />
     <TextView
-        android:text="NewSaria"
+        android:text="jenkins_zhou"
         android:textSize="17sp"
         android:textStyle="bold"
         android:textColor="#000"
@@ -25,7 +25,7 @@
         android:layout_marginRight="10dp"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:src="@drawable/frag_homapage_todo_btn"
+        android:src="@mipmap/personal_setting"
         android:layout_width="25dp"
         android:layout_height="25dp" />
     <View

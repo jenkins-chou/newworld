@@ -3,39 +3,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="#000000"
+    android:background="#fff"
+    android:gravity="center"
     android:orientation="vertical">
-        <!--标题布局-->
-    <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="55dp"
-    android:background="@color/colorAccent">
 
-    <TextView
+    <Button
+        android:text="dialog1"
+        android:id="@+id/dialog1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="这是标题"
-        android:textColor="@android:color/white"
-        android:textSize="20sp" />
-
-    </RelativeLayout>
-
-        <!--内容布局-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <Button
-        android:layout_marginTop="120dp"
+        android:padding="8dp" />    
+    <Button
+        android:text="dialog2"
+        android:id="@+id/dialog2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="显示信息"
-        android:onClick="showMsg"
-            />
-    </LinearLayout>
+        android:padding="8dp" />
+    <Button
+        android:text="dialog3"
+        android:id="@+id/dialog3"
+        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp" />
+    <Button
+        android:text="dialog4"
+        android:id="@+id/dialog4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp" />
+    <Button
+        android:text="dialog5"
+        android:id="@+id/dialog5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp" />
+    <Button
+        android:text="dialog6"
+        android:id="@+id/dialog6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp" />
+    <Button
+        android:text="dialog7"
+        android:id="@+id/dialog7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp" />
+    <Button
+        android:text="dialog8"
+        android:id="@+id/dialog8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp" />
+    <Button
+        android:text="dialog9"
+        android:id="@+id/dialog9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp" />
+    <Button
+        android:text="close"
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp" />
 </LinearLayout>
