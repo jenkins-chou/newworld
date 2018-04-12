@@ -28,12 +28,19 @@ android {
 }
 
 dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile(rootProject.ext.dependencies.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(path: ':nicevideoplayer')
+    compile rootProject.ext.dependencies.appcompatV7
+    compile rootProject.ext.dependencies.rxpermissions
+    compile rootProject.ext.dependencies.rxjava
+    testCompile rootProject.ext.dependencies.junit
+    compile rootProject.ext.dependencies.recyclerview
+    compile rootProject.ext.dependencies.glide
+
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     //butterknife
@@ -48,11 +55,5 @@ dependencies {
     compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7'
     compile 'com.google.code.gson:gson:2.8.0'
 
-    compile project(path: ':nicevideoplayer')
-    compile rootProject.ext.dependencies.appcompatV7
-    compile rootProject.ext.dependencies.rxpermissions
-    compile rootProject.ext.dependencies.rxjava
-    testCompile rootProject.ext.dependencies.junit
-    compile rootProject.ext.dependencies.recyclerview
-    compile rootProject.ext.dependencies.glide
+
 }
