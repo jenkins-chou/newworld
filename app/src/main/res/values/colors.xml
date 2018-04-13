@@ -8,7 +8,7 @@
     <color name="lineBgColor">#eee</color>
 
     <!--个人页面数量文字颜色-->
-    <color name="personal_topbar_num">#006</color>
+    <color name="personal_topbar_num">#000</color>
     <!--个人页面数量文字颜色-->
     <color name="personal_topbar_tip">#bbb</color>
 </resources>

@@ -116,8 +116,8 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:src="@drawable/frag_personal_chunk_btn"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_weight="1"
@@ -126,8 +126,8 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:src="@drawable/frag_personal_list_btn"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_weight="1"
@@ -136,8 +136,8 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:src="@drawable/frag_personal_tag_btn"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
         </LinearLayout>
     </LinearLayout>
     <View

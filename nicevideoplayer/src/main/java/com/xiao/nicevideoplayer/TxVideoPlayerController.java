@@ -111,7 +111,9 @@ public class TxVideoPlayerController
         mClarity = (TextView) findViewById(R.id.clarity);
         mLength = (TextView) findViewById(R.id.length);
 
+        //加载动画
         mLoading = (LinearLayout) findViewById(R.id.loading);
+        //加载提示语
         mLoadText = (TextView) findViewById(R.id.load_text);
 
         mChangePositon = (LinearLayout) findViewById(R.id.change_position);

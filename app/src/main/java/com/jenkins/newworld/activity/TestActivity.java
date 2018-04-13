@@ -6,6 +6,7 @@ import android.view.Window;
 
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.util.CommonDialog;
+import com.jenkins.newworld.util.CommonWindowUtil;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -15,6 +16,7 @@ public class TestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        CommonWindowUtil.FlymeSetStatusBarLightMode(this.getWindow(),true);
         setContentView(R.layout.activity_test);
         ButterKnife.bind(this);
     }

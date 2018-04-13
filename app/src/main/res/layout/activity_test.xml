@@ -6,7 +6,11 @@
     android:background="#fff"
     android:gravity="center"
     android:orientation="vertical">
-
+    <com.jenkins.newworld.ui.SearchEditText
+        style="@style/searchEditTextStyle"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"/>
     <Button
         android:text="dialog1"
         android:id="@+id/dialog1"

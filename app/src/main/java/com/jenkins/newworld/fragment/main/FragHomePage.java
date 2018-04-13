@@ -35,8 +35,8 @@ public class FragHomePage extends Fragment{
     private Context context;
     private RecyclerView mRecyclerView;
     //view
-//    @BindView(R.id.smartRefreshLayout)
-//    SmartRefreshLayout smartRefreshLayout;
+    @BindView(R.id.smartRefreshLayout)
+    SmartRefreshLayout smartRefreshLayout;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -44,31 +44,31 @@ public class FragHomePage extends Fragment{
         ButterKnife.bind(this,view);
         initDatas();
         initViews();
-        init(view);
+        initRecyclerView(view);
         return view;
     }
     public void initDatas(){
         context = this.getContext();
     }
     public void initViews(){
-//        /**
-//         *设置header
-//         * 1:经典刷新new ClassicsHeader(view.getContext())
-//         * 2:水滴特效new WaveSwipeHeader(view.getContext())
-//         * 3：地球仪特效 new MaterialHeader(view.getContext()).setShowBezierWave(true)
-//         * 4.官方特效new MaterialHeader(view.getContext())
-//         */
-//        smartRefreshLayout.setRefreshHeader(new MaterialHeader(context).setShowBezierWave(true));
-//        smartRefreshLayout.setRefreshFooter(new BallPulseFooter(context));
-//        smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
-//            @Override
-//            public void onRefresh(RefreshLayout refreshlayout) {
-//                smartRefreshLayout.finishRefresh();
-//            }
-//        });
+        /**
+         *设置header
+         * 1:经典刷新new ClassicsHeader(view.getContext())
+         * 2:水滴特效new WaveSwipeHeader(view.getContext())
+         * 3：地球仪特效 new MaterialHeader(view.getContext()).setShowBezierWave(true)
+         * 4.官方特效new MaterialHeader(view.getContext())
+         */
+        smartRefreshLayout.setRefreshHeader(new MaterialHeader(context).setShowBezierWave(true));
+        smartRefreshLayout.setRefreshFooter(new BallPulseFooter(context));
+        smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                smartRefreshLayout.finishRefresh();
+            }
+        });
     }
 
-    private void init(View view) {
+    private void initRecyclerView(View view) {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.homepage_recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setHasFixedSize(true);
@@ -83,6 +83,9 @@ public class FragHomePage extends Fragment{
                 }
             }
         });
+
+
+
     }
     @Override
     public void onStop() {
