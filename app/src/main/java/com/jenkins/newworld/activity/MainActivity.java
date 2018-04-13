@@ -17,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.fragment.main.FragAttention;
@@ -47,15 +48,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FragShare fragShare;
     //view
     @BindView(R.id.homepage_btn)
-    ImageView homepage_btn;
+    TextView homepage_btn;
     @BindView(R.id.search_btn)
-    ImageView search_btn;
+    TextView search_btn;
     @BindView(R.id.share_btn)
-    ImageView share_btn;
+    TextView share_btn;
     @BindView(R.id.attention_btn)
-    ImageView attention_btn;
+    TextView attention_btn;
     @BindView(R.id.personal_btn)
-    ImageView personal_btn;
+    TextView personal_btn;
 
     @BindView(R.id.homepage_btn_bar)
     LinearLayout homepage_btn_bar;

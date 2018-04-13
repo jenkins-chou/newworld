@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:fitsSystemWindows="true"
+    tools:context="com.jenkins.newworld.activity.SearchActivity">
+    <!--topbar-->
+    <RelativeLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <ImageView
+            android:id="@+id/search_icon"
+            android:layout_alignParentLeft="true"
+            android:src="@mipmap/common_search"
+            android:layout_margin="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+        <EditText
+            android:id="@+id/search_content"
+            android:hint="搜索喜欢看的呦.."
+            android:textSize="16sp"
+            android:padding="0dp"
+            android:background="@drawable/act_search_edittext"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/search_icon"
+            android:layout_toLeftOf="@+id/search_delete"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+        <!--删除按钮-->
+        <ImageView
+            android:id="@+id/search_delete"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/search_cancel"
+            android:src="@mipmap/common_cancel"
+            android:visibility="invisible"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+        <TextView
+            android:id="@+id/search_cancel"
+            android:text="取消"
+            android:textColor="#ff6600"
+            android:layout_margin="10dp"
+
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:background="#ddd"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+    </RelativeLayout>
+    <!--topbar-->
+
+    <!--content-->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="热搜"
+            android:textSize="15sp"
+            android:textColor="#666"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ListView
+            android:id="@+id/listview"
+            android:divider="#fff"
+            android:dividerHeight="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+    </LinearLayout>
+    <!--content-->
+</LinearLayout>

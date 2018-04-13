@@ -11,4 +11,11 @@
     <color name="personal_topbar_num">#000</color>
     <!--个人页面数量文字颜色-->
     <color name="personal_topbar_tip">#bbb</color>
+
+    <!--搜索页标签颜色-->
+    <color name="red">#e42e19</color>
+    <color name="orange">#f97213</color>
+    <color name="yellow">#ffb30b</color>
+    <color name="gray">#f0f0f0</color>
+    <color name="black">#000</color>
 </resources>

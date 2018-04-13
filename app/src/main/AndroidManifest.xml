@@ -23,13 +23,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--测试页-->
         <activity
             android:name=".activity.TestActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/TranslucentTheme"></activity>
+            android:theme="@style/TranslucentTheme" />
+        <!--视频播放页-->
         <activity
             android:name=".activity.VideoPlayActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/AppTheme">
+
+        </activity>
+        <!--搜索页面-->
+        <activity
+            android:name=".activity.SearchActivity"
             android:theme="@style/AppTheme">
 
         </activity>
