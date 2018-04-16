@@ -13,7 +13,7 @@
     <color name="personal_topbar_tip">#bbb</color>
 
     <!--首页导航菜单文字颜色-->
-    <color name="main_btn_normal">#ccc</color>
+    <color name="main_btn_normal">#8a8a8a</color>
     <color name="main_btn_selected">#FF0000</color>
 
     <!--搜索页标签颜色-->

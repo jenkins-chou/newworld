@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -83,10 +84,27 @@ public class FragHomePage extends Fragment{
                 }
             }
         });
-
-
-
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //TODO now visible to user
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        //TODO now invisible to user
+        NiceVideoPlayerManager.instance().releaseNiceVideoPlayer();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        //Log.e("frag","gragment-hide");
+        NiceVideoPlayerManager.instance().releaseNiceVideoPlayer();
+    }
+
     @Override
     public void onStop() {
         super.onStop();
