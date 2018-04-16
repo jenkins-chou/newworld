@@ -76,9 +76,14 @@
                 android:text="201565个评论"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
         </RelativeLayout>
 
     </LinearLayout>
+    <com.jenkins.newworld.ui.RainbowLine
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"/>
     <View
         android:background="#f3f3f3"
         android:layout_width="match_parent"

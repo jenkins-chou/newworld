@@ -18,4 +18,15 @@
     <color name="yellow">#ffb30b</color>
     <color name="gray">#f0f0f0</color>
     <color name="black">#000</color>
+
+    <!--彩虹条颜色-->
+    <color name="rainbow_red">#FF0000</color>
+    <color name="rainbow_orange">#FF7F00</color>
+    <color name="rainbow_yellow">#FFFF00 </color>
+    <color name="rainbow_green">#00FF00 </color>
+    <color name="rainbow_cyan">#00FFFF </color>
+    <color name="rainbow_blue">#0000FF</color>
+    <color name="rainbow_violet">#8B00FF</color>
+
+
 </resources>
