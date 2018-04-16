@@ -58,6 +58,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R.id.personal_btn)
     TextView personal_btn;
 
+    @BindView(R.id.homepage_btn_logo)
+    ImageView homepage_btn_logo;
+    @BindView(R.id.search_btn_logo)
+    ImageView search_btn_logo;
+    @BindView(R.id.share_btn_logo)
+    ImageView share_btn_logo;
+    @BindView(R.id.attention_btn_logo)
+    ImageView attention_btn_logo;
+    @BindView(R.id.personal_btn_logo)
+    ImageView personal_btn_logo;
+
     @BindView(R.id.homepage_btn_bar)
     LinearLayout homepage_btn_bar;
     @BindView(R.id.search_btn_bar)
@@ -105,6 +116,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         share_btn.setSelected(false);
         attention_btn.setSelected(false);
         personal_btn.setSelected(false);
+
+        homepage_btn_logo.setSelected(false);
+        search_btn_logo.setSelected(false);
+        share_btn_logo.setSelected(false);
+        attention_btn_logo.setSelected(false);
+        personal_btn_logo.setSelected(false);
     }
 
     //隐藏所有Fragment
@@ -125,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.homepage_btn_bar:case R.id.homepage_btn:
                 //frameLayout.setBackgroundColor(Color.BLUE);
                 homepage_btn.setSelected(true);
+                homepage_btn_logo.setSelected(true);
                 if(fragHomePage == null){
                     fragHomePage = new FragHomePage();
                     fTransaction.add(R.id.frag_content,fragHomePage);
@@ -134,6 +152,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.search_btn_bar:case R.id.search_btn:
                 search_btn.setSelected(true);
+                search_btn_logo.setSelected(true);
                 if(fragSearch == null){
                     fragSearch = new FragSearch();
                     fTransaction.add(R.id.frag_content,fragSearch);
@@ -143,6 +162,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.share_btn_bar:case R.id.share_btn:
                 share_btn.setSelected(true);
+                share_btn_logo.setSelected(true);
                 if(fragShare == null){
                     fragShare = new FragShare();
                     fTransaction.add(R.id.frag_content,fragShare);
@@ -152,6 +172,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.attention_btn_bar:case R.id.attention_btn:
                 attention_btn.setSelected(true);
+                attention_btn_logo.setSelected(true);
                 if(fragAttention == null){
                     fragAttention = new FragAttention();
                     fTransaction.add(R.id.frag_content,fragAttention);
@@ -161,6 +182,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.personal_btn_bar:case R.id.personal_btn:
                 personal_btn.setSelected(true);
+                personal_btn_logo.setSelected(true);
                 if(fragPersonal == null){
                     fragPersonal = new FragPersonal();
                     fTransaction.add(R.id.frag_content,fragPersonal);

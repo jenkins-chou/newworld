@@ -37,14 +37,20 @@
                 android:id="@+id/homepage_btn_bar"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/homepage_btn_logo"
+                    android:src="@drawable/main_nav_homepage_btn"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp" />
                 <TextView
                     android:text="主页"
-                    android:textSize="12dp"
+                    android:textSize="11dp"
+                    android:textStyle="bold"
                     android:id="@+id/homepage_btn"
                     android:textColor="@drawable/main_nav_text_btn"
-                    android:drawableTop="@drawable/main_nav_homepage_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -52,14 +58,20 @@
                 android:id="@+id/search_btn_bar"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/search_btn_logo"
+                    android:src="@drawable/main_nav_search_btn"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp" />
                 <TextView
                     android:text="推荐"
-                    android:textSize="12dp"
+                    android:textSize="11dp"
+                    android:textStyle="bold"
                     android:id="@+id/search_btn"
                     android:textColor="@drawable/main_nav_text_btn"
-                    android:drawableTop="@drawable/main_nav_search_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -67,14 +79,20 @@
                 android:id="@+id/share_btn_bar"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/share_btn_logo"
+                    android:src="@mipmap/test_center"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp" />
                 <TextView
-                    android:text="分享"
-                    android:textSize="12dp"
+                    android:text="jenkins"
+                    android:textSize="11dp"
+                    android:textStyle="bold"
                     android:id="@+id/share_btn"
                     android:textColor="@drawable/main_nav_text_btn"
-                    android:drawableTop="@drawable/main_nav_share_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -82,14 +100,20 @@
                 android:id="@+id/attention_btn_bar"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/attention_btn_logo"
+                    android:src="@drawable/main_nav_attention_btn"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp" />
                 <TextView
                     android:text="关注"
-                    android:textSize="12dp"
+                    android:textSize="11dp"
+                    android:textStyle="bold"
                     android:id="@+id/attention_btn"
                     android:textColor="@drawable/main_nav_text_btn"
-                    android:drawableTop="@drawable/main_nav_attention_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -97,14 +121,20 @@
                 android:id="@+id/personal_btn_bar"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/personal_btn_logo"
+                    android:src="@drawable/main_nav_account_btn"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp" />
                 <TextView
-                    android:text="是我"
-                    android:textSize="12dp"
+                    android:text="个人中心"
+                    android:textSize="11dp"
+                    android:textStyle="bold"
                     android:id="@+id/personal_btn"
                     android:textColor="@drawable/main_nav_text_btn"
-                    android:drawableTop="@drawable/main_nav_account_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>

@@ -83,7 +83,7 @@
     <com.jenkins.newworld.ui.RainbowLine
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="2dp"/>
+        android:layout_height="1dp"/>
     <View
         android:background="#f3f3f3"
         android:layout_width="match_parent"

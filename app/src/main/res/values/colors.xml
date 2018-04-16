@@ -12,6 +12,10 @@
     <!--个人页面数量文字颜色-->
     <color name="personal_topbar_tip">#bbb</color>
 
+    <!--首页导航菜单文字颜色-->
+    <color name="main_btn_normal">#ccc</color>
+    <color name="main_btn_selected">#FF0000</color>
+
     <!--搜索页标签颜色-->
     <color name="red">#e42e19</color>
     <color name="orange">#f97213</color>
