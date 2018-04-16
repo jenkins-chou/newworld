@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mainBgColor"
     android:fitsSystemWindows="true"
+    android:background="@color/mainBgColor"
     tools:context="com.jenkins.newworld.activity.MainActivity">
     <FrameLayout
+
         android:id="@+id/frag_content"
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
@@ -20,11 +21,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <!--分割线-->
-        <View
-            android:background="@color/lineBgColor"
+        <com.jenkins.newworld.ui.RainbowLine
             android:layout_above="@+id/nav_bar"
             android:layout_width="match_parent"
-            android:layout_height="1sp"></View>
+            android:layout_height="1sp"></com.jenkins.newworld.ui.RainbowLine>
         <LinearLayout
             android:id="@+id/nav_bar"
             android:background="#fff"
@@ -130,7 +130,7 @@
                     android:layout_width="22dp"
                     android:layout_height="22dp" />
                 <TextView
-                    android:text="个人中心"
+                    android:text="个人"
                     android:textSize="11dp"
                     android:textStyle="bold"
                     android:id="@+id/personal_btn"
