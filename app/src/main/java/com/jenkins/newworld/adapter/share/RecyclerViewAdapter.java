@@ -10,11 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.loader.GlideImageLoader;
 import com.jenkins.newworld.model.frag.FragShareLineModel;
+import com.jenkins.newworld.ui.MarqueeTextView;
 import com.youth.banner.Banner;
+import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 
@@ -31,6 +34,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     private LayoutInflater inflater;
     private ArrayList<String> bannerImages;//轮播图urls
     private ArrayList<String> categorys;//分类菜单
+    private String[] textArray;//上下滑动公告栏数据
     private ArrayList<FragShareLineModel> fragShareLineModels;//分两列显示的数据
     private final int Banner_mode = 0;
     private final int Category_mode = 1;
@@ -41,7 +45,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     public RecyclerViewAdapter(Context context){
         this.context = context;
         inflater = LayoutInflater.from(context);
-        Log.e("RecyclerViewAdapter","init");
     }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -82,16 +85,26 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             initBanner(holder1,bannerImages);
         }else if(position == Category_mode){
             TypeCategoryHolder holder1 = (TypeCategoryHolder)holder;
-            initCategory(holder1,bannerImages);
+            initCategory(holder1,textArray);
         }else if (position == Line_mode){
             TypeLineHolder holder1 = (TypeLineHolder)holder;
             holder1.rvtype.setLayoutManager(new GridLayoutManager(context, 2));
             TypeLineAdapter lineAdapter = new TypeLineAdapter(context, fragShareLineModels);
             holder1.rvtype.setAdapter(lineAdapter);
+            holder1.rvtype.addOnItemTouchListener(lineAdapter);
         }
     }
 
-    public void initCategory(TypeCategoryHolder holder1, ArrayList<String> bannerImages) {
+    //初始化分类菜单
+    public void initCategory(TypeCategoryHolder holder1, String[] textArray) {
+        LinearLayout linearLayout = (LinearLayout)holder1.rvtype;
+        MarqueeTextView marqueeTv = (MarqueeTextView)linearLayout.findViewById(R.id.marqueeTv);
+        marqueeTv.setTextArraysAndClickListener(textArray, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         Log.e("initCategory","initCategory");
     }
 
@@ -114,6 +127,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         }
     }
 
+    //初始化轮播图banner
     public void initBanner(TypeBannerHolder holder,ArrayList<String> datas){
         Log.e("initBanner","initBanner");
         RelativeLayout relativeLayout = holder.rvtype;
@@ -121,7 +135,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         banner.setDelayTime(4000);
         banner.setImages(datas)
                 .setImageLoader(new GlideImageLoader())
-//              .setOnBannerListener(this)
+                .setOnBannerListener(new OnBannerListener() {
+                    @Override
+                    public void OnBannerClick(int position) {
+                        Toast.makeText(context, "position:"+position, Toast.LENGTH_SHORT).show();
+                    }
+                })
                 .start();
     }
 
@@ -133,8 +152,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     }
 
     //设置分类菜单
-    public void setCategorys(ArrayList<String> categorys){
-        this.categorys = categorys;
+    public void setCategorys(String[] arrays){
+        textArray = arrays;
         count ++;
         notifyDataSetChanged();
     }

@@ -3,10 +3,15 @@ package com.jenkins.newworld.adapter.share;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.model.frag.FragShareLineModel;
 
@@ -19,7 +24,7 @@ import butterknife.ButterKnife;
  * Created by zhouzhenjian on 2018/4/17.
  */
 
-public class TypeLineAdapter extends RecyclerView.Adapter<TypeLineAdapter.TypeLineHolder> {
+public class TypeLineAdapter extends RecyclerView.Adapter<TypeLineAdapter.TypeLineHolder> implements RecyclerView.OnItemTouchListener{
 
     private Context mContext;
 
@@ -42,7 +47,11 @@ public class TypeLineAdapter extends RecyclerView.Adapter<TypeLineAdapter.TypeLi
     @Override
     public void onBindViewHolder(TypeLineHolder holder, int position) {
         FragShareLineModel contentBean = fragShareLineModels.get(position);
-        holder.homeReadTitle.setText("#" + contentBean.getTitle());
+        holder.item_title.setText("#" + contentBean.getTitle());
+        Glide.with(mContext)
+                .load(contentBean.getImageUrls())
+                .error(R.mipmap.avatar)
+                .into(holder.item_imageView);
     }
 
     @Override
@@ -50,9 +59,26 @@ public class TypeLineAdapter extends RecyclerView.Adapter<TypeLineAdapter.TypeLi
         return fragShareLineModels == null ? 0 : fragShareLineModels.size();
     }
 
+    @Override
+    public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+        Toast.makeText(mContext, "dsadsadsa", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+    }
+
     public class TypeLineHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.title)
-        TextView homeReadTitle;
+        @BindView(R.id.item_title)
+        TextView item_title;
+        @BindView(R.id.item_image)
+        ImageView item_imageView;
 
         public TypeLineHolder(View view) {
             super(view);

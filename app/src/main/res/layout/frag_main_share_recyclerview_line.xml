@@ -5,7 +5,7 @@
     android:layout_marginBottom="30dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -22,32 +22,33 @@
             android:layout_marginLeft="8dp"
             android:text="直播推荐"
             android:textSize="14sp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
             android:text="更换一批"
             android:textSize="13sp"
             android:textColor="#ff6600"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="20dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/frag_share_recyclerview_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginRight="0dp"
+        android:layout_marginLeft="10dp">
     </android.support.v7.widget.RecyclerView>
 
     <LinearLayout
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="30dp"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

@@ -32,9 +32,6 @@ public class FragSearch extends Fragment {
 
     private Context context;
     private AppCompatActivity activity;
-    //view
-    @BindView(R.id.recyclerview)
-    RecyclerView recyclerView;
 
     @OnClick(R.id.search_icon)
     void search_icon_action(){
@@ -60,40 +57,6 @@ public class FragSearch extends Fragment {
     }
 
     public void initView() {
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(this.getContext());
-        recyclerView.setAdapter(recyclerViewAdapter);
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
-        //插入数据
-        recyclerViewAdapter.setBannerImages(getBanners());
-        recyclerViewAdapter.setCategorys(getBanners());
-        recyclerViewAdapter.setFragShareLineModels(getLineDatas());
-    }
-
-    public ArrayList<FragShareLineModel> getLineDatas(){
-        ArrayList<FragShareLineModel> result = new ArrayList<>();
-        result.add(new FragShareLineModel("123","456"));
-        result.add(new FragShareLineModel("123","456"));
-        result.add(new FragShareLineModel("123","456"));
-        result.add(new FragShareLineModel("123","456"));
-        result.add(new FragShareLineModel("123","456"));
-        result.add(new FragShareLineModel("123","456"));
-        result.add(new FragShareLineModel("123","456"));
-        result.add(new FragShareLineModel("123","456"));
-        result.add(new FragShareLineModel("123","456"));
-        result.add(new FragShareLineModel("123","456"));
-        result.add(new FragShareLineModel("123","456"));
-        result.add(new FragShareLineModel("123","456"));
-        return result;
-    }
-
-    public ArrayList<String> getBanners(){
-        ArrayList<String> result = new ArrayList<>();
-        result.add(new String("http://ww4.sinaimg.cn/large/006uZZy8jw1faic1xjab4j30ci08cjrv.jpg"));
-        result.add(new String("http://ww4.sinaimg.cn/large/006uZZy8jw1faic21363tj30ci08ct96.jpg"));
-        result.add(new String("http://ww4.sinaimg.cn/large/006uZZy8jw1faic259ohaj30ci08c74r.jpg"));
-        result.add(new String("http://ww4.sinaimg.cn/large/006uZZy8jw1faic2b16zuj30ci08cwf4.jpg"));
-        result.add(new String("http://ww4.sinaimg.cn/large/006uZZy8jw1faic2e7vsaj30ci08cglz.jpg"));
-        return result;
     }
 }

@@ -23,7 +23,7 @@
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
-                    android:text="胭脂"
+                    android:text="BBC"
                     android:textSize="12sp"
                     android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
@@ -44,7 +44,7 @@
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
-                    android:text="胭脂"
+                    android:text="电影"
                     android:textSize="12sp"
                     android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
@@ -65,7 +65,7 @@
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
-                    android:text="胭脂"
+                    android:text="段视频"
                     android:textSize="12sp"
                     android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
@@ -86,7 +86,7 @@
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
-                    android:text="胭脂"
+                    android:text="纪录片"
                     android:textSize="12sp"
                     android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
@@ -115,7 +115,7 @@
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
-                    android:text="胭脂"
+                    android:text="冒险"
                     android:textSize="12sp"
                     android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
@@ -136,7 +136,7 @@
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
-                    android:text="胭脂"
+                    android:text="体育"
                     android:textSize="12sp"
                     android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
@@ -157,7 +157,7 @@
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
-                    android:text="胭脂"
+                    android:text="娱乐频道"
                     android:textSize="12sp"
                     android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
@@ -178,7 +178,7 @@
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
-                    android:text="胭脂"
+                    android:text="综艺节目"
                     android:textSize="12sp"
                     android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
@@ -193,8 +193,10 @@
         android:layout_height="1px"/>
     <LinearLayout
         android:gravity="center_vertical"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
