@@ -11,12 +11,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jenkins.newworld.R;
@@ -26,6 +28,7 @@ import com.jenkins.newworld.fragment.main.FragPersonal;
 import com.jenkins.newworld.fragment.main.FragSearch;
 import com.jenkins.newworld.fragment.main.FragShare;
 import com.jenkins.newworld.util.CommonWindowUtil;
+import com.jenkins.newworld.util.FontManager;
 
 import java.lang.reflect.Field;
 
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public final static int PAGE_THREE = 2;
     public final static int PAGE_FOUR = 3;
     public final static int PAGE_FIVE = 4;
+
     private FragmentManager fManager;
     private FragAttention fragAttention;
     private FragHomePage fragHomePage;
@@ -47,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FragSearch fragSearch;
     private FragShare fragShare;
     //view
+    @BindView(R.id.root_layout)
+    RelativeLayout root_layout;//根布局
     @BindView(R.id.homepage_btn)
     TextView homepage_btn;
     @BindView(R.id.search_btn)
@@ -87,6 +93,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         //设置状态栏文字
         CommonWindowUtil.FlymeSetStatusBarLightMode(this.getWindow(),true);
+        //更改字体
+        FontManager.changeFonts(((ViewGroup)findViewById(android.R.id.content)),this);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         init();
@@ -136,11 +144,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         FragmentTransaction fTransaction = fManager.beginTransaction();
+
         hideAllFragment(fTransaction);
         setSelected();
         switch (view.getId()){
             case R.id.homepage_btn_bar:case R.id.homepage_btn:
-                //frameLayout.setBackgroundColor(Color.BLUE);
+                root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
                 homepage_btn.setSelected(true);
                 homepage_btn_logo.setSelected(true);
                 if(fragHomePage == null){
@@ -151,6 +160,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.search_btn_bar:case R.id.search_btn:
+                root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
                 search_btn.setSelected(true);
                 search_btn_logo.setSelected(true);
                 if(fragSearch == null){
@@ -161,6 +171,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.share_btn_bar:case R.id.share_btn:
+                root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
                 share_btn.setSelected(true);
                 share_btn_logo.setSelected(true);
                 if(fragShare == null){
@@ -171,6 +182,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.attention_btn_bar:case R.id.attention_btn:
+                root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
                 attention_btn.setSelected(true);
                 attention_btn_logo.setSelected(true);
                 if(fragAttention == null){
@@ -181,6 +193,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.personal_btn_bar:case R.id.personal_btn:
+                root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
                 personal_btn.setSelected(true);
                 personal_btn_logo.setSelected(true);
                 if(fragPersonal == null){

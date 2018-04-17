@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frag_share_category"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
         <LinearLayout
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -18,11 +19,13 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/avatar"
+                    android:src="@mipmap/frag_share_bbc"
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
                     android:text="胭脂"
+                    android:textSize="12sp"
+                    android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -37,11 +40,13 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/avatar"
+                    android:src="@mipmap/frag_share_dianying"
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
                     android:text="胭脂"
+                    android:textSize="12sp"
+                    android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -56,11 +61,13 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/avatar"
+                    android:src="@mipmap/frag_share_duanshipin"
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
                     android:text="胭脂"
+                    android:textSize="12sp"
+                    android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -75,11 +82,13 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/avatar"
+                    android:src="@mipmap/frag_share_jilupian"
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
                     android:text="胭脂"
+                    android:textSize="12sp"
+                    android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -88,7 +97,7 @@
 
         <!--第二栏-->
         <LinearLayout
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -102,11 +111,13 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/avatar"
+                    android:src="@mipmap/frag_share_maoxian"
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
                     android:text="胭脂"
+                    android:textSize="12sp"
+                    android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -121,11 +132,13 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/avatar"
+                    android:src="@mipmap/frag_share_tiyu"
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
                     android:text="胭脂"
+                    android:textSize="12sp"
+                    android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -140,11 +153,13 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/avatar"
+                    android:src="@mipmap/frag_share_yule"
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
                     android:text="胭脂"
+                    android:textSize="12sp"
+                    android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -159,14 +174,42 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/avatar"
+                    android:src="@mipmap/frag_share_zongyi"
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
                     android:text="胭脂"
+                    android:textSize="12sp"
+                    android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
+    <View
+        android:layout_marginTop="10dp"
+        android:background="#aaa"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@mipmap/frag_share_target"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+        <com.jenkins.newworld.ui.MarqueeTextView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/marqueeTv"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+        </com.jenkins.newworld.ui.MarqueeTextView>
+    </LinearLayout>
+    <View
+        android:background="#f3f3f3"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
 </LinearLayout>

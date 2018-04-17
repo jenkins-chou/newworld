@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:id="@+id/frag_share_banner_bar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
-        android:background="#ddd"
+    android:layout_height="120dp">
+    <com.youth.banner.Banner
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/banner"
+        indicator_drawable_selected="#ff6600"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
-    </LinearLayout>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:background="@color/mainBgColor"
+        />
+</RelativeLayout>
