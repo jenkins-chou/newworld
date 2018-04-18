@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <ImageView
+        android:id="@+id/topbar_gif"
+        android:background="@drawable/frag_search_video_banner"
+        android:scaleType="centerCrop"
         android:layout_width="match_parent"
-        android:layout_height="120dp" />
+        android:layout_height="140dp" />
     <LinearLayout
         android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
+            android:id="@+id/allsort_btn"
             android:orientation="horizontal"
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -17,26 +24,40 @@
             android:padding="10dp"
             android:layout_height="wrap_content">
             <ImageView
+                android:src="@mipmap/frag_search_video_allsort"
                 android:layout_width="35dp"
                 android:layout_height="35dp" />
             <TextView
                 android:text="全部分类"
+                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+        <View
+            android:background="#eee"
+            android:layout_width="1px"
+            android:layout_height="35dp"/>
         <LinearLayout
+            android:id="@+id/recommand_btn"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:gravity="center"
             android:padding="10dp"
             android:layout_height="wrap_content">
             <ImageView
+                android:src="@mipmap/frag_search_video_recommand"
                 android:layout_width="35dp"
                 android:layout_height="35dp" />
             <TextView
                 android:text="精选"
+                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
+
+    <View
+        android:background="#f3f3f3"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
 </LinearLayout>

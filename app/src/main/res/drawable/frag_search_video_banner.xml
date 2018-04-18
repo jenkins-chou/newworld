@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item android:drawable="@mipmap/frag_search_video_spacegif00" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif01" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif02" android:duration="40"/>
+
+    <item android:drawable="@mipmap/frag_search_video_spacegif15" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif16" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif17" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif18" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif19" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif20" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif21" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif22" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif23" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif24" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif25" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif26" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif27" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif28" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif29" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif30" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif31" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif32" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif33" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif34" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif35" android:duration="40"/>
+
+    <item android:drawable="@mipmap/frag_search_video_spacegif34" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif33" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif32" android:duration="40"/>
+
+    <item android:drawable="@mipmap/frag_search_video_spacegif31" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif30" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif29" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif28" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif27" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif26" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif25" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif24" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif23" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif22" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif21" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif20" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif19" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif18" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif17" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif16" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif15" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif02" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif01" android:duration="40"/>
+    <item android:drawable="@mipmap/frag_search_video_spacegif00" android:duration="40"/>
+
+</animation-list>
