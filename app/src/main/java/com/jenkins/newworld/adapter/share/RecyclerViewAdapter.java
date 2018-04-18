@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.loader.GlideImageLoader;
 import com.jenkins.newworld.model.frag.FragShareLineModel;
@@ -36,11 +37,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     private ArrayList<String> categorys;//分类菜单
     private String[] textArray;//上下滑动公告栏数据
     private ArrayList<FragShareLineModel> fragShareLineModels;//分两列显示的数据
-    private final int Banner_mode = 0;
-    private final int Category_mode = 1;
-    private final int Line_mode = 2;
+    private final int Banner_mode = 0;//banner轮播图
+    private final int Category_mode = 1;//分类菜单
+    private final int Line_mode = 2;//多列显示模式
+    private int SingleLine_mode = 3;//单列显示模式
     private int count = 0;
     private int currentType = 0;
+    private ArrayList<FragShareLineModel> sindleLineModels;
+
 
     public RecyclerViewAdapter(Context context){
         this.context = context;
@@ -65,14 +69,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             view.setLayoutParams(params2);
             return new TypeCategoryHolder(view);
         }else if(viewType==Line_mode){
-            //中间head下面的布局
+            //多列显示
             View view = inflater.inflate(R.layout.frag_main_share_recyclerview_line, parent, false);
             StaggeredGridLayoutManager.LayoutParams params2 =
                     (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
             params2.setFullSpan(true);
             view.setLayoutParams(params2);
             return new TypeLineHolder(view);
-        }else{
+        }else if(viewType==SingleLine_mode){
+            //单列显示
+            View view = inflater.inflate(R.layout.frag_main_share_recyclerview_singleline, parent, false);
+            StaggeredGridLayoutManager.LayoutParams params2 =
+                    (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
+            params2.setFullSpan(true);
+            view.setLayoutParams(params2);
+            return new TypeSingleLineHolder(view);
+        }
+        else{
         }
         return null;
     }
@@ -91,10 +104,33 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             holder1.rvtype.setLayoutManager(new GridLayoutManager(context, 2));
             TypeLineAdapter lineAdapter = new TypeLineAdapter(context, fragShareLineModels);
             holder1.rvtype.setAdapter(lineAdapter);
-            holder1.rvtype.addOnItemTouchListener(lineAdapter);
+        }else if(position==SingleLine_mode){
+            TypeSingleLineHolder holder1 = (TypeSingleLineHolder)holder;
+            holder1.rvtype.setLayoutManager(new GridLayoutManager(context, 1));
+            TypeSingleLineAdapter singlelineAdapter = new TypeSingleLineAdapter(context, sindleLineModels);
+            holder1.rvtype.setAdapter(singlelineAdapter);
         }
     }
 
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                //如果快速滑动， 不加载图片
+                if (newState == 2) {
+                    Glide.with(context).pauseRequests();
+                } else {
+                    Glide.with(context).resumeRequests();
+                }
+            }
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+
+            }
+        });
+    }
     //初始化分类菜单
     public void initCategory(TypeCategoryHolder holder1, String[] textArray) {
         LinearLayout linearLayout = (LinearLayout)holder1.rvtype;
@@ -122,7 +158,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             return Category_mode;
         }else if(position==2){
             return Line_mode;
-        }else {
+        }else if(position ==3){
+            return SingleLine_mode;
+        }
+        else {
             return 0;
         }
     }
@@ -147,6 +186,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     //设置分列显示的数据集
     public void setFragShareLineModels(ArrayList<FragShareLineModel> fragShareLineModels){
         this.fragShareLineModels = fragShareLineModels;
+        count ++;
+        notifyDataSetChanged();
+    }
+
+    //设置单列显示的数据集
+    public void setSingleLineModels(ArrayList<FragShareLineModel> sindleLineModels){
+        this.sindleLineModels = sindleLineModels;
         count ++;
         notifyDataSetChanged();
     }
@@ -189,6 +235,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         @BindView(R.id.frag_share_recyclerview_line)
         RecyclerView rvtype;
         public TypeLineHolder(View view) {
+            super(view);
+            ButterKnife.bind(this, view);
+        }
+    }
+
+    //单列显示holder
+    public class TypeSingleLineHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.frag_share_recyclerview_singleline)
+        RecyclerView rvtype;
+        public TypeSingleLineHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
         }

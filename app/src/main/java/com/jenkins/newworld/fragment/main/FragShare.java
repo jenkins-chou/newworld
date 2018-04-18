@@ -67,9 +67,10 @@ public class FragShare extends Fragment{
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         //插入数据
-        recyclerViewAdapter.setBannerImages(getBanners());
-        recyclerViewAdapter.setCategorys(textArrays);
-        recyclerViewAdapter.setFragShareLineModels(getLineDatas());
+        recyclerViewAdapter.setBannerImages(getBanners());//设置banner轮播图
+        recyclerViewAdapter.setCategorys(textArrays);//设置分类菜单
+        recyclerViewAdapter.setFragShareLineModels(getLineDatas());//设置多列显示的数据
+        recyclerViewAdapter.setSingleLineModels(getLineDatas());//设置单列显示的数据
 
     }
 
@@ -81,7 +82,17 @@ public class FragShare extends Fragment{
         result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/04/2017-04-28_18-18-22.jpg","可乐爆米花"));
         result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/04/2017-04-26_10-00-28.jpg","针织方便面"));
         result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/04/2017-04-21_16-37-16.jpg","办公室小野开番外了"));
+        return result;
+    }
 
+    public ArrayList<FragShareLineModel> getSingleLineDatas(){
+        ArrayList<FragShareLineModel> result = new ArrayList<>();
+        result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-30-43.jpg","可乐爆米花，嘭嘭嘭.."));
+        result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-10_10-09-58.jpg","针织方便面"));
+        result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-03_12-52-08.jpg","办公室小野开番外了"));
+        result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/04/2017-04-28_18-18-22.jpg","可乐爆米花"));
+        result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/04/2017-04-26_10-00-28.jpg","针织方便面"));
+        result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/04/2017-04-21_16-37-16.jpg","办公室小野开番外了"));
         return result;
     }
 

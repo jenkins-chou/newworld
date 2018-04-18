@@ -53,7 +53,7 @@ public class FragAttention extends Fragment {
 
         new CustomTabHost(this.getActivity(),cursor,viewPager,views,fragments)//参数分别为：上下文，游标，viewpager，标题集合，fragment集合
                 .setProcessTime(200)                //设置滑动条的动画时间
-                .setCursorColor(R.color.colorPrimary);//或者可以填写Color.BLUE或其他颜色，也可以使用RGB颜色
+                .setCursorColor("#ff0000");//或者可以填写Color.BLUE或其他颜色，也可以使用RGB颜色
     }
 
 }

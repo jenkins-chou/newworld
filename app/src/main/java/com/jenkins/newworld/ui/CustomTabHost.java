@@ -116,9 +116,8 @@ public class CustomTabHost implements View.OnClickListener,
         animation.setDuration(second); //设置动画时间
         cursor.startAnimation(animation);
     }
-    public CustomTabHost setCursorColor(int color){
-        //cursor.setBackgroundColor(color);
-        //cursor.setTextColor(color);
+    public CustomTabHost setCursorColor(String colorStr){
+        cursor.setBackgroundColor(android.graphics.Color.parseColor(colorStr));
         return this;
     }
 
