@@ -1,13 +1,17 @@
 package com.jenkins.newworld.adapter.search;
 
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
@@ -107,6 +111,28 @@ public class SearchVideoRvAdapter extends RecyclerView.Adapter {
 
     public void initHeader(TypeHeaderHolder holder){
         View view = holder.header;//头部视图
+        ImageView topbar_gif = (ImageView)view.findViewById(R.id.topbar_gif);
+        if (topbar_gif==null)
+            return;
+        AnimationDrawable animationDrawable = (AnimationDrawable)topbar_gif.getBackground();
+        animationDrawable.start();
+
+        LinearLayout allsort_btn = (LinearLayout)view.findViewById(R.id.allsort_btn);
+        LinearLayout recommand_btn = (LinearLayout)view.findViewById(R.id.recommand_btn);
+
+        allsort_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "allsort_btn", Toast.LENGTH_SHORT).show();
+            }
+        });
+        recommand_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "recommand_btn", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     public void addHeader(){

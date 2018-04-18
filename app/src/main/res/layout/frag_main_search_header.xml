@@ -17,13 +17,13 @@
             android:layout_width="25dp"
             android:layout_height="30dp" />
         <ImageView
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="35dp"
             android:id="@+id/frag_search_live_btn"
             android:src="@drawable/frag_search_live_btn"
             android:layout_width="35dp"
             android:layout_height="35dp" />
         <ImageView
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="35dp"
             android:id="@+id/frag_search_discover_btn"
             android:src="@drawable/frag_search_discover_btn"
             android:layout_width="26dp"

@@ -13,7 +13,7 @@ import com.xiao.nicevideoplayer.NiceVideoPlayer;
 import com.xiao.nicevideoplayer.TxVideoPlayerController;
 
 /**
- * Created by XiaoJianjun on 2017/5/21.
+ * Created by zhouzhenjian on 2017/5/21.
  */
 
 public class VideoViewHolder extends RecyclerView.ViewHolder {

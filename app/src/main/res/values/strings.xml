@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NewWorld</string>
+    <string name="app_name_unique">NewSaria</string>
     <string-array name="banner_list">
         <item>123456</item>
         <item>123456</item>
