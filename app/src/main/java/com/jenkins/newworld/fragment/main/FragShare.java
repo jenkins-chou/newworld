@@ -74,6 +74,7 @@ public class FragShare extends Fragment{
 
     }
 
+    //获取直播间地址
     public ArrayList<FragShareLineModel> getLineDatas(){
         ArrayList<FragShareLineModel> result = new ArrayList<>();
         result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-30-43.jpg","可乐爆米花，嘭嘭嘭.."));
@@ -85,6 +86,7 @@ public class FragShare extends Fragment{
         return result;
     }
 
+    //获取其他直播间地址
     public ArrayList<FragShareLineModel> getSingleLineDatas(){
         ArrayList<FragShareLineModel> result = new ArrayList<>();
         result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-30-43.jpg","可乐爆米花，嘭嘭嘭.."));
@@ -96,13 +98,14 @@ public class FragShare extends Fragment{
         return result;
     }
 
+    //获取轮播图图片
     public ArrayList<String> getBanners(){
         ArrayList<String> result = new ArrayList<>();
-        result.add(new String("http://ww4.sinaimg.cn/large/006uZZy8jw1faic1xjab4j30ci08cjrv.jpg"));
-        result.add(new String("http://ww4.sinaimg.cn/large/006uZZy8jw1faic21363tj30ci08ct96.jpg"));
-        result.add(new String("http://ww4.sinaimg.cn/large/006uZZy8jw1faic259ohaj30ci08c74r.jpg"));
-        result.add(new String("http://ww4.sinaimg.cn/large/006uZZy8jw1faic2b16zuj30ci08cwf4.jpg"));
-        result.add(new String("http://ww4.sinaimg.cn/large/006uZZy8jw1faic2e7vsaj30ci08cglz.jpg"));
+        result.add(new String("http://i1.17173cdn.com/2fhnvk/YWxqaGBf/cms3/tRmNBdblckzgleB.jpg"));
+        result.add(new String("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2430902877,3253634722&fm=11&gp=0.jpg"));
+        result.add(new String("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524119767644&di=7e4d49e2a0fe62cf2970a2d70f5f866c&imgtype=0&src=http%3A%2F%2Fpic3.16pic.com%2F00%2F55%2F07%2F16pic_5507165_b.jpg"));
+        result.add(new String("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524119802221&di=462774704dedd46f548d22eb5c102966&imgtype=0&src=http%3A%2F%2Fp11.aipai.com%2Fphoto%2F980%2F24057980%2Fphoto%2F72%2F2779208%2F2779208_normal.jpg"));
+        result.add(new String("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524119823918&di=4acb671e216d3db38a7b6fd4d2c201b6&imgtype=0&src=http%3A%2F%2Fimg.3dmgame.com%2Fuploads%2Fallimg%2F170516%2F316-1F5161K137.jpg"));
         return result;
     }
 }
