@@ -106,7 +106,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             holder1.rvtype.setAdapter(lineAdapter);
         }else if(position==SingleLine_mode){
             TypeSingleLineHolder holder1 = (TypeSingleLineHolder)holder;
-            holder1.rvtype.setLayoutManager(new GridLayoutManager(context, 1));
+            holder1.rvtype.setLayoutManager(new GridLayoutManager(context, 2));
             TypeSingleLineAdapter singlelineAdapter = new TypeSingleLineAdapter(context, sindleLineModels);
             holder1.rvtype.setAdapter(singlelineAdapter);
         }

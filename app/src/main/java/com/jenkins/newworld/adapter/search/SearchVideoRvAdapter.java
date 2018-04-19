@@ -10,12 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
-import com.jenkins.newworld.adapter.share.RecyclerViewAdapter;
 import com.jenkins.newworld.model.video.Video;
 
 import java.util.ArrayList;
@@ -44,14 +42,14 @@ public class SearchVideoRvAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == headerType){
             //头部菜单
-            View view = inflater.inflate(R.layout.frag_search_videopage_header, parent, false);
+            View view = inflater.inflate(R.layout.frag_main_search_videopage_header, parent, false);
             StaggeredGridLayoutManager.LayoutParams params2 =
                     (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
             params2.setFullSpan(true);
             view.setLayoutParams(params2);
             return new TypeHeaderHolder(view);
         }else if(viewType == contentType){
-            View view = inflater.inflate(R.layout.frag_search_videopage_content, parent, false);
+            View view = inflater.inflate(R.layout.frag_main_search_videopage_content, parent, false);
             StaggeredGridLayoutManager.LayoutParams params2 =
                     (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
             params2.setFullSpan(true);

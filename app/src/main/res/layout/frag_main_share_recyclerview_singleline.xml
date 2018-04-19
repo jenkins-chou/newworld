@@ -11,7 +11,7 @@
         <TextView
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:text="可能你还喜欢 >"
+            android:text="可能你还喜欢"
             android:textSize="14sp"
             android:textColor="#000"
             android:layout_marginTop="10dp"

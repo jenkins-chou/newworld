@@ -10,15 +10,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
-import com.jenkins.newworld.model.frag.FragShareLineModel;
 import com.jenkins.newworld.model.video.Video;
 import com.xiao.nicevideoplayer.NiceVideoPlayer;
 import com.xiao.nicevideoplayer.TxVideoPlayerController;
 
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by zhouzhenjian on 2018/4/17.
@@ -41,7 +37,7 @@ public class TypeContentAdapter extends RecyclerView.Adapter<TypeContentAdapter.
 
     @Override
     public VideoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View item  = inflater.inflate(R.layout.frag_search_videopage_item, parent, false);
+        View item  = inflater.inflate(R.layout.frag_main_search_videopage_item, parent, false);
         VideoViewHolder holder = new VideoViewHolder(item);
         TxVideoPlayerController controller = new TxVideoPlayerController(mContext);
         holder.setController(controller);

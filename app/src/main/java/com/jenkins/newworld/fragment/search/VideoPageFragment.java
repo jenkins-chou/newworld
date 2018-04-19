@@ -1,7 +1,6 @@
 package com.jenkins.newworld.fragment.search;
 
 import android.content.Context;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,7 +9,6 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.adapter.search.SearchVideoRvAdapter;
@@ -36,7 +34,7 @@ public class VideoPageFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_search_videopage,container,false);
+        View view = inflater.inflate(R.layout.frag_main_search_videopage,container,false);
         ButterKnife.bind(this,view);
         //播放动画
         //initTopbarGif();
