@@ -4,4 +4,14 @@
     android:layout_height="match_parent">
     <include layout="@layout/frag_main_personal_header" />
     <include layout="@layout/frag_main_personal_topbar"/>
+    <Button
+        android:id="@+id/live_record"
+        android:text="录制直播"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/live_play"
+        android:text="观看直播"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

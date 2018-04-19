@@ -11,6 +11,9 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
     }
     buildTypes {
         release {
@@ -31,6 +34,8 @@ dependencies {
     //依赖仓库
     compile project(path: ':nicevideoplayer')
     compile project(path: ':banner')
+    compile project(path: ':vitamio')
+    compile project(path: ':library_vit')
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile(rootProject.ext.dependencies.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'
