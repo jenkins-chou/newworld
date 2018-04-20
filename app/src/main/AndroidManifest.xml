@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-
     package="com.jenkins.newworld">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -10,6 +9,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
+
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -21,6 +21,7 @@
         android:label="@string/app_name_unique"
         android:roundIcon="@mipmap/icon3"
         android:supportsRtl="true"
+        android:theme="@style/TranslucentTheme"
         tools:replace="android:icon,android:label">
         <activity
             android:name=".activity.MainActivity"
@@ -53,15 +54,29 @@
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <!--直播录制界面-->
-        <activity android:name=".activity.LiveRecordActivity"
+        <!-- 直播录制界面 -->
+        <activity
+            android:name=".activity.LiveRecordActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/TranslucentTheme"/>
-        <!--直播播放界面-->
-        <activity android:name=".activity.LivePlayActivity"
-            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
+        <!-- 直播播放界面 -->
+        <activity
+            android:name=".activity.LivePlayActivity"
             android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
-            android:theme="@style/TranslucentTheme"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/TranslucentTheme" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.zz.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".activity.LoginActivity"></activity>
     </application>
 
 </manifest>

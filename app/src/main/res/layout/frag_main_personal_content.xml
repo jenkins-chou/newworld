@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#f6f6f6"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--图标栏-->
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+        <LinearLayout
+            android:id="@+id/avatar_bar"
+            android:layout_alignParentLeft="true"
+            android:padding="10dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@mipmap/avatar"
+                app:civ_border_width="0dp"
+                android:layout_marginLeft="10dp"
+                app:civ_border_color="#FF000000"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/avatar_bar"
+            android:layout_toLeftOf="@+id/arrow_right"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+            <TextView
+                android:textSize="12sp"
+                android:textColor="#aaa"
+                android:text="登录领福利，订阅"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_marginTop="5dp"
+                android:text="立即登录"
+                android:textColor="#fff"
+                android:textSize="8sp"
+                android:padding="0dp"
+                style="android:attr/borderlessButtonStyle"
+                android:background="@drawable/frag_personal_loginnow_btn"
+                android:layout_width="60dp"
+                android:layout_height="20dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/arrow_right"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp">
+            <ImageView
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/frag_personal_right"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:id="@+id/nav_bar"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--我的订阅-->
+        <RelativeLayout
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/frag_personal_subscriber"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/frag_personal_subscriber"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <TextView
+                android:textSize="12sp"
+                android:textColor="#444"
+                android:text="我的订阅"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/frag_personal_subscriber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="12sp"
+                android:textColor="#b0b0b0"
+                android:text="登录后查看"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/frag_personal_subscriber_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/frag_personal_subscriber_right"
+                android:src="@mipmap/frag_personal_right"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+        </RelativeLayout>
+        <!--我的关注-->
+        <RelativeLayout
+            android:background="#fff"
+            android:layout_marginTop="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/frag_personal_attention"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/frag_personal_attention"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <TextView
+                android:textSize="12sp"
+                android:textColor="#444"
+                android:text="我的关注"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/frag_personal_attention"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:src="@mipmap/frag_personal_right"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+        </RelativeLayout>
+        <!--我看过的-->
+        <RelativeLayout
+            android:background="#fff"
+            android:layout_marginTop="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/frag_personal_history"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/frag_personal_history"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <TextView
+                android:textSize="12sp"
+                android:textColor="#444"
+                android:text="我看过的"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/frag_personal_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:src="@mipmap/frag_personal_right"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <!--主播栏-->
+    <com.jenkins.newworld.ui.RainbowLine
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
+    <LinearLayout
+
+        android:background="#fff"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/live_record"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@mipmap/frag_personal_live"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:text="马上开播"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/live_play"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@mipmap/frag_personal_live_mine"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:text="我的直播"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@mipmap/frag_personal_authen"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:text="主播认证"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@mipmap/frag_personal_help"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:text="帮助与反馈"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.jenkins.newworld.ui.RainbowLine
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
+
+</LinearLayout>

@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.activity.LivePlayActivity;
 import com.jenkins.newworld.activity.LiveRecordActivity;
+import com.jenkins.newworld.activity.LoginActivity;
 import com.jenkins.newworld.activity.TestActivity;
 import com.jenkins.newworld.util.CommonDialog;
 
@@ -35,7 +36,10 @@ public class FragPersonal extends Fragment {
         this.getActivity().overridePendingTransition(0,R.anim.activity_vertical_open);
     }
     @OnClick(R.id.personal_attention_more)void personal_attention_more(){
-        CommonDialog.showSuccessDialog(context,"Hey!!","personal_attention_more");
+        //CommonDialog.showSuccessDialog(context,"Hey!!","personal_attention_more");
+        Intent intent = new Intent(this.getContext(), LoginActivity.class);
+        startActivity(intent);
+        this.getActivity().overridePendingTransition(0,R.anim.activity_vertical_open);
     }
     @OnClick(R.id.live_record)void live_record(){
         Intent intent = new Intent(context, LiveRecordActivity.class);

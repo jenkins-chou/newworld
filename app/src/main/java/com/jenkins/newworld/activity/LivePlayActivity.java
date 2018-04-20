@@ -11,7 +11,9 @@ import android.widget.EditText;
 import com.jenkins.newworld.R;
 
 import io.vov.vitamio.LibsChecker;
+import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.Vitamio;
+import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
 
 public class LivePlayActivity extends AppCompatActivity implements View.OnClickListener {
@@ -25,15 +27,28 @@ public class LivePlayActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live_play);
-        Vitamio.initialize(getApplicationContext());
         if (!LibsChecker.checkVitamioLibs(this))
             return;
+        //Vitamio.initialize(getApplicationContext());
         mEditText = (EditText) findViewById(R.id.url);
         mVideoView = (VideoView) findViewById(R.id.surface_view);
         mStartBtn = (Button) findViewById(R.id.start);
         mStopBtn = (Button) findViewById(R.id.stop);
+
         mStartBtn.setOnClickListener(this);
         mStopBtn.setOnClickListener(this);
+
+        mVideoView.setMediaController(new MediaController(this));
+        mVideoView.requestFocus();
+
+        mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                // optional need Vitamio 4.0
+                mediaPlayer.setPlaybackSpeed(1.0f);
+            }
+        });
+
     }
 
     @Override
@@ -43,6 +58,8 @@ public class LivePlayActivity extends AppCompatActivity implements View.OnClickL
                 path = mEditText.getText().toString();
                 if (!TextUtils.isEmpty(path)) {
                     mVideoView.setVideoPath(path);
+                    mVideoView.start();
+
                 }
                 break;
             case R.id.stop:
