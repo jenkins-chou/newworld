@@ -1,23 +1,13 @@
 package com.jenkins.newworld.activity;
 
-import android.app.Activity;
-import android.graphics.Color;
-import android.os.Build;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,12 +15,10 @@ import com.jenkins.newworld.R;
 import com.jenkins.newworld.fragment.main.FragAttention;
 import com.jenkins.newworld.fragment.main.FragHomePage;
 import com.jenkins.newworld.fragment.main.FragPersonal;
-import com.jenkins.newworld.fragment.main.FragSearch;
 import com.jenkins.newworld.fragment.main.FragShare;
+import com.jenkins.newworld.fragment.main.FragLive;
 import com.jenkins.newworld.util.CommonWindowUtil;
 import com.jenkins.newworld.util.FontManager;
-
-import java.lang.reflect.Field;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FragAttention fragAttention;
     private FragHomePage fragHomePage;
     private FragPersonal fragPersonal;
-    private FragSearch fragSearch;
+    private FragLive fragLive;
     private FragShare fragShare;
     //view
     @BindView(R.id.root_layout)
@@ -137,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(fragAttention != null)fragmentTransaction.hide(fragAttention);
         if(fragHomePage != null)fragmentTransaction.hide(fragHomePage);
         if(fragPersonal != null)fragmentTransaction.hide(fragPersonal);
-        if(fragSearch != null)fragmentTransaction.hide(fragSearch);
+        if(fragLive != null)fragmentTransaction.hide(fragLive);
         if(fragShare != null)fragmentTransaction.hide(fragShare);
     }
 
@@ -163,11 +151,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
                 search_btn.setSelected(true);
                 search_btn_logo.setSelected(true);
-                if(fragSearch == null){
-                    fragSearch = new FragSearch();
-                    fTransaction.add(R.id.frag_content,fragSearch);
+                if(fragLive == null){
+                    fragLive = new FragLive();
+                    fTransaction.add(R.id.frag_content,fragLive);
                 }else{
-                    fTransaction.show(fragSearch);
+                    fTransaction.show(fragLive);
                 }
                 break;
             case R.id.share_btn_bar:case R.id.share_btn:

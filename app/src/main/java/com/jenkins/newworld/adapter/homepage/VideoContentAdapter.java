@@ -1,4 +1,4 @@
-package com.jenkins.newworld.adapter.search;
+package com.jenkins.newworld.adapter.homepage;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -20,7 +20,7 @@ import java.util.List;
  * Created by zhouzhenjian on 2018/4/17.
  */
 
-public class TypeContentAdapter extends RecyclerView.Adapter<TypeContentAdapter.VideoViewHolder>{
+public class VideoContentAdapter extends RecyclerView.Adapter<VideoContentAdapter.VideoViewHolder>{
 
     private Context mContext;
 
@@ -29,7 +29,7 @@ public class TypeContentAdapter extends RecyclerView.Adapter<TypeContentAdapter.
     private LayoutInflater inflater;
 
 
-    public TypeContentAdapter(Context mContext, List<Video> videos) {
+    public VideoContentAdapter(Context mContext, List<Video> videos) {
         this.mContext = mContext;
         this.videos = videos;
         inflater = LayoutInflater.from(mContext);
@@ -37,7 +37,7 @@ public class TypeContentAdapter extends RecyclerView.Adapter<TypeContentAdapter.
 
     @Override
     public VideoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View item  = inflater.inflate(R.layout.frag_main_search_videopage_item, parent, false);
+        View item  = inflater.inflate(R.layout.frag_main_homepage_videopage_item, parent, false);
         VideoViewHolder holder = new VideoViewHolder(item);
         TxVideoPlayerController controller = new TxVideoPlayerController(mContext);
         holder.setController(controller);

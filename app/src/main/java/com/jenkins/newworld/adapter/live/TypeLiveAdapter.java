@@ -1,4 +1,4 @@
-package com.jenkins.newworld.adapter.search;
+package com.jenkins.newworld.adapter.live;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -40,7 +40,7 @@ public class TypeLiveAdapter extends RecyclerView.Adapter<TypeLiveAdapter.TypeLi
 
     @Override
     public TypeLineHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new TypeLineHolder(inflater.inflate(R.layout.frag_main_search_livepage_item, parent, false));
+        return new TypeLineHolder(inflater.inflate(R.layout.frag_main_live_item, parent, false));
     }
 
     @Override

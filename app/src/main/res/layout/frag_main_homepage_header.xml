@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="40dp">
     <ImageView
+        android:visibility="gone"
         android:id="@+id/personal_attention_more"
         android:src="@drawable/frag_homapage_camera_btn"
         android:layout_marginLeft="10dp"
@@ -21,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <ImageView
+        android:visibility="gone"
         android:id="@+id/personal_setting"
         android:layout_marginRight="10dp"
         android:layout_centerVertical="true"

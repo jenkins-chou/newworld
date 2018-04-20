@@ -1,4 +1,4 @@
-package com.jenkins.newworld.fragment.search;
+package com.jenkins.newworld.fragment.main;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jenkins.newworld.R;
-import com.jenkins.newworld.adapter.search.TypeLiveAdapter;
+import com.jenkins.newworld.adapter.live.TypeLiveAdapter;
 import com.jenkins.newworld.util.DataUtil;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
  * Created by zhouzhenjian on 2018/4/18.
  */
 
-public class LivePageFragment extends Fragment{
+public class FragLive extends Fragment{
 
     @BindView(R.id.live_recyclerview)
     RecyclerView live_recyclerview;
@@ -37,7 +37,7 @@ public class LivePageFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_main_search_livepage,container,false);
+        View view = inflater.inflate(R.layout.frag_main_live,container,false);
         ButterKnife.bind(this,view);
         initData();//初始化数据
         initSmartRefreshLayout();//设置下拉刷新

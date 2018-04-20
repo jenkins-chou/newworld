@@ -4,25 +4,23 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.jenkins.newworld.R;
-import com.jenkins.newworld.adapter.video.VideoAdapter;
-import com.jenkins.newworld.adapter.video.holder.VideoViewHolder;
+import com.jenkins.newworld.adapter.homepage.VideoRvAdapter;
 import com.jenkins.newworld.util.DataUtil;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
-import com.xiao.nicevideoplayer.NiceVideoPlayer;
 import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,6 +36,9 @@ public class FragHomePage extends Fragment{
     //view
     @BindView(R.id.smartRefreshLayout)
     SmartRefreshLayout smartRefreshLayout;
+    @BindView(R.id.video_list)
+    RecyclerView video_list;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class FragHomePage extends Fragment{
         ButterKnife.bind(this,view);
         initDatas();
         initViews();
-        initRecyclerView(view);
+        initvideo_list();
         return view;
     }
     public void initDatas(){
@@ -69,21 +70,13 @@ public class FragHomePage extends Fragment{
         });
     }
 
-    private void initRecyclerView(View view) {
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.homepage_recyclerView);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setHasFixedSize(true);
-        VideoAdapter adapter = new VideoAdapter(getActivity(), DataUtil.getVideoListData());
-        mRecyclerView.setAdapter(adapter);
-        mRecyclerView.setRecyclerListener(new RecyclerView.RecyclerListener() {
-            @Override
-            public void onViewRecycled(RecyclerView.ViewHolder holder) {
-                NiceVideoPlayer niceVideoPlayer = ((VideoViewHolder) holder).mVideoPlayer;
-                if (niceVideoPlayer == NiceVideoPlayerManager.instance().getCurrentNiceVideoPlayer()) {
-                    NiceVideoPlayerManager.instance().releaseNiceVideoPlayer();
-                }
-            }
-        });
+
+    public void initvideo_list(){
+        VideoRvAdapter adapter = new VideoRvAdapter(context);
+        video_list.setAdapter(adapter);
+        video_list.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+        adapter.addHeader();
+        adapter.addVideoModels((ArrayList)DataUtil.getVideoListData());
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.jenkins.newworld.adapter.search;
+package com.jenkins.newworld.adapter.homepage;
 
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
  * Created by zhouzhenjian on 2018/4/18.
  */
 
-public class SearchVideoRvAdapter extends RecyclerView.Adapter {
+public class VideoRvAdapter extends RecyclerView.Adapter {
 
     private View header;
     private ArrayList<Video> videos;
@@ -34,7 +34,7 @@ public class SearchVideoRvAdapter extends RecyclerView.Adapter {
     private int headerType = 0;
     private int contentType = 1;
     private LayoutInflater inflater;
-    public SearchVideoRvAdapter(Context context){
+    public VideoRvAdapter(Context context){
         this.context = context;
         inflater = LayoutInflater.from(context);
     }
@@ -42,14 +42,14 @@ public class SearchVideoRvAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == headerType){
             //头部菜单
-            View view = inflater.inflate(R.layout.frag_main_search_videopage_header, parent, false);
+            View view = inflater.inflate(R.layout.frag_main_homepage_videopage_header, parent, false);
             StaggeredGridLayoutManager.LayoutParams params2 =
                     (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
             params2.setFullSpan(true);
             view.setLayoutParams(params2);
             return new TypeHeaderHolder(view);
         }else if(viewType == contentType){
-            View view = inflater.inflate(R.layout.frag_main_search_videopage_content, parent, false);
+            View view = inflater.inflate(R.layout.frag_main_homepage_videopage_content, parent, false);
             StaggeredGridLayoutManager.LayoutParams params2 =
                     (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
             params2.setFullSpan(true);
@@ -66,7 +66,7 @@ public class SearchVideoRvAdapter extends RecyclerView.Adapter {
             initHeader(typeHeaderHolder);
         }else if (position==1){
             TypeContentHolder typeContentHolder = (TypeContentHolder)holder;
-            TypeContentAdapter adapter = new TypeContentAdapter(context,videos);
+            VideoContentAdapter adapter = new VideoContentAdapter(context,videos);
             typeContentHolder.rvtype.setLayoutManager(new GridLayoutManager(context,1));
             typeContentHolder.rvtype.setAdapter(adapter);
         }
