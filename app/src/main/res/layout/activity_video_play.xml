@@ -5,15 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.jenkins.newworld.activity.VideoPlayActivity">
     <RelativeLayout
+        android:id="@+id/player_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="200dp">
         <com.xiao.nicevideoplayer.NiceVideoPlayer
             android:id="@+id/nice_video_player"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="199dp"/>
+        <View
+            android:background="#f0f0f0"
+            android:layout_below="@+id/nice_video_player"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
     </RelativeLayout>
     <LinearLayout
         android:layout_marginTop="30dp"
@@ -26,4 +32,28 @@
             android:layout_width="20dp"
             android:layout_height="20dp" />
     </LinearLayout>
+    <ScrollView
+        android:background="#fff"
+        android:layout_below="@+id/player_bar"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="#fff"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <include layout="@layout/activity_video_play_content"/>
+            <com.jenkins.newworld.ui.StaticListView
+                android:id="@+id/comment_listview"
+                android:divider="#eee"
+                android:dividerHeight="1px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.jenkins.newworld.ui.StaticListView>
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

@@ -4,10 +4,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
+import com.jenkins.newworld.adapter.common.ListViewAdapter;
+import com.jenkins.newworld.model.video.Comment;
+import com.jenkins.newworld.ui.StaticListView;
 import com.jenkins.newworld.util.CommonWindowUtil;
 import com.xiao.nicevideoplayer.Clarity;
 import com.xiao.nicevideoplayer.NiceVideoPlayer;
@@ -17,12 +21,15 @@ import com.xiao.nicevideoplayer.TxVideoPlayerController;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class VideoPlayActivity extends AppCompatActivity {
 
     private NiceVideoPlayer mNiceVideoPlayer;
+    @BindView(R.id.comment_listview)
+    StaticListView comment_listview;
     @OnClick(R.id.img_back)
     void img_back(){
         finish();
@@ -31,12 +38,13 @@ public class VideoPlayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //设置状态栏文字亮色
-        CommonWindowUtil.FlymeSetStatusBarLightMode(this.getWindow(),false);
+        //CommonWindowUtil.FlymeSetStatusBarLightMode(this.getWindow(),false);
         //设置状态栏文字亮色
         CommonWindowUtil.setLightStatusBar(this.getWindow());
         setContentView(R.layout.activity_video_play);
         ButterKnife.bind(this);
         init();
+        initCommentList();//初始化评论列表
         caculateLocation();
     }
 
@@ -64,6 +72,32 @@ public class VideoPlayActivity extends AppCompatActivity {
         clarities.add(new Clarity("超清", "720P", "http://play.g3proxy.lecloud.com/vod/v2/MjQ5LzM3LzIwL2xldHYtdXRzLzE0L3Zlcl8wMF8yMi0xMTA3NjQxMzkwLWF2Yy00MTk4MTAtYWFjLTQ4MDAwLTUyNjExMC0zMTU1NTY1Mi00ZmJjYzFkNzA1NWMyNDc4MDc5OTYxODg1N2RjNzEwMi0xNDk4NTU3OTYxNzQ4Lm1wNA==?b=479&mmsid=65565355&tm=1499247143&key=98c7e781f1145aba07cb0d6ec06f6c12&platid=3&splatid=345&playid=0&tss=no&vtype=13&cvid=2026135183914&payff=0&pip=08cc52f8b09acd3eff8bf31688ddeced&format=0&sign=mb&dname=mobile&expect=1&tag=mobile&xformat=super"));
         clarities.add(new Clarity("蓝光", "1080P", "http://play.g3proxy.lecloud.com/vod/v2/MjQ5LzM3LzIwL2xldHYtdXRzLzE0L3Zlcl8wMF8yMi0xMTA3NjQxMzkwLWF2Yy00MTk4MTAtYWFjLTQ4MDAwLTUyNjExMC0zMTU1NTY1Mi00ZmJjYzFkNzA1NWMyNDc4MDc5OTYxODg1N2RjNzEwMi0xNDk4NTU3OTYxNzQ4Lm1wNA==?b=479&mmsid=65565355&tm=1499247143&key=98c7e781f1145aba07cb0d6ec06f6c12&platid=3&splatid=345&playid=0&tss=no&vtype=13&cvid=2026135183914&payff=0&pip=08cc52f8b09acd3eff8bf31688ddeced&format=0&sign=mb&dname=mobile&expect=1&tag=mobile&xformat=super"));
         return clarities;
+    }
+
+    public void initCommentList(){
+        ListViewAdapter<Comment> adapter = new ListViewAdapter<Comment>(getComments(),R.layout.activity_video_play_comment_item) {
+            @Override
+            public void bindView(ViewHolder holder, Comment obj) {
+                holder.setText(R.id.user_name,obj.getName());
+                holder.setText(R.id.create_time,obj.getCreateTime());
+                holder.setText(R.id.comment,obj.getComment());
+            }
+        };
+        comment_listview.setAdapter(adapter);
+    }
+    public ArrayList<Comment> getComments(){
+        ArrayList<Comment> comments = new ArrayList<>();
+        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
+        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
+        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
+        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
+        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
+        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
+        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
+        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
+        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
+
+        return comments;
     }
 
     public void enterTinyWindow(View view) {

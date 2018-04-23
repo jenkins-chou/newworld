@@ -46,6 +46,13 @@ public class FragShare extends Fragment{
     @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
 
+    //action
+    @OnClick(R.id.share_search_bar)void search_bar(){
+        Intent intent = new Intent(this.getContext(),SearchActivity.class);
+        startActivity(intent);
+        getActivity().overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -76,18 +83,6 @@ public class FragShare extends Fragment{
 
     //获取直播间地址
     public ArrayList<FragShareLineModel> getLineDatas(){
-        ArrayList<FragShareLineModel> result = new ArrayList<>();
-        result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-30-43.jpg","可乐爆米花，嘭嘭嘭.."));
-        result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-10_10-09-58.jpg","针织方便面"));
-        result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-03_12-52-08.jpg","办公室小野开番外了"));
-        result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/04/2017-04-28_18-18-22.jpg","可乐爆米花"));
-        result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/04/2017-04-26_10-00-28.jpg","针织方便面"));
-        result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/04/2017-04-21_16-37-16.jpg","办公室小野开番外了"));
-        return result;
-    }
-
-    //获取其他直播间地址
-    public ArrayList<FragShareLineModel> getSingleLineDatas(){
         ArrayList<FragShareLineModel> result = new ArrayList<>();
         result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-30-43.jpg","可乐爆米花，嘭嘭嘭.."));
         result.add(new FragShareLineModel("http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-10_10-09-58.jpg","针织方便面"));

@@ -190,6 +190,7 @@
     <!--主播栏-->
     <com.jenkins.newworld.ui.RainbowLine
         android:layout_marginTop="30dp"
+        android:alpha="0.7"
         android:layout_width="match_parent"
         android:layout_height="1px" />
     <LinearLayout
@@ -267,6 +268,7 @@
         </LinearLayout>
     </LinearLayout>
     <com.jenkins.newworld.ui.RainbowLine
+        android:alpha="0.7"
         android:layout_width="match_parent"
         android:layout_height="1px" />
 

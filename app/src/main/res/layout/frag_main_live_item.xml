@@ -1,28 +1,28 @@
 <RelativeLayout android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="130dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginRight="10dp"
-    android:layout_marginBottom="10dp"
+    android:layout_marginRight="1dp"
+    android:layout_marginBottom="1dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout
         android:layout_alignParentTop="true"
-        android:layout_above="@+id/item_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <org.raphets.roundimageview.RoundImageView
             android:id="@+id/item_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            app:leftBottom_corner_radius="5dp"
-            app:leftTop_corner_radius="5dp"
-            app:rightBottom_corner_radius="5dp"
-            app:rightTop_corner_radius="5dp"
+            app:leftBottom_corner_radius="1px"
+            app:leftTop_corner_radius="1px"
+            app:rightBottom_corner_radius="1px"
+            app:rightTop_corner_radius="1px"
             app:type="round" />
         <TextView
-            android:text="tag"
+            android:id="@+id/item_title"
+            android:text="item_title"
             android:textColor="#fff"
-            android:textSize="12sp"
+            android:textSize="10sp"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:maxLength="10"
@@ -32,9 +32,10 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:text="tag"
+            android:text="2018-04-22"
+            android:id="@+id/time"
             android:textColor="#fff"
-            android:textSize="12sp"
+            android:textSize="10sp"
             android:layout_marginBottom="5dp"
             android:layout_marginRight="5dp"
             android:maxLength="10"
@@ -42,17 +43,49 @@
             android:layout_alignParentBottom="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/item_tag_bar"
+            android:background="@drawable/frag_live_item_tagbar"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:padding="0dp"
+            android:alpha="0.8"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:textColor="#fff"
+                android:textSize="8sp"
+                android:id="@+id/item_tag"
+                android:text="奥迪哈哈大家撒"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item_tag_bar2"
+            android:background="@drawable/frag_live_item_tagbar2"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:alpha="0.8"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp">
+            <TextView
+                android:textColor="#fff"
+                android:textSize="8sp"
+                android:id="@+id/item_tag2"
+                android:text="dsadsa"
+                android:maxLength="10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </RelativeLayout>
-    <TextView
-        android:id="@+id/item_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:ellipsize="end"
-        android:maxLength="12"
-        android:layout_marginTop="5dp"
-        android:singleLine="true"
-        android:text="title"
-        android:textSize="12sp"
-        android:visibility="visible" />
 </RelativeLayout>

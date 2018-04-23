@@ -1,6 +1,7 @@
 package com.jenkins.newworld.fragment.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,8 +10,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.jenkins.newworld.R;
+import com.jenkins.newworld.activity.VideoPlayActivity;
 import com.jenkins.newworld.adapter.live.TypeLiveAdapter;
 import com.jenkins.newworld.util.DataUtil;
 import com.scwang.smartrefresh.header.MaterialHeader;
@@ -26,7 +29,7 @@ import butterknife.ButterKnife;
  * Created by zhouzhenjian on 2018/4/18.
  */
 
-public class FragLive extends Fragment{
+public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickListener{
 
     @BindView(R.id.live_recyclerview)
     RecyclerView live_recyclerview;
@@ -63,5 +66,14 @@ public class FragLive extends Fragment{
         live_recyclerview.setLayoutManager(new GridLayoutManager(context,2));
         TypeLiveAdapter typeLiveAdapter = new TypeLiveAdapter(context, DataUtil.getVideoListData());
         live_recyclerview.setAdapter(typeLiveAdapter);
+        typeLiveAdapter.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Toast.makeText(context, "position:"+position, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this.getContext(), VideoPlayActivity.class);
+        startActivity(intent);
+        this.getActivity().overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
     }
 }
