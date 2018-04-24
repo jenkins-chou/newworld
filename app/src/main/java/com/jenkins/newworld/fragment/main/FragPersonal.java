@@ -15,6 +15,8 @@ import com.jenkins.newworld.activity.LivePlayActivity;
 import com.jenkins.newworld.activity.LiveRecordActivity;
 import com.jenkins.newworld.activity.LoginActivity;
 import com.jenkins.newworld.activity.TestActivity;
+import com.jenkins.newworld.contract.mainactivity.PersonalPageContract;
+import com.jenkins.newworld.presenter.mainactivity.PersonalPagePresenter;
 import com.jenkins.newworld.util.CommonDialog;
 
 import butterknife.BindView;
@@ -26,7 +28,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
  * Created by zhouzhenjian on 2018/4/9.
  */
 
-public class FragPersonal extends Fragment {
+public class FragPersonal extends Fragment implements PersonalPageContract.MView{
     //data
     private Context context;
     @OnClick(R.id.personal_setting) void personal_setting_action(){
@@ -49,12 +51,34 @@ public class FragPersonal extends Fragment {
         Intent intent = new Intent(context, LivePlayActivity.class);
         startActivity(intent);
     }
+    //presenter
+    PersonalPagePresenter presenter;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_main_personal,container,false);
-        context = view.getContext();
+        initData();//初始化数据
         ButterKnife.bind(this,view);
         return view;
+    }
+
+    public void initData(){
+        context = getContext();
+        presenter = new PersonalPagePresenter(context,this);
+    }
+
+    @Override
+    public void success(Object object) {
+
+    }
+
+    @Override
+    public void failed(Object object) {
+
+    }
+
+    @Override
+    public void completed(Object object) {
+
     }
 }

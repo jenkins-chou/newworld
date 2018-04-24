@@ -1,8 +1,8 @@
 <RelativeLayout android:layout_width="match_parent"
     android:layout_height="130dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginRight="1dp"
-    android:layout_marginBottom="1dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="5dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout
         android:layout_alignParentTop="true"
@@ -13,10 +13,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            app:leftBottom_corner_radius="1px"
-            app:leftTop_corner_radius="1px"
-            app:rightBottom_corner_radius="1px"
-            app:rightTop_corner_radius="1px"
+            app:leftBottom_corner_radius="5dp"
+            app:leftTop_corner_radius="5dp"
+            app:rightBottom_corner_radius="5dp"
+            app:rightTop_corner_radius="5dp"
             app:type="round" />
         <TextView
             android:id="@+id/item_title"

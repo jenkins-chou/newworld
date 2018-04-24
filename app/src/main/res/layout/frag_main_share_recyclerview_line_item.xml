@@ -3,6 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginRight="10dp"
     android:layout_marginBottom="10dp"
+    android:stateListAnimator="@null"
+    android:elevation="3dp"
+    android:background="@drawable/frag_share_item_bar"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <org.raphets.roundimageview.RoundImageView
         android:id="@+id/item_image"
@@ -12,11 +15,12 @@
         android:layout_alignParentTop="true"
         android:layout_above="@+id/item_title"
         app:leftBottom_corner_radius="1dp"
-        app:leftTop_corner_radius="1dp"
+        app:leftTop_corner_radius="10dp"
         app:rightBottom_corner_radius="1dp"
-        app:rightTop_corner_radius="1dp"
+        app:rightTop_corner_radius="10dp"
         app:type="round" />
     <TextView
+        android:layout_marginLeft="5dp"
         android:id="@+id/item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,10 +34,12 @@
 
     <TextView
         android:id="@+id/item_tag"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text="tag"
         android:textColor="#ff6600"
-        android:textSize="12sp" />
+        android:textSize="10sp" />
 </RelativeLayout>

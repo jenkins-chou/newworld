@@ -11,10 +11,10 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:layout_alignParentTop="true"
-        app:leftBottom_corner_radius="1dp"
-        app:leftTop_corner_radius="1dp"
-        app:rightBottom_corner_radius="1dp"
-        app:rightTop_corner_radius="1dp"
+        app:leftBottom_corner_radius="5dp"
+        app:leftTop_corner_radius="5dp"
+        app:rightBottom_corner_radius="5dp"
+        app:rightTop_corner_radius="5dp"
         app:type="round" />
     <TextView
         android:layout_alignParentBottom="true"
