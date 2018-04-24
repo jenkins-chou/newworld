@@ -4,22 +4,11 @@
     android:background="#fff"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <RelativeLayout
-        android:background="#fff"
-        android:layout_width="fill_parent"
-        android:layout_height="40dp">
+    <include layout="@layout/frag_main_attention_header"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/frag_main_attention_content"/>
+    </ScrollView>
 
-        <TextView
-            android:id="@+id/tv_one"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1.0"
-            android:gravity="center"
-            android:text="发现"
-            android:textColor="#000000" />
-        <com.jenkins.newworld.ui.RainbowLine
-            android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
-    </RelativeLayout>
 </LinearLayout>

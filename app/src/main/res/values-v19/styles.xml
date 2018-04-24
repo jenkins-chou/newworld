@@ -9,6 +9,6 @@
     <style name="TranslucentTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:windowBackground">@mipmap/welcome_start2</item>
+        <item name="android:windowBackground">@mipmap/welcome_start3</item>
     </style>
 </resources>

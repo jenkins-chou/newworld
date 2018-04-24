@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:id="@+id/frag_share_banner_bar"
     android:layout_width="match_parent"
-    android:layout_height="140dp">
+    android:layout_height="160dp">
     <com.youth.banner.Banner
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/banner"
