@@ -9,6 +9,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.jenkins.newworld.R;
+
 import java.util.ArrayList;
 
 /**
@@ -153,6 +156,15 @@ public abstract class ListViewAdapter<T> extends BaseAdapter implements View.OnC
                 ((ImageView)view).setImageResource(drawableRes);
             }else{
                 view.setBackgroundResource(drawableRes);
+            }
+            return this;
+        }
+        public ViewHolder setImage(int id,String url){
+            View view = getView(id);
+            if(view instanceof ImageView){
+                Glide.with(context).load(url).error(R.mipmap.avatar).into((ImageView)view);
+            }else{
+                Glide.with(context).load(url).error(R.mipmap.avatar).into((ImageView)view);
             }
             return this;
         }

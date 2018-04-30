@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/frag_share_category"
+    android:layout_marginTop="-7dp"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+    <LinearLayout
+        android:stateListAnimator="@null"
+        android:elevation="2dp"
+        android:background="@drawable/frag_share_navbar_bg"
+        android:orientation="vertical"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <LinearLayout
+
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -97,6 +108,7 @@
 
         <!--第二栏-->
         <LinearLayout
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -186,6 +198,8 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
+
     <View
         android:layout_marginTop="10dp"
         android:background="#aaa"

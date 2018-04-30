@@ -35,6 +35,6 @@
     <color name="rainbow_cyan">#00FFFF </color>
     <color name="rainbow_blue">#0000FF</color>
     <color name="rainbow_violet">#8B00FF</color>
-
-
+    <!--videoPlayActivity主题背景色-->
+    <color name="videoplay_bgcolor">#000</color>
 </resources>

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="#fff"
+    android:background="@mipmap/main_bg"
     tools:context="com.jenkins.newworld.activity.MainActivity">
     <FrameLayout
         android:id="@+id/frag_content"
@@ -43,12 +43,11 @@
                 <ImageView
                     android:id="@+id/homepage_btn_logo"
                     android:src="@drawable/main_nav_homepage_btn"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp" />
+                    android:layout_width="18dp"
+                    android:layout_height="18dp" />
                 <TextView
                     android:text="主页"
                     android:textSize="11dp"
-                    android:textStyle="bold"
                     android:id="@+id/homepage_btn"
                     android:textColor="@drawable/main_nav_text_btn"
                     android:layout_width="wrap_content"
@@ -64,12 +63,11 @@
                 <ImageView
                     android:id="@+id/search_btn_logo"
                     android:src="@drawable/main_nav_search_btn"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp" />
+                    android:layout_width="18dp"
+                    android:layout_height="18dp" />
                 <TextView
                     android:text="推荐"
                     android:textSize="11dp"
-                    android:textStyle="bold"
                     android:id="@+id/search_btn"
                     android:textColor="@drawable/main_nav_text_btn"
                     android:layout_width="wrap_content"
@@ -85,12 +83,11 @@
                 <ImageView
                     android:id="@+id/share_btn_logo"
                     android:src="@drawable/main_nav_share_btn"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp" />
+                    android:layout_width="18dp"
+                    android:layout_height="18dp" />
                 <TextView
                     android:text="NewSaria"
                     android:textSize="11dp"
-                    android:textStyle="bold"
                     android:id="@+id/share_btn"
                     android:textColor="@drawable/main_nav_text_btn"
                     android:layout_width="wrap_content"
@@ -106,12 +103,11 @@
                 <ImageView
                     android:id="@+id/attention_btn_logo"
                     android:src="@drawable/main_nav_attention_btn"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp" />
+                    android:layout_width="18dp"
+                    android:layout_height="18dp" />
                 <TextView
                     android:text="关注"
                     android:textSize="11dp"
-                    android:textStyle="bold"
                     android:id="@+id/attention_btn"
                     android:textColor="@drawable/main_nav_text_btn"
                     android:layout_width="wrap_content"
@@ -127,12 +123,11 @@
                 <ImageView
                     android:id="@+id/personal_btn_logo"
                     android:src="@drawable/main_nav_account_btn"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp" />
+                    android:layout_width="18dp"
+                    android:layout_height="18dp" />
                 <TextView
                     android:text="个人"
                     android:textSize="11dp"
-                    android:textStyle="bold"
                     android:id="@+id/personal_btn"
                     android:textColor="@drawable/main_nav_text_btn"
                     android:layout_width="wrap_content"

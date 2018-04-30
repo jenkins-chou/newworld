@@ -12,6 +12,12 @@
         <item name="android:windowBackground">@mipmap/welcome_start3</item>
     </style>
 
+    <!---->
+    <style name="VideoPlayTheme" parent="AppTheme">
+        <!--在Android 4.4之前的版本上运行，直接跟随系统主题-->
+        <item name="android:windowBackground">@mipmap/main_bg</item>
+    </style>
+
     <style name="searchEditTextStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">30dp</item>

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\AppWorkSpace\\NewWorld\\vitamio\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+            "outputFile": "D:\\git\\newworld\\vitamio\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "C:\\AppWorkSpace\\NewWorld\\vitamio\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "source": "D:\\git\\newworld\\vitamio\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,9,10,11,12,13,14,15,16,18,19,20,21,31",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

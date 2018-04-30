@@ -60,7 +60,7 @@ public class FragHomePage extends Fragment{
          * 3：地球仪特效 new MaterialHeader(view.getContext()).setShowBezierWave(true)
          * 4.官方特效new MaterialHeader(view.getContext())
          */
-        smartRefreshLayout.setRefreshHeader(new MaterialHeader(context).setShowBezierWave(true));
+        smartRefreshLayout.setRefreshHeader(new MaterialHeader(context));
         smartRefreshLayout.setRefreshFooter(new BallPulseFooter(context));
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override

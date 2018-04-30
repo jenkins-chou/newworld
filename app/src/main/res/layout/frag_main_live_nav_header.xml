@@ -14,54 +14,25 @@
                 android:id="@+id/live_title_bar"
                 android:text="直播推荐"
                 android:textStyle="bold"
-                android:textSize="14sp"
+                android:textSize="17sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <View
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/vertical_line"
-                android:background="#eee"
+                android:background="#ccc"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_width="1px"
                 android:layout_height="match_parent"/>
-            <ScrollView
-                android:id="@+id/scorllview_bar"
+            <com.jenkins.newworld.ui.HorizontalListView
+                android:id="@+id/nav_bar"
+                android:layout_marginTop="0dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:text="推荐"
-                        android:textColor="#ff0000"
-                        android:layout_marginRight="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:text="美食"
-                        android:layout_marginRight="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:text="颜值"
-                        android:layout_marginRight="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
-                        android:text="一起看" />
-                    <TextView
-                        android:text="娱乐天地"
-                        android:layout_marginRight="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </ScrollView>
+                android:layout_height="22dp"
+                android:layout_marginRight="10dp">
+            </com.jenkins.newworld.ui.HorizontalListView>
         </LinearLayout>
     <View
         android:background="#f0f0f0"

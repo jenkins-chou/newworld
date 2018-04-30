@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.jenkins.newworld.activity.VideoPlayActivity">
     <RelativeLayout
         android:id="@+id/player_bar"
@@ -22,8 +23,8 @@
             android:layout_height="1px"/>
     </RelativeLayout>
     <LinearLayout
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
@@ -46,6 +47,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <include layout="@layout/activity_video_play_content"/>
+            <com.jenkins.newworld.ui.RainbowLine
+                android:layout_width="match_parent"
+                android:layout_height="1px" />
+            <TextView
+                android:text="猜你喜欢"
+                android:textColor="#000"
+                android:layout_margin="15dp"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <com.jenkins.newworld.ui.StaticListView
                 android:id="@+id/comment_listview"
                 android:divider="#eee"

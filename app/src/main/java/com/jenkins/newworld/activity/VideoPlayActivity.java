@@ -11,8 +11,10 @@ import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.adapter.common.ListViewAdapter;
 import com.jenkins.newworld.model.video.Comment;
+import com.jenkins.newworld.model.video.Video;
 import com.jenkins.newworld.ui.StaticListView;
 import com.jenkins.newworld.util.CommonWindowUtil;
+import com.jenkins.newworld.util.DataUtil;
 import com.xiao.nicevideoplayer.Clarity;
 import com.xiao.nicevideoplayer.NiceVideoPlayer;
 import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
@@ -27,14 +29,17 @@ import butterknife.OnClick;
 
 public class VideoPlayActivity extends AppCompatActivity {
 
+    //data
+    private String imageUrl;
+    private String videoUrl;
     private NiceVideoPlayer mNiceVideoPlayer;
     @BindView(R.id.comment_listview)
     StaticListView comment_listview;
     @OnClick(R.id.img_back)
     void img_back(){
         finish();
-    }
-    @Override
+    }@Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //设置状态栏文字亮色
@@ -43,11 +48,18 @@ public class VideoPlayActivity extends AppCompatActivity {
         CommonWindowUtil.setLightStatusBar(this.getWindow());
         setContentView(R.layout.activity_video_play);
         ButterKnife.bind(this);
-        init();
-        initCommentList();//初始化评论列表
-        caculateLocation();
+
+        //caculateLocation();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        videoUrl = "";
+        imageUrl = "http://imgsrc.baidu.com/image/c0%3Dshijue%2C0%2C0%2C245%2C40/sign=304dee3ab299a9012f38537575fc600e/91529822720e0cf3f8b77cd50046f21fbe09aa5f.jpg";
+        init();
+        initCommentList();//初始化评论列表
+    }
     private void init() {
         mNiceVideoPlayer = (NiceVideoPlayer) findViewById(R.id.nice_video_player);
         mNiceVideoPlayer.setPlayerType(NiceVideoPlayer.TYPE_IJK); // IjkPlayer or MediaPlayer
@@ -56,15 +68,13 @@ public class VideoPlayActivity extends AppCompatActivity {
         controller.setLenght(117000);
         controller.setClarity(getClarites(), 0);
         Glide.with(this)
-                .load("http://imgsrc.baidu.com/image/c0%3Dshijue%2C0%2C0%2C245%2C40/sign=304dee3ab299a9012f38537575fc600e/91529822720e0cf3f8b77cd50046f21fbe09aa5f.jpg")
+                .load(imageUrl)
                 .placeholder(R.drawable.img_default)
                 .crossFade()
                 .into(controller.imageView());
         mNiceVideoPlayer.setController(controller);
-    }
-    public void caculateLocation(){
-        Log.e("x",mNiceVideoPlayer.getX()+" "+mNiceVideoPlayer.getY());
-    }
+}
+
     public List<Clarity> getClarites() {
         List<Clarity> clarities = new ArrayList<>();
         clarities.add(new Clarity("标清", "270P", "http://play.g3proxy.lecloud.com/vod/v2/MjUxLzE2LzgvbGV0di11dHMvMTQvdmVyXzAwXzIyLTExMDc2NDEzODctYXZjLTE5OTgxOS1hYWMtNDgwMDAtNTI2MTEwLTE3MDg3NjEzLWY1OGY2YzM1NjkwZTA2ZGFmYjg2MTVlYzc5MjEyZjU4LTE0OTg1NTc2ODY4MjMubXA0?b=259&mmsid=65565355&tm=1499247143&key=f0eadb4f30c404d49ff8ebad673d3742&platid=3&splatid=345&playid=0&tss=no&vtype=21&cvid=2026135183914&payff=0&pip=08cc52f8b09acd3eff8bf31688ddeced&format=0&sign=mb&dname=mobile&expect=1&tag=mobile&xformat=super"));
@@ -75,29 +85,19 @@ public class VideoPlayActivity extends AppCompatActivity {
     }
 
     public void initCommentList(){
-        ListViewAdapter<Comment> adapter = new ListViewAdapter<Comment>(getComments(),R.layout.activity_video_play_comment_item) {
+        ListViewAdapter<Video> adapter = new ListViewAdapter<Video>(getComments(),R.layout.activity_video_play_comment_item) {
             @Override
-            public void bindView(ViewHolder holder, Comment obj) {
-                holder.setText(R.id.user_name,obj.getName());
-                holder.setText(R.id.create_time,obj.getCreateTime());
-                holder.setText(R.id.comment,obj.getComment());
+            public void bindView(ViewHolder holder, Video obj) {
+                holder.setImage(R.id.video_image,obj.getImageUrl());
+                holder.setText(R.id.video_name,obj.getTitle());
             }
         };
         comment_listview.setAdapter(adapter);
     }
-    public ArrayList<Comment> getComments(){
-        ArrayList<Comment> comments = new ArrayList<>();
-        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
-        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
-        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
-        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
-        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
-        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
-        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
-        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
-        comments.add(new Comment("123","嘻嘻老师","2018-04-12","comment"));
-
-        return comments;
+    public ArrayList<Video> getComments(){
+        ArrayList<Video> videos = new ArrayList<>();
+        videos = (ArrayList) DataUtil.getVideoListData();
+        return videos;
     }
 
     public void enterTinyWindow(View view) {

@@ -42,8 +42,7 @@
         <activity
             android:name=".activity.VideoPlayActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/TranslucentTheme" >
-
+            android:theme="@style/VideoPlayTheme" >
         </activity>
         <!-- 搜索页面 -->
         <activity

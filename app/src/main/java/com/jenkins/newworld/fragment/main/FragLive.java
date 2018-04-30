@@ -2,6 +2,7 @@ package com.jenkins.newworld.fragment.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,17 +11,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
 import android.widget.Toast;
 
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.activity.VideoPlayActivity;
+import com.jenkins.newworld.adapter.common.ListViewAdapter;
 import com.jenkins.newworld.adapter.live.TypeLiveAdapter;
+import com.jenkins.newworld.ui.HorizontalListView;
 import com.jenkins.newworld.util.DataUtil;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,6 +42,8 @@ public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickLis
     RecyclerView live_recyclerview;
     @BindView(R.id.smartRefreshLayout)
     SmartRefreshLayout smartRefreshLayout;
+    @BindView(R.id.nav_bar)
+    HorizontalListView nav_bar;
 
     private Context context;
     @Nullable
@@ -45,6 +54,7 @@ public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickLis
         initData();//初始化数据
         initSmartRefreshLayout();//设置下拉刷新
         initRrecyclerview();//初始化Rrecyclerview
+        initHorizontalListView();//初始化头部导航菜单
         return view;
     }
 
@@ -53,7 +63,7 @@ public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickLis
     }
 
     public void initSmartRefreshLayout(){
-        smartRefreshLayout.setRefreshHeader(new MaterialHeader(context).setShowBezierWave(true));
+        smartRefreshLayout.setRefreshHeader(new MaterialHeader(context));
         smartRefreshLayout.setRefreshFooter(new BallPulseFooter(context));
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
@@ -61,6 +71,26 @@ public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickLis
                 smartRefreshLayout.finishRefresh();
             }
         });
+    }
+    //初始化头部导航菜单
+    public void initHorizontalListView(){
+        ArrayList<String> navData = new ArrayList<String>();
+        navData.add("推荐");
+        navData.add("美食");
+        navData.add("颜值");
+        navData.add("一起看");
+        navData.add("娱乐");
+        navData.add("美食");
+        navData.add("颜值");
+        navData.add("一起看");
+        navData.add("娱乐");
+        ListViewAdapter<String> adapter = new ListViewAdapter<String>(navData,R.layout.frag_live_navbar_item) {
+            @Override
+            public void bindView(ViewHolder holder, String obj) {
+                holder.setText(R.id.nav_text,obj);
+            }
+        };
+        nav_bar.setAdapter(adapter);
     }
     public void initRrecyclerview(){
         live_recyclerview.setLayoutManager(new GridLayoutManager(context,2));

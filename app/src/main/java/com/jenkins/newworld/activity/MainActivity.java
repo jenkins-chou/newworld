@@ -99,6 +99,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         attention_btn.setOnClickListener(this);
         personal_btn.setOnClickListener(this);
 
+        homepage_btn_logo.setOnClickListener(this);
+        search_btn_logo.setOnClickListener(this);
+        share_btn_logo.setOnClickListener(this);
+        attention_btn_logo.setOnClickListener(this);
+        personal_btn_logo.setOnClickListener(this);
+
         homepage_btn_bar.setOnClickListener(this);
         search_btn_bar.setOnClickListener(this);
         share_btn_bar.setOnClickListener(this);
@@ -136,8 +142,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         hideAllFragment(fTransaction);
         setSelected();
         switch (view.getId()){
-            case R.id.homepage_btn_bar:case R.id.homepage_btn:
-                root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
+            case R.id.homepage_btn_bar:case R.id.homepage_btn:case R.id.homepage_btn_logo:
+                //root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
                 homepage_btn.setSelected(true);
                 homepage_btn_logo.setSelected(true);
                 if(fragHomePage == null){
@@ -147,8 +153,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     fTransaction.show(fragHomePage);
                 }
                 break;
-            case R.id.search_btn_bar:case R.id.search_btn:
-                root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
+            case R.id.search_btn_bar:case R.id.search_btn:case R.id.search_btn_logo:
+                //root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
                 search_btn.setSelected(true);
                 search_btn_logo.setSelected(true);
                 if(fragLive == null){
@@ -158,8 +164,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     fTransaction.show(fragLive);
                 }
                 break;
-            case R.id.share_btn_bar:case R.id.share_btn:
-                root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
+            case R.id.share_btn_bar:case R.id.share_btn:case R.id.share_btn_logo:
+                //root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
                 share_btn.setSelected(true);
                 share_btn_logo.setSelected(true);
                 if(fragShare == null){
@@ -169,8 +175,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     fTransaction.show(fragShare);
                 }
                 break;
-            case R.id.attention_btn_bar:case R.id.attention_btn:
-                root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
+            case R.id.attention_btn_bar:case R.id.attention_btn:case R.id.attention_btn_logo:
+                //root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
                 attention_btn.setSelected(true);
                 attention_btn_logo.setSelected(true);
                 if(fragAttention == null){
@@ -180,8 +186,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     fTransaction.show(fragAttention);
                 }
                 break;
-            case R.id.personal_btn_bar:case R.id.personal_btn:
-                root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
+            case R.id.personal_btn_bar:case R.id.personal_btn:case R.id.personal_btn_logo:
+                //root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
                 personal_btn.setSelected(true);
                 personal_btn_logo.setSelected(true);
                 if(fragPersonal == null){

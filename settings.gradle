@@ -1,1 +1,1 @@
-include ':app', ':nicevideoplayer', ':banner', ':vitamio', ':library_vit'
+include ':app', ':nicevideoplayer', ':banner',":library_vit",":vitamio"
