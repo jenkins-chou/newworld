@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -93,6 +94,12 @@ public class VideoPlayActivity extends AppCompatActivity {
             }
         };
         comment_listview.setAdapter(adapter);
+        comment_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(VideoPlayActivity.this, "position :"+i, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     public ArrayList<Video> getComments(){
         ArrayList<Video> videos = new ArrayList<>();

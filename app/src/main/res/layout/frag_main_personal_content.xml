@@ -212,7 +212,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp" />
             <TextView
-                android:text="马上开播"
+                android:text="成为主播"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -246,7 +246,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp" />
             <TextView
-                android:text="主播认证"
+                android:text="排行榜"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

@@ -106,7 +106,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp" />
                 <TextView
-                    android:text="关注"
+                    android:text="发现"
                     android:textSize="11dp"
                     android:id="@+id/attention_btn"
                     android:textColor="@drawable/main_nav_text_btn"

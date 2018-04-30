@@ -200,12 +200,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <View
-        android:layout_marginTop="10dp"
-        android:background="#aaa"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
-    <LinearLayout
+    <RelativeLayout
         android:gravity="center_vertical"
         android:layout_marginLeft="20dp"
         android:orientation="horizontal"
@@ -214,16 +209,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/share_content_MarqueeTextView_img"
+            android:layout_alignParentLeft="true"
             android:src="@mipmap/frag_share_target"
             android:layout_width="20dp"
             android:layout_height="20dp" />
         <com.jenkins.newworld.ui.MarqueeTextView
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/share_content_MarqueeTextView_img"
+            android:layout_toLeftOf="@+id/share_content_MarqueeTextziew_btn"
             android:layout_marginLeft="10dp"
             android:id="@+id/marqueeTv"
             android:layout_width="match_parent"
             android:layout_height="35dp">
         </com.jenkins.newworld.ui.MarqueeTextView>
-    </LinearLayout>
+        <Button
+            android:alpha="0.7"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:padding="0dp"
+            android:textColor="#fff"
+            android:background="@drawable/frag_share_content_marqueetext_btn"
+            android:id="@+id/share_content_MarqueeTextziew_btn"
+            android:layout_alignParentRight="true"
+            android:text="去看看"
+            android:textSize="13sp"
+            android:layout_width="60dp"
+            android:layout_height="30dp" />
+    </RelativeLayout>
     <View
         android:background="#f3f3f3"
         android:layout_width="match_parent"
