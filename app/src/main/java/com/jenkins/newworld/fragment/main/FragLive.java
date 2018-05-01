@@ -42,8 +42,6 @@ public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickLis
     RecyclerView live_recyclerview;
     @BindView(R.id.smartRefreshLayout)
     SmartRefreshLayout smartRefreshLayout;
-    @BindView(R.id.nav_bar)
-    HorizontalListView nav_bar;
 
     private Context context;
     @Nullable
@@ -54,7 +52,6 @@ public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickLis
         initData();//初始化数据
         initSmartRefreshLayout();//设置下拉刷新
         initRrecyclerview();//初始化Rrecyclerview
-        initHorizontalListView();//初始化头部导航菜单
         return view;
     }
 
@@ -71,26 +68,6 @@ public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickLis
                 smartRefreshLayout.finishRefresh();
             }
         });
-    }
-    //初始化头部导航菜单
-    public void initHorizontalListView(){
-        ArrayList<String> navData = new ArrayList<String>();
-        navData.add("推荐");
-        navData.add("美食");
-        navData.add("颜值");
-        navData.add("一起看");
-        navData.add("娱乐");
-        navData.add("美食");
-        navData.add("颜值");
-        navData.add("一起看");
-        navData.add("娱乐");
-        ListViewAdapter<String> adapter = new ListViewAdapter<String>(navData,R.layout.frag_live_navbar_item) {
-            @Override
-            public void bindView(ViewHolder holder, String obj) {
-                holder.setText(R.id.nav_text,obj);
-            }
-        };
-        nav_bar.setAdapter(adapter);
     }
     public void initRrecyclerview(){
         live_recyclerview.setLayoutManager(new GridLayoutManager(context,2));

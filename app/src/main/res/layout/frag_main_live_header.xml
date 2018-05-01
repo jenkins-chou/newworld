@@ -1,13 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#fff"
-    android:orientation="vertical"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="40dp">
-    <TextView
-        android:text="直播推荐"
+    <ImageView
+        android:id="@+id/main_star_icon"
+        android:layout_marginLeft="5dp"
+        android:src="@mipmap/main_star_icon"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="39dp" />
+    <LinearLayout
+        android:id="@+id/share_search_bar"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/main_star_icon"
+        android:layout_toLeftOf="@+id/frag_share_record_icon"
+        android:background="@drawable/frag_share_searchbar"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="28dp">
+        <ImageView
+            android:src="@mipmap/frag_share_search_icon"
+            android:layout_marginLeft="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+        <TextView
+            android:text="搜索"
+            android:textColor="#8a8a8a"
+            android:textSize="14sp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ImageView
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/frag_share_record_icon"
+        android:id="@+id/frag_share_record_icon"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
     <com.jenkins.newworld.ui.RainbowLine
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"

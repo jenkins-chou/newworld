@@ -15,7 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
-
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -225,19 +224,19 @@
             android:layout_height="35dp">
         </com.jenkins.newworld.ui.MarqueeTextView>
         <Button
-            android:alpha="0.7"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_centerVertical="true"
-            android:padding="0dp"
-            android:textColor="#fff"
-            android:background="@drawable/frag_share_content_marqueetext_btn"
-            android:id="@+id/share_content_MarqueeTextziew_btn"
-            android:layout_alignParentRight="true"
-            android:text="去看看"
-            android:textSize="13sp"
-            android:layout_width="60dp"
-            android:layout_height="30dp" />
+        android:alpha="0.7"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
+        android:padding="0dp"
+        android:textColor="#fff"
+        android:background="@drawable/frag_share_content_marqueetext_btn"
+        android:id="@+id/share_content_MarqueeTextziew_btn"
+        android:layout_alignParentRight="true"
+        android:text="去看看"
+        android:textSize="13sp"
+        android:layout_width="60dp"
+        android:layout_height="30dp" />
     </RelativeLayout>
     <View
         android:background="#f3f3f3"
