@@ -5,38 +5,47 @@ package com.jenkins.newworld.model.base;
  */
 
 public class ResultModel<T> {
-    private T t;
-    private String code;
-    private String time;
 
-    public ResultModel(T t, String code, String time) {
-        this.t = t;
-        this.code = code;
-        this.time = time;
+    private String status;
+    private String message;
+    private T data;
+
+    public ResultModel(String status, String message, T data) {
+        this.status = status;
+        this.message = message;
+        this.data = data;
     }
 
-    public T getT() {
-        return t;
+    public String getStatus() {
+        return status;
     }
 
-    public void setT(T t) {
-        this.t = t;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public String getCode() {
-        return code;
+    public String getMessage() {
+        return message;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public String getTime() {
-        return time;
+    public T getData() {
+        return data;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setData(T data) {
+        this.data = data;
     }
 
+    @Override
+    public String toString() {
+        return "ResultModel{" +
+                "status='" + status + '\'' +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

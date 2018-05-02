@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.jenkins.newworld.R;
 
@@ -48,6 +49,22 @@ public class LivePlayActivity extends AppCompatActivity implements View.OnClickL
                 mediaPlayer.setPlaybackSpeed(1.0f);
             }
         });
+        mVideoView.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+            @Override
+            public boolean onError(MediaPlayer mp, int what, int extra) {
+                Toast.makeText(LivePlayActivity.this, "mVideoView error", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
+        mVideoView.setOnInfoListener(new MediaPlayer.OnInfoListener() {
+            @Override
+            public boolean onInfo(MediaPlayer mp, int what, int extra) {
+                Toast.makeText(LivePlayActivity.this, "mVideoView info", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
 
     }
 
@@ -59,6 +76,7 @@ public class LivePlayActivity extends AppCompatActivity implements View.OnClickL
                 if (!TextUtils.isEmpty(path)) {
                     mVideoView.setVideoPath(path);
                     mVideoView.start();
+
 
                 }
                 break;
