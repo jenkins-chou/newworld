@@ -39,7 +39,6 @@ public class LoginPresenter {
         Log.e("开始登录","p-->"+p.toString());
         String paramsJson = new Gson().toJson(p);
         RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=utf-8"),paramsJson);
-        //body.
         new ApiUtil(context)
                 .getServer(ApiService.class)
                 .login(body)
@@ -54,13 +53,11 @@ public class LoginPresenter {
                     public void onNext(ResultModel<ArrayList<User>> resultModel) {
                         ArrayList<User> users = resultModel.getData();
                         //更新视图
-                        //Toast.makeText(context, "user :" +users.toString(), Toast.LENGTH_SHORT).show();
                         for (User user : users){
                             System.out.println("user:"+user.toString());
-                            //Toast.makeText(context, users.size(), Toast.LENGTH_SHORT).show();
                             Toast.makeText(context, user.toString(), Toast.LENGTH_SHORT).show();
                         }
-                        //Toast.makeText(context, resultModel.toString(), Toast.LENGTH_SHORT).show();
+                        mView.success(resultModel);
                     }
                     @Override
                     public void onError(Throwable e) {
