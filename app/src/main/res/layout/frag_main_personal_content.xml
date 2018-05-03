@@ -22,7 +22,7 @@
             android:layout_height="wrap_content">
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/profile_image"
+                android:id="@+id/user_avatar"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:src="@mipmap/avatar"
@@ -41,12 +41,25 @@
             android:layout_width="match_parent"
             android:layout_height="70dp">
             <TextView
+                android:id="@+id/user_name"
                 android:textSize="12sp"
-                android:textColor="#aaa"
+                android:textColor="#666"
                 android:text="登录领福利，订阅"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/user_slogan"
+                android:visibility="gone"
+                android:textSize="12sp"
+                android:textColor="#aaa"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:text="slogan"
+                android:lines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <Button
+                android:id="@+id/login_now_btn"
                 android:layout_marginTop="5dp"
                 android:text="立即登录"
                 android:textColor="#fff"
@@ -58,6 +71,7 @@
                 android:layout_height="20dp" />
         </LinearLayout>
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/arrow_right"
             android:layout_alignParentRight="true"
             android:gravity="center"
@@ -72,7 +86,6 @@
     </RelativeLayout>
 
     <LinearLayout
-
         android:orientation="vertical"
         android:id="@+id/nav_bar"
         android:layout_marginTop="30dp"
@@ -200,7 +213,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
-            android:id="@+id/live_record"
+            android:id="@+id/be_liver"
             android:layout_margin="10dp"
             android:orientation="vertical"
             android:gravity="center"

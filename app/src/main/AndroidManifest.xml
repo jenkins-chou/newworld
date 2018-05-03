@@ -77,7 +77,10 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".activity.LoginActivity"
+            android:theme="@style/LoginTheme">
+
+        </activity>
     </application>
 
 </manifest>

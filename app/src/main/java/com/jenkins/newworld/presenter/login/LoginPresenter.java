@@ -55,7 +55,7 @@ public class LoginPresenter {
                         //更新视图
                         for (User user : users){
                             System.out.println("user:"+user.toString());
-                            Toast.makeText(context, user.toString(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, user.toString(), Toast.LENGTH_SHORT).show();
                         }
                         mView.success(resultModel);
                     }

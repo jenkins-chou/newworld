@@ -17,4 +17,9 @@
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:windowBackground">@mipmap/main_bg</item>
     </style>
+    <style name="LoginTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowBackground">@color/login_bg</item>
+    </style>
 </resources>

@@ -12,10 +12,15 @@
         <item name="android:windowBackground">@mipmap/welcome_start3</item>
     </style>
 
-    <!---->
+    <!--视频播放页主题-->
     <style name="VideoPlayTheme" parent="AppTheme">
         <!--在Android 4.4之前的版本上运行，直接跟随系统主题-->
         <item name="android:windowBackground">@mipmap/main_bg</item>
+    </style>
+    <!--登陆页主题-->
+    <style name="LoginTheme" parent="AppTheme">
+        <!--在Android 4.4之前的版本上运行，直接跟随系统主题-->
+        <item name="android:windowBackground">@color/login_bg</item>
     </style>
 
     <style name="searchEditTextStyle">
@@ -28,7 +33,6 @@
         <item name="android:imeOptions">actionSearch</item>
         <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingRight">10dp</item>
-
         <item name="android:singleLine">true</item>
         <item name="android:textSize">13sp</item>
         <item name="android:hint">搜索</item>
