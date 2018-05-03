@@ -86,22 +86,11 @@ public class CommonDialog {
     }
 
     //Change the dialog style upon confirming：
-    public static void showCustomDialog(Context context,String title,String message){
-        new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE)
-                .setTitleText("Are you sure?")
-                .setContentText("Won't be able to recover this file!")
-                .setConfirmText("Yes,delete it!")
-                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sDialog) {
-                        sDialog
-                                .setTitleText("Deleted!")
-                                .setContentText("Your imaginary file has been deleted!")
-                                .setConfirmText("OK")
-                                .setConfirmClickListener(null)
-                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                    }
-                })
+    public static void showCustomDialog(Context context,String title,String message,SweetAlertDialog.OnSweetClickListener listener){
+        new SweetAlertDialog(context, SweetAlertDialog.SUCCESS_TYPE)
+                .setTitleText(title)
+                .setContentText(message)
+                .setConfirmClickListener(listener)
                 .show();
     }
 }

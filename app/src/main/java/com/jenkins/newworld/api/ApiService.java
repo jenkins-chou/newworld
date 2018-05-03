@@ -20,4 +20,8 @@ public interface ApiService {
     @POST("user/login")
     Observable<ResultModel<ArrayList<User>>> login(@Body RequestBody body);
 
+    //输入信息进行注册
+    @POST("user/adduser")
+    Observable<ResultModel<ArrayList<User>>> register(@Body RequestBody body);
+
 }

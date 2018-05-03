@@ -11,13 +11,15 @@
         android:background="#fff"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="70dp">
+        android:layout_height="wrap_content">
         <LinearLayout
             android:id="@+id/avatar_bar"
             android:layout_alignParentLeft="true"
-            android:padding="10dp"
             android:gravity="center"
             android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <de.hdodenhof.circleimageview.CircleImageView
@@ -27,7 +29,6 @@
                 android:layout_height="60dp"
                 android:src="@mipmap/avatar"
                 app:civ_border_width="0dp"
-                android:layout_marginLeft="10dp"
                 app:civ_border_color="#FF000000"/>
         </LinearLayout>
         <LinearLayout
@@ -78,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="70dp">
             <ImageView
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="15dp"
                 android:src="@mipmap/frag_personal_right"
                 android:layout_width="20dp"
                 android:layout_height="20dp" />
@@ -100,9 +101,9 @@
                 android:id="@+id/frag_personal_subscriber"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="20dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
                 android:src="@mipmap/frag_personal_subscriber"
                 android:layout_width="20dp"
                 android:layout_height="20dp" />
@@ -119,7 +120,7 @@
                 android:textSize="12sp"
                 android:textColor="#b0b0b0"
                 android:text="登录后查看"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="15dp"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/frag_personal_subscriber_right"
                 android:layout_width="wrap_content"
@@ -127,7 +128,7 @@
             <ImageView
                 android:id="@+id/frag_personal_subscriber_right"
                 android:src="@mipmap/frag_personal_right"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="15dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_width="20dp"
@@ -143,9 +144,9 @@
                 android:id="@+id/frag_personal_attention"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="20dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
                 android:src="@mipmap/frag_personal_attention"
                 android:layout_width="20dp"
                 android:layout_height="20dp" />
@@ -159,7 +160,7 @@
                 android:layout_height="wrap_content" />
             <ImageView
                 android:src="@mipmap/frag_personal_right"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="15dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_width="20dp"
@@ -175,9 +176,9 @@
                 android:id="@+id/frag_personal_history"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="20dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
                 android:src="@mipmap/frag_personal_history"
                 android:layout_width="20dp"
                 android:layout_height="20dp" />
@@ -191,7 +192,7 @@
                 android:layout_height="wrap_content" />
             <ImageView
                 android:src="@mipmap/frag_personal_right"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="15dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_width="20dp"

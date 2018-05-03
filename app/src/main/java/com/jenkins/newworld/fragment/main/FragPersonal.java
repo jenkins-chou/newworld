@@ -50,9 +50,6 @@ public class FragPersonal extends Fragment implements PersonalPageContract.MView
 
     //data
     private Context context;
-    @OnClick(R.id.personal_setting) void personal_setting_action(){
-
-    }
     @OnClick(R.id.personal_attention_more)void personal_attention_more(){
         Intent intent = new Intent(this.getContext(), LoginActivity.class);
         startActivity(intent);

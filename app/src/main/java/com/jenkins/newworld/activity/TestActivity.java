@@ -52,7 +52,7 @@ public class TestActivity extends AppCompatActivity {
         CommonDialog.showConfirmDialog(this,"title","message");
     }
     @OnClick(R.id.dialog9)void dialog9(){
-        CommonDialog.showCustomDialog(this,"title","message");
+        //CommonDialog.showCustomDialog(this,"title","message");
     }
     @OnClick(R.id.close)void close(){
         finish();

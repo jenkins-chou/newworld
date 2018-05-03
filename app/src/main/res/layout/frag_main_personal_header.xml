@@ -12,7 +12,7 @@
         android:layout_width="25dp"
         android:layout_height="25dp" />
     <TextView
-        android:text="jenkins_zhou"
+        android:text="NewSaria"
         android:textSize="17sp"
         android:textStyle="bold"
         android:textColor="#000"
@@ -20,14 +20,6 @@
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <ImageView
-        android:id="@+id/personal_setting"
-        android:layout_marginRight="10dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:src="@mipmap/personal_setting"
-        android:layout_width="25dp"
-        android:layout_height="25dp" />
     <View
         android:background="@color/lineBgColor"
         android:layout_alignParentBottom="true"

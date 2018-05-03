@@ -1,10 +1,12 @@
 package com.jenkins.newworld.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.contract.login.LoginContract;
 import com.jenkins.newworld.model.base.ResultModel;
@@ -22,9 +24,12 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.pedant.SweetAlert.SweetAlertDialog;
+import io.vov.vitamio.utils.Log;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.MView{
 
+    public static final int GOTOREGISTER = 100;//跳转注册
     private LoginPresenter loginPresenter;
     @BindView(R.id.login_account)
     EditText login_account;
@@ -36,30 +41,22 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.MV
     @OnClick(R.id.img_back)void back(){
         finish();
     }
+    //提交登录
     @OnClick(R.id.login_submit)
     void login_commit(){
-
-        String account = login_account.getText().toString();
-        String password = login_password.getText().toString();
-        if (account.equals("")||account==null){
-            CommonDialog.showWarningDialog(this,"登录提示","请输入账户");
-            return;
-        }else if (password.equals("")||password==null){
-            CommonDialog.showWarningDialog(this,"登录提示","请输入密码");
-            return;
-        }else{
-            startAnim();
-            Map<String,Object> params = new HashMap<String,Object>();
-            params.put("user_name",account);
-            params.put("user_pass",password);
-            loginPresenter.login(params);
-        }
+        loginNow();//马上登录
+    }
+    //新用户注册
+    @OnClick(R.id.login_register)
+    void login_register(){
+        Intent intent = new Intent(this,RegisterActivity.class);
+        startActivityForResult(intent,GOTOREGISTER);
+        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        CommonWindowUtil.FlymeSetStatusBarLightMode(this.getWindow(),true);
         ButterKnife.bind(this);
         initData();
     }
@@ -78,11 +75,19 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.MV
         if (resultModel.getStatus().equals("200")){
             if (users!=null){
                 if (users.size()>=1){
-                    CommonDialog.showSuccessDialog(this,"","登录成功");
+                    //CommonDialog.showSuccessDialog(this,"","登录成功");
                     SPHelper.put(this,"user_name",users.get(0).getUser_name());
                     SPHelper.put(this,"user_pass",users.get(0).getUser_pass());
                     SPHelper.put(this,"user_avatar_url",users.get(0).getUser_avatar_url());
                     SPHelper.put(this,"user_slogan",users.get(0).getUser_slogan());
+                    SweetAlertDialog.OnSweetClickListener listener = new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            finish();
+                        }
+                    };
+                    CommonDialog.showCustomDialog(this,"登录成功","message",listener);
+
                 }else{
                     CommonDialog.showErrorDialog(this,"","登录失败，请重试");
                 }
@@ -116,5 +121,39 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.MV
     public void finish() {
         super.finish();
         overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.e("requestCode",requestCode);
+        Log.e("resultCode",resultCode);
+        if (data!=null) {
+            String userJson = data.getStringExtra("userJson");
+            if (userJson != null && !userJson.equals("")) {
+                User user = new Gson().fromJson(userJson, User.class);
+                login_account.setText(user.getUser_name());
+                login_password.setText(user.getUser_pass());
+                loginNow();
+            }
+        }
+    }
+
+    public void loginNow(){
+        String account = login_account.getText().toString();
+        String password = login_password.getText().toString();
+        if (account.equals("")||account==null){
+            CommonDialog.showWarningDialog(this,"登录提示","请输入账户");
+            return;
+        }else if (password.equals("")||password==null){
+            CommonDialog.showWarningDialog(this,"登录提示","请输入密码");
+            return;
+        }else{
+            startAnim();
+            Map<String,Object> params = new HashMap<String,Object>();
+            params.put("user_name",account);
+            params.put("user_pass",password);
+            loginPresenter.login(params);
+        }
     }
 }
