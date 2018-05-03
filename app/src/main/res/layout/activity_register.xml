@@ -103,6 +103,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp" />
         </LinearLayout>
+        <View
+            android:background="#f0f0f0"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
         <LinearLayout
             android:background="#fff"
             android:orientation="horizontal"
@@ -129,7 +133,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"

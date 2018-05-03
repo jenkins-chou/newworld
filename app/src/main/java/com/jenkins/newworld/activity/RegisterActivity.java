@@ -46,7 +46,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     //提交注册
     @OnClick(R.id.register_submit)
     void register_submit(){
-        startAnim();//开始动画
         String account = register_account.getText().toString();
         String password = register_password.getText().toString();
         String password_confirm = register_password_confirm.getText().toString();
@@ -58,6 +57,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
         }else if (password_confirm==null||password_confirm.equals("")){
             CommonDialog.showWarningDialog(this,"提示","请确认密码");
         }else{
+            startAnim();//开始动画
             Map<String,Object> params = new HashMap<String,Object>();
             params.put("user_name",account);
             params.put("user_pass",password);
