@@ -74,7 +74,7 @@ public class FragPersonal extends Fragment implements PersonalPageContract.MView
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_main_personal,container,false);
         ButterKnife.bind(this,view);
-        initData();//初始化数据
+
         return view;
     }
 
@@ -87,6 +87,11 @@ public class FragPersonal extends Fragment implements PersonalPageContract.MView
             Toast.makeText(context, "没有登录", Toast.LENGTH_SHORT).show();
         }
         presenter = new PersonalPagePresenter(context,this);
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        initData();
     }
 
     //更新用户信息
