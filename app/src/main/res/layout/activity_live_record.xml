@@ -14,98 +14,64 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/activity_record_start"
-        android:src="@mipmap/activity_record_start"
-        app:civ_border_width="0dp"
-        app:civ_border_color="#ff0000"
-        android:layout_centerInParent="true"
-        android:layout_width="100dp"
-        android:layout_height="100dp" />
-    <LinearLayout
-        android:layout_centerVertical="true"
+    <ImageView
+        android:id="@+id/live_record_mirror"
+        android:layout_above="@+id/live_record_start"
+        android:src="@mipmap/live_record_mirror"
+       android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+    <ImageView
+        android:id="@+id/live_record_start"
+        android:src="@mipmap/live_record_start"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+    <RelativeLayout
+        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="50dp"
-        android:gravity="right"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <LinearLayout
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:text="摄像头"
-                android:textSize="12sp"
-                android:textColor="#ff0000"
-                android:layout_marginRight="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/activity_record_camera_exchange"
-                android:src="@mipmap/activity_record_camera_exchange"
-                app:civ_border_width="1dp"
-                app:civ_border_color="#FF6600"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:text="滤镜"
-                android:textSize="12sp"
-                android:textColor="#d4237a"
-                android:layout_marginRight="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/activity_record_mirror_exchange"
-                app:civ_border_width="1dp"
-                app:civ_border_color="#d4237a"
-                android:src="@mipmap/activity_record_mirror_exchange"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:text="切换编码"
-                android:textSize="12sp"
-                android:textColor="#1296db"
-                android:layout_marginRight="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/activity_record_code_style"
-                app:civ_border_width="1dp"
-                app:civ_border_color="#1296db"
-                android:src="@mipmap/activity_record_code_style"
-                android:layout_width="30dp"
-                android:layout_height="30dp" />
-        </LinearLayout>
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/live_record_close"
+                android:layout_marginLeft="20dp"
+                android:layout_alignParentLeft="true"
+                android:src="@mipmap/live_record_close"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
+            <ImageView
+                android:layout_marginRight="30dp"
+                android:id="@+id/live_record_music"
+                android:src="@mipmap/live_record_music"
+                android:layout_toLeftOf="@+id/live_record_camera"
+                android:layout_width="22dp"
+                android:layout_height="22dp" />
+            <ImageView
+                android:layout_marginRight="30dp"
+                android:id="@+id/live_record_camera"
+                android:src="@mipmap/live_record_camera"
+                android:layout_toLeftOf="@+id/live_record_bianma"
+                android:layout_width="22dp"
+                android:layout_height="22dp" />
+            <ImageView
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                android:id="@+id/live_record_bianma"
+                android:src="@mipmap/live_record_bianma"
+                android:layout_width="22dp"
+                android:layout_height="22dp" />
+    </RelativeLayout>
 
     <EditText
         android:id="@+id/url"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:text="rtmp://139.199.205.207:1935/live/livestream"
         android:padding="10dp"
         android:textColor="#FFFFFF"

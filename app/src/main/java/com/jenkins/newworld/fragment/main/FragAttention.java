@@ -1,5 +1,6 @@
 package com.jenkins.newworld.fragment.main;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.activity.LivePlayActivity;
 import com.jenkins.newworld.activity.LiveRecordActivity;
+import com.jenkins.newworld.util.LoginTipDialog;
 
 import org.raphets.roundimageview.RoundImageView;
 
@@ -45,6 +47,11 @@ public class FragAttention extends Fragment {
     void frag_attention_g2_bar(){
         Intent intent = new Intent(context, LivePlayActivity.class);
         startActivity(intent);
+    }
+
+    @OnClick(R.id.frag_attention_g3_bar)
+    void frag_attention_g3_bar(){
+        //new LoginTipDialog(context, R.style.login_tip_dialog).show();
     }
     @Nullable
     @Override

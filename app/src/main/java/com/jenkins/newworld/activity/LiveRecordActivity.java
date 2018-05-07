@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.github.faucamp.simplertmp.RtmpHandler;
@@ -43,8 +44,10 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
     //view
     @BindView(R.id.url)
     EditText mRempUrlEt;//获取url的输入框
-    @BindView(R.id.activity_record_code_style)
-    CircleImageView activity_record_code_style;
+    @BindView(R.id.live_record_bianma)
+    ImageView live_record_bianma;
+    @BindView(R.id.live_record_start)
+    ImageView live_record_start;
     //data
     private static final String TAG = "CameraActivity";
     private boolean isStart = false;
@@ -98,35 +101,48 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
     }
 
     //开始直播按钮
-    @OnClick(R.id.activity_record_start)void activity_record_start(){
+    @OnClick(R.id.live_record_start)void activity_record_start(){
         if (isStart == false){
             isStart=true;//设定当前为播放状态
-            activity_record_code_style.setEnabled(false);//禁用编码切换按钮
+            live_record_bianma.setEnabled(false);//禁用编码切换按钮
             rtmpUrl = mRempUrlEt.getText().toString();
             if (TextUtils.isEmpty(rtmpUrl)) {
                 Toast.makeText(getApplicationContext(), "地址不能为空！", Toast.LENGTH_SHORT).show();
             }
             mPublisher.startPublish(rtmpUrl);
             mPublisher.startCamera();
+            live_record_start.setImageResource(R.mipmap.live_record_stop);
         }else{
             isStart=false;//设定当前为停止状态
-            activity_record_code_style.setEnabled(true);//使能编码切换按钮
+            live_record_bianma.setEnabled(true);//使能编码切换按钮
             mPublisher.stopPublish();
             mPublisher.stopRecord();
-
+            live_record_start.setImageResource(R.mipmap.live_record_start);
         }
     }
 
     //摄像头切换按钮
-    @OnClick(R.id.activity_record_camera_exchange)void activity_record_exchange_camera(){
+    @OnClick(R.id.live_record_close)void live_record_close(){
+        this.finish();
+    }
+    //摄像头切换按钮
+    @OnClick(R.id.live_record_camera)void activity_record_exchange_camera(){
         mPublisher.switchCameraFace((mPublisher.getCamraId() + 1) % Camera.getNumberOfCameras());
     }
-    //滤镜切换按钮
-    @OnClick(R.id.activity_record_mirror_exchange)void activity_record_mirror_exchange(){
+    //声音按钮
+    @OnClick(R.id.live_record_music)void live_record_music(){
 
     }
+    //滤镜切换按钮
+    @OnClick(R.id.live_record_mirror)void activity_record_mirror_exchange(){
+        Toast.makeText(this, "奇幻滤镜", Toast.LENGTH_SHORT).show();
+        if (mPublisher!=null){
+            //开启美颜（其他滤镜效果在MagicFilterType中查看）
+            mPublisher.switchCameraFilter(MagicFilterType.WARM);
+        }
+    }
     //编码方式切换
-    @OnClick(R.id.activity_record_code_style)void activity_record_code_style(){
+    @OnClick(R.id.live_record_bianma)void activity_record_code_style(){
         Toast.makeText(this, "编码按钮", Toast.LENGTH_SHORT).show();
         if (encoding == 0){
             encoding = 1;

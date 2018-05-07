@@ -20,7 +20,12 @@ public class AccountUtil {
                 result = true;//说明已经登录了
             }
         }
-
         return result;
+    }
+    //注销登录
+    public static void logout(Context context){
+        if (context!=null){
+            SPHelper.clear(context);
+        }
     }
 }

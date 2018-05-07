@@ -1,5 +1,8 @@
 package com.jenkins.newworld.activity;
 
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.fragment.main.FragAttention;
@@ -17,11 +21,17 @@ import com.jenkins.newworld.fragment.main.FragHomePage;
 import com.jenkins.newworld.fragment.main.FragPersonal;
 import com.jenkins.newworld.fragment.main.FragShare;
 import com.jenkins.newworld.fragment.main.FragLive;
+import com.jenkins.newworld.util.AccountUtil;
 import com.jenkins.newworld.util.CommonWindowUtil;
 import com.jenkins.newworld.util.FontManager;
+import com.jenkins.newworld.util.LoginTipDialog;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.vov.vitamio.utils.Log;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -32,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public final static int PAGE_FOUR = 3;
     public final static int PAGE_FIVE = 4;
 
+    private Context context;
     private FragmentManager fManager;
     private FragAttention fragAttention;
     private FragHomePage fragHomePage;
@@ -86,7 +97,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         init();
+        context = this;
         share_btn.performClick();
+        showLoginTipDialog();
     }
 
 
@@ -133,6 +146,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(fragPersonal != null)fragmentTransaction.hide(fragPersonal);
         if(fragLive != null)fragmentTransaction.hide(fragLive);
         if(fragShare != null)fragmentTransaction.hide(fragShare);
+    }
+    public void showLoginTipDialog(){
+        if (AccountUtil.isLogin(this)){
+            //Toast.makeText(this, "已经登录了", Toast.LENGTH_SHORT).show();
+            AccountUtil.logout(this);
+            //updateUserInfo();
+        }else{
+            //Toast.makeText(this, "没有登录", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    new LoginTipDialog(context, R.style.login_tip_dialog).show();
+                }
+            }, 2000);
+
+        }
     }
 
     @Override
