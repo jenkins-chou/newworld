@@ -17,6 +17,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,6 +26,9 @@ import android.widget.Toast;
 
 import com.github.faucamp.simplertmp.RtmpHandler;
 import com.jenkins.newworld.R;
+import com.jenkins.newworld.adapter.common.ListViewAdapter;
+import com.jenkins.newworld.model.live.MirrorModel;
+import com.jenkins.newworld.ui.HorizontalListView;
 import com.seu.magicfilter.utils.MagicFilterType;
 
 import net.ossrs.yasea.SrsCameraView;
@@ -33,6 +38,7 @@ import net.ossrs.yasea.SrsRecordHandler;
 
 import java.io.IOException;
 import java.net.SocketException;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,6 +54,9 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
     ImageView live_record_bianma;
     @BindView(R.id.live_record_start)
     ImageView live_record_start;
+    @BindView(R.id.mirror_listview)
+    HorizontalListView mirror_listview;
+
     //data
     private static final String TAG = "CameraActivity";
     private boolean isStart = false;
@@ -62,15 +71,13 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
     private static final int CAMERA_PERMISSIONS_REQUEST_CODE = 0x03;
     private static final int STORAGE_PERMISSIONS_REQUEST_CODE = 0x04;
 
-    //滤镜请参考//其他滤镜效果在MagicFilterType中查看
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_live_record);
         ButterKnife.bind(this);
+        initMirrorListView();
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
             //没有权限
             autoObtainCameraPermission();
@@ -94,10 +101,43 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
         //传输率
         mPublisher.setVideoHDMode();
         //开启美颜（其他滤镜效果在MagicFilterType中查看）
-        mPublisher.switchCameraFilter(MagicFilterType.WARM);
+        //mPublisher.switchCameraFilter(MagicFilterType.WARM);
         //打开摄像头，开始预览（未推流）
         mPublisher.startCamera();
         mPublisher.switchCameraFace((mPublisher.getCamraId() + 1) % Camera.getNumberOfCameras());
+    }
+
+    //初始化滤镜列表
+    public void initMirrorListView(){
+        final ArrayList<MirrorModel> mirrorDatas = new ArrayList<MirrorModel>();
+        mirrorDatas.add(new MirrorModel("美肤",R.mipmap.ic_launcher_round,MagicFilterType.BEAUTY));
+        mirrorDatas.add(new MirrorModel("健康",R.mipmap.ic_launcher_round,MagicFilterType.HEALTHY));
+        mirrorDatas.add(new MirrorModel("酷",R.mipmap.ic_launcher_round,MagicFilterType.COOL));
+        mirrorDatas.add(new MirrorModel("浪漫",R.mipmap.ic_launcher_round,MagicFilterType.ROMANCE));
+        mirrorDatas.add(new MirrorModel("樱花",R.mipmap.ic_launcher_round,MagicFilterType.SAKURA));
+        mirrorDatas.add(new MirrorModel("暖光",R.mipmap.ic_launcher_round,MagicFilterType.WARM));
+        mirrorDatas.add(new MirrorModel("复古",R.mipmap.ic_launcher_round,MagicFilterType.NOSTALGIA));
+        mirrorDatas.add(new MirrorModel("怀旧",R.mipmap.ic_launcher_round,MagicFilterType.COOL));
+        mirrorDatas.add(new MirrorModel("丰饶",R.mipmap.ic_launcher_round,MagicFilterType.CALM));
+        mirrorDatas.add(new MirrorModel("拿铁风",R.mipmap.ic_launcher_round,MagicFilterType.LATTE));
+        mirrorDatas.add(new MirrorModel("温柔",R.mipmap.ic_launcher_round,MagicFilterType.TENDER));
+        ListViewAdapter<MirrorModel> adapter = new ListViewAdapter<MirrorModel>(mirrorDatas,R.layout.activity_live_record_mirror_item) {
+            @Override
+            public void bindView(ViewHolder holder, MirrorModel obj) {
+                holder.setImage(R.id.image,obj.getImg());
+                holder.setText(R.id.name,obj.getName());
+            }
+        };
+        mirror_listview.setAdapter(adapter);
+        mirror_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (mPublisher!=null){
+                    mPublisher.switchCameraFilter(mirrorDatas.get(position).getType());
+                }
+                mirror_listview.setVisibility(View.GONE);
+            }
+        });
     }
 
     //开始直播按钮
@@ -135,10 +175,8 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
     }
     //滤镜切换按钮
     @OnClick(R.id.live_record_mirror)void activity_record_mirror_exchange(){
-        Toast.makeText(this, "奇幻滤镜", Toast.LENGTH_SHORT).show();
-        if (mPublisher!=null){
-            //开启美颜（其他滤镜效果在MagicFilterType中查看）
-            mPublisher.switchCameraFilter(MagicFilterType.WARM);
+        if (mirror_listview!=null){
+            mirror_listview.setVisibility(View.VISIBLE);
         }
     }
     //编码方式切换
