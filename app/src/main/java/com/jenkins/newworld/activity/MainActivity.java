@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void showLoginTipDialog(){
         if (AccountUtil.isLogin(this)){
             //Toast.makeText(this, "已经登录了", Toast.LENGTH_SHORT).show();
-            AccountUtil.logout(this);
+            //AccountUtil.logout(this);
             //updateUserInfo();
         }else{
             //Toast.makeText(this, "没有登录", Toast.LENGTH_SHORT).show();
@@ -160,14 +160,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     new LoginTipDialog(context, R.style.login_tip_dialog).show();
                 }
             }, 2000);
-
         }
     }
 
     @Override
     public void onClick(View view) {
         FragmentTransaction fTransaction = fManager.beginTransaction();
-
         hideAllFragment(fTransaction);
         setSelected();
         switch (view.getId()){

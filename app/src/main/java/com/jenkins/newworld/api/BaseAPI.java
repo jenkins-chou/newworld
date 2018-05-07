@@ -5,6 +5,6 @@ package com.jenkins.newworld.api;
  */
 
 public class BaseAPI {
-    public static String base_url = "http://c0f659f1.ngrok.io";
+    public static String base_url = "http://139.199.205.207:8888";
     public static String login = base_url + "user/login";
 }

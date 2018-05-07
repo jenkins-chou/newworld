@@ -74,7 +74,6 @@ public class FragPersonal extends Fragment implements PersonalPageContract.MView
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_main_personal,container,false);
         ButterKnife.bind(this,view);
-
         return view;
     }
 
