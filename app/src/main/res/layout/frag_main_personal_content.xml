@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
     <!--图标栏-->
     <RelativeLayout
+        android:id="@+id/icon_bar"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:background="#fff"
@@ -94,6 +95,7 @@
         android:layout_height="wrap_content">
         <!--我的订阅-->
         <RelativeLayout
+            android:id="@+id/personal_subcribe_bar"
             android:background="#fff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -136,6 +138,7 @@
         </RelativeLayout>
         <!--我的关注-->
         <RelativeLayout
+            android:id="@+id/personal_attention_bar"
             android:background="#fff"
             android:layout_marginTop="1dp"
             android:layout_width="match_parent"
@@ -168,6 +171,7 @@
         </RelativeLayout>
         <!--我看过的-->
         <RelativeLayout
+            android:id="@+id/personal_seed_bar"
             android:background="#fff"
             android:layout_marginTop="1dp"
             android:layout_width="match_parent"
@@ -248,7 +252,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+        <!--排行榜-->
         <LinearLayout
+            android:id="@+id/score_list"
             android:layout_margin="10dp"
             android:orientation="vertical"
             android:gravity="center"
@@ -264,7 +270,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+        <!--帮助与反馈-->
         <LinearLayout
+            android:id="@+id/help"
             android:layout_margin="10dp"
             android:orientation="vertical"
             android:gravity="center"

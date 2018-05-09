@@ -5,25 +5,25 @@ package com.seu.magicfilter.utils;
  */
 public enum  MagicFilterType {
     NONE,
-    FAIRYTALE,
-    SUNRISE,
-    SUNSET,
-    WHITECAT,
-    BLACKCAT,
-    SKINWHITEN,
-    BEAUTY,
-    HEALTHY,
-    SWEETS,
-    ROMANCE,
-    SAKURA,
-    WARM,
-    ANTIQUE,
-    NOSTALGIA,
-    CALM,
-    LATTE,
-    TENDER,
-    COOL,
-    EMERALD,
+    FAIRYTALE,//童真
+    SUNRISE,//阳光
+    SUNSET,//日落
+    WHITECAT,//白光
+    BLACKCAT,//黑光
+    SKINWHITEN,//缎光白
+    BEAUTY,//美肤
+    HEALTHY,//健康
+    SWEETS,//甜美
+    ROMANCE,//浪漫
+    SAKURA,//樱花
+    WARM,//暖光
+    ANTIQUE,//复古
+    NOSTALGIA,//怀旧
+    CALM,//丰饶
+    LATTE,//拿铁风
+    TENDER,//温柔
+    COOL,//酷
+    EMERALD,//
     EVERGREEN,
     CRAYON,
     SKETCH,
@@ -49,11 +49,11 @@ public enum  MagicFilterType {
     WALDEN,
     XPROII,
     //image adjust
-    CONTRAST,
-    BRIGHTNESS,
-    EXPOSURE,
-    HUE,
-    SATURATION,
-    SHARPEN,
-    IMAGE_ADJUST
+    CONTRAST,//对比度
+    BRIGHTNESS,//亮度
+    EXPOSURE,//曝光
+    HUE,//彩色
+    SATURATION,//饱和度
+    SHARPEN,//尖锐
+    IMAGE_ADJUST//调整
 }

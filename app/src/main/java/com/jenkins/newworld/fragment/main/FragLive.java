@@ -15,6 +15,7 @@ import android.widget.ListAdapter;
 import android.widget.Toast;
 
 import com.jenkins.newworld.R;
+import com.jenkins.newworld.activity.SearchActivity;
 import com.jenkins.newworld.activity.VideoPlayActivity;
 import com.jenkins.newworld.adapter.common.ListViewAdapter;
 import com.jenkins.newworld.adapter.live.TypeLiveAdapter;
@@ -31,6 +32,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by zhouzhenjian on 2018/4/18.
@@ -42,7 +44,11 @@ public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickLis
     RecyclerView live_recyclerview;
     @BindView(R.id.smartRefreshLayout)
     SmartRefreshLayout smartRefreshLayout;
-
+    @OnClick(R.id.share_search_bar)void search_bar(){
+        Intent intent = new Intent(this.getContext(),SearchActivity.class);
+        startActivity(intent);
+        getActivity().overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+    }
     private Context context;
     @Nullable
     @Override

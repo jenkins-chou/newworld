@@ -69,7 +69,7 @@
             android:layout_marginTop="30dp"
             android:text="立即注册"
             android:padding="13dp"
-            android:textColor="#ff6600"
+            android:textColor="@color/login_bg"
             android:background="@drawable/dialog_login_tip_gotoregister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

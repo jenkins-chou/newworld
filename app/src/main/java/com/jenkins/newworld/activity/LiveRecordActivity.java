@@ -110,17 +110,17 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
     //初始化滤镜列表
     public void initMirrorListView(){
         final ArrayList<MirrorModel> mirrorDatas = new ArrayList<MirrorModel>();
-        mirrorDatas.add(new MirrorModel("美肤",R.mipmap.ic_launcher_round,MagicFilterType.BEAUTY));
-        mirrorDatas.add(new MirrorModel("健康",R.mipmap.ic_launcher_round,MagicFilterType.HEALTHY));
-        mirrorDatas.add(new MirrorModel("酷",R.mipmap.ic_launcher_round,MagicFilterType.COOL));
-        mirrorDatas.add(new MirrorModel("浪漫",R.mipmap.ic_launcher_round,MagicFilterType.ROMANCE));
-        mirrorDatas.add(new MirrorModel("樱花",R.mipmap.ic_launcher_round,MagicFilterType.SAKURA));
-        mirrorDatas.add(new MirrorModel("暖光",R.mipmap.ic_launcher_round,MagicFilterType.WARM));
-        mirrorDatas.add(new MirrorModel("复古",R.mipmap.ic_launcher_round,MagicFilterType.NOSTALGIA));
-        mirrorDatas.add(new MirrorModel("怀旧",R.mipmap.ic_launcher_round,MagicFilterType.COOL));
-        mirrorDatas.add(new MirrorModel("丰饶",R.mipmap.ic_launcher_round,MagicFilterType.CALM));
-        mirrorDatas.add(new MirrorModel("拿铁风",R.mipmap.ic_launcher_round,MagicFilterType.LATTE));
-        mirrorDatas.add(new MirrorModel("温柔",R.mipmap.ic_launcher_round,MagicFilterType.TENDER));
+        mirrorDatas.add(new MirrorModel("美肤",R.mipmap.mirror,MagicFilterType.BEAUTY));
+        mirrorDatas.add(new MirrorModel("健康",R.mipmap.mirror,MagicFilterType.HEALTHY));
+        mirrorDatas.add(new MirrorModel("酷",R.mipmap.mirror,MagicFilterType.COOL));
+        mirrorDatas.add(new MirrorModel("浪漫",R.mipmap.mirror,MagicFilterType.ROMANCE));
+        mirrorDatas.add(new MirrorModel("樱花",R.mipmap.mirror,MagicFilterType.SAKURA));
+        mirrorDatas.add(new MirrorModel("暖光",R.mipmap.mirror,MagicFilterType.WARM));
+        mirrorDatas.add(new MirrorModel("复古",R.mipmap.mirror,MagicFilterType.NOSTALGIA));
+        mirrorDatas.add(new MirrorModel("怀旧",R.mipmap.mirror,MagicFilterType.COOL));
+        mirrorDatas.add(new MirrorModel("丰饶",R.mipmap.mirror,MagicFilterType.CALM));
+        mirrorDatas.add(new MirrorModel("拿铁风",R.mipmap.mirror,MagicFilterType.LATTE));
+        mirrorDatas.add(new MirrorModel("温柔",R.mipmap.mirror,MagicFilterType.TENDER));
         ListViewAdapter<MirrorModel> adapter = new ListViewAdapter<MirrorModel>(mirrorDatas,R.layout.activity_live_record_mirror_item) {
             @Override
             public void bindView(ViewHolder holder, MirrorModel obj) {

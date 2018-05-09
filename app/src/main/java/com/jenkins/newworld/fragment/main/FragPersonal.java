@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
+import com.jenkins.newworld.activity.AccountActivity;
 import com.jenkins.newworld.activity.LivePlayActivity;
 import com.jenkins.newworld.activity.LiveRecordActivity;
 import com.jenkins.newworld.activity.LoginActivity;
@@ -50,21 +51,55 @@ public class FragPersonal extends Fragment implements PersonalPageContract.MView
 
     //data
     private Context context;
-    @OnClick(R.id.personal_attention_more)void personal_attention_more(){
-        Intent intent = new Intent(this.getContext(), LoginActivity.class);
-        startActivity(intent);
-        this.getActivity().overridePendingTransition(0,R.anim.activity_vertical_open);
+
+    //action
+    @OnClick({R.id.personal_subcribe_bar,R.id.personal_attention_bar,R.id.personal_seed_bar})void showTip(){
+        CommonDialog.showBaseDialog(context,"玩命开发中");
     }
     //成为主播
     @OnClick(R.id.be_liver)void live_record(){
         if (!AccountUtil.isLogin(context)){
+            Toast.makeText(context, "请登录", Toast.LENGTH_SHORT).show();
             gotoLogin();//还没有登录，必须先登录
+        }else{
+            CommonDialog.showBaseDialog(context,"玩命开发中");
         }
     }
     //我的直播
     @OnClick(R.id.live_play)void live_play(){
         if (!AccountUtil.isLogin(context)){
+            Toast.makeText(context, "请登录", Toast.LENGTH_SHORT).show();
             gotoLogin();//还没有登录，必须先登录
+        }else{
+            CommonDialog.showBaseDialog(context,"玩命开发中");
+        }
+    }
+    @OnClick(R.id.score_list)void score_list(){
+        if (!AccountUtil.isLogin(context)){
+            Toast.makeText(context, "请登录", Toast.LENGTH_SHORT).show();
+            gotoLogin();//还没有登录，必须先登录
+        }else{
+            CommonDialog.showBaseDialog(context,"玩命开发中");
+        }
+    }
+    @OnClick(R.id.help)void help(){
+        if (!AccountUtil.isLogin(context)){
+            Toast.makeText(context, "请登录", Toast.LENGTH_SHORT).show();
+            gotoLogin();//还没有登录，必须先登录
+        }else{
+            CommonDialog.showBaseDialog(context,"玩命开发中");
+        }
+    }
+    //点击图标栏动作
+    @OnClick(R.id.icon_bar)void icon_bar(){
+        if (!AccountUtil.isLogin(context)){
+            Intent intent = new Intent(context, LoginActivity.class);
+            context.startActivity(intent);
+            this.getActivity().overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+        }else{
+            Intent intent = new Intent(context, AccountActivity.class);
+            context.startActivity(intent);
+            this.getActivity().overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
         }
     }
     //presenter
@@ -80,10 +115,16 @@ public class FragPersonal extends Fragment implements PersonalPageContract.MView
     public void initData(){
         context = getContext();
         if (AccountUtil.isLogin(context)){
-            Toast.makeText(context, "已经登录了", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "已经登录了", Toast.LENGTH_SHORT).show();
             updateUserInfo();
         }else{
-            Toast.makeText(context, "没有登录", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "没有登录", Toast.LENGTH_SHORT).show();
+            login_now_btn.setVisibility(View.VISIBLE);//隐藏立即登录按钮。
+            tv_user_slogan.setVisibility(View.GONE);
+            tv_user_name.setText("请前往登录");
+            Glide.with(context)
+                    .load(R.mipmap.avatar)
+                    .into(user_avatar);
         }
         presenter = new PersonalPagePresenter(context,this);
     }
@@ -96,8 +137,8 @@ public class FragPersonal extends Fragment implements PersonalPageContract.MView
     //更新用户信息
     public void updateUserInfo(){
         String user_avatar_url = (String)SPHelper.get(context,"user_avatar_url","");
-        String user_name = (String)SPHelper.get(context,"user_name","用户名");
-        String user_slogan = (String)SPHelper.get(context,"user_slogan","用户slogan");
+        String user_name = (String)SPHelper.get(context,"user_name","没有登陆");
+        String user_slogan = (String)SPHelper.get(context,"user_slogan","登录后查看");
         login_now_btn.setVisibility(View.GONE);//隐藏立即登录按钮。
         tv_user_name.setText(user_name);
         tv_user_slogan.setText(user_slogan);

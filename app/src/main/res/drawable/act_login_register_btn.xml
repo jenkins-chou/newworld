@@ -13,5 +13,5 @@
     <!--边框-->
     <stroke
         android:width="1px"
-        android:color="#FF4500" />
+        android:color="@color/login_bg" />
 </shape>
