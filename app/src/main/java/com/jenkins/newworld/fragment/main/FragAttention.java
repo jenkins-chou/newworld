@@ -67,12 +67,12 @@ public class FragAttention extends Fragment {
         context = this.getContext();
     }
     public void initGif(){
-        Glide.with(this).load(R.mipmap.frag_attention_g1)
-                .diskCacheStrategy(DiskCacheStrategy.ALL).into(frag_attention_g1);
-        Glide.with(this).load(R.mipmap.frag_attention_g2)
-                .diskCacheStrategy(DiskCacheStrategy.ALL).into(frag_attention_g2);
-        Glide.with(this).load(R.mipmap.frag_attention_g4)
-                .diskCacheStrategy(DiskCacheStrategy.ALL).into(frag_attention_g3);
+//        Glide.with(this).load(R.mipmap.frag_attention_g1)
+//                .diskCacheStrategy(DiskCacheStrategy.ALL).into(frag_attention_g1);
+//        Glide.with(this).load(R.mipmap.frag_attention_g2)
+//                .diskCacheStrategy(DiskCacheStrategy.ALL).into(frag_attention_g2);
+//        Glide.with(this).load(R.mipmap.frag_attention_g4)
+//                .diskCacheStrategy(DiskCacheStrategy.ALL).into(frag_attention_g3);
     }
 
 }
