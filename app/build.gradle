@@ -73,5 +73,4 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     compile 'com.wang.avi:library:2.1.3'
 
-
 }

@@ -57,7 +57,7 @@ public class CenterLayout extends ViewGroup {
         int childRight;
         int childBottom;
 
-        CenterLayout.LayoutParams lp = (CenterLayout.LayoutParams) child.getLayoutParams();
+        LayoutParams lp = (LayoutParams) child.getLayoutParams();
 
         childRight = lp.x + child.getMeasuredWidth();
         childBottom = lp.y + child.getMeasuredHeight();
@@ -84,7 +84,7 @@ public class CenterLayout extends ViewGroup {
     for (int i = 0; i < count; i++) {
       View child = getChildAt(i);
       if (child.getVisibility() != GONE) {
-        CenterLayout.LayoutParams lp = (CenterLayout.LayoutParams) child.getLayoutParams();
+        LayoutParams lp = (LayoutParams) child.getLayoutParams();
         int childLeft = mPaddingLeft + lp.x;
         if (lp.width > 0)
           childLeft += (int) ((mWidth - lp.width) / 2.0);
@@ -102,7 +102,7 @@ public class CenterLayout extends ViewGroup {
 
   @Override
   protected boolean checkLayoutParams(ViewGroup.LayoutParams p) {
-    return p instanceof CenterLayout.LayoutParams;
+    return p instanceof LayoutParams;
   }
 
   @Override

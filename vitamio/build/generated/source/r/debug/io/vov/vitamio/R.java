@@ -36,9 +36,6 @@ public final class R {
     public static final class layout {
         public static int mediacontroller = 0x7f0f0001;
     }
-    public static final class raw {
-        public static int libarm = 0x7f140001;
-    }
     public static final class string {
         public static int VideoView_error_button = 0x7f150001;
         public static int VideoView_error_text_invalid_progressive_playback = 0x7f150002;

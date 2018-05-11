@@ -1,90 +1,154 @@
 package com.jenkins.newworld.activity;
 
-import android.support.annotation.Nullable;
+import android.app.Activity;
+import android.graphics.PixelFormat;
+import android.media.AudioManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.util.Log;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.widget.Toast;
 
 import com.jenkins.newworld.R;
 
-import io.vov.vitamio.LibsChecker;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.Vitamio;
-import io.vov.vitamio.widget.MediaController;
-import io.vov.vitamio.widget.VideoView;
+import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
-public class LivePlayActivity extends AppCompatActivity implements View.OnClickListener {
-    private String path = "";
-    private VideoView mVideoView;
-    private EditText mEditText;
-    private Button mStartBtn;
-    private Button mStopBtn;
+public class LivePlayActivity extends Activity implements MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnVideoSizeChangedListener, SurfaceHolder.Callback {
 
+    private static final String TAG = "MediaPlayerDemo";
+    private int mVideoWidth;
+    private int mVideoHeight;
+    private MediaPlayer mMediaPlayer;
+    private SurfaceView mPreview;
+    private SurfaceHolder holder;
+    private String path;
+    private static final int LOCAL_AUDIO = 1;
+    private static final int STREAM_AUDIO = 2;
+    private static final int RESOURCES_AUDIO = 3;
+    private static final int LOCAL_VIDEO = 4;
+    private static final int STREAM_VIDEO = 5;
+    private boolean mIsVideoSizeKnown = false;
+    private boolean mIsVideoReadyToBePlayed = false;
+
+    @OnClick(R.id.close)void close(){
+        finish();
+    }
+    /**
+     *
+     * Called when the activity is first created.
+     */
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+        Vitamio.isInitialized(getApplicationContext());
         setContentView(R.layout.activity_live_play);
-        if (!LibsChecker.checkVitamioLibs(this))
-            return;
-        //Vitamio.initialize(getApplicationContext());
-        mEditText = (EditText) findViewById(R.id.url);
-        mVideoView = (VideoView) findViewById(R.id.surface_view);
-        mStartBtn = (Button) findViewById(R.id.start);
-        mStopBtn = (Button) findViewById(R.id.stop);
+        ButterKnife.bind(this);
+        mPreview = (SurfaceView) findViewById(R.id.surface);
+        holder = mPreview.getHolder();
+        holder.addCallback(this);
+        holder.setFormat(PixelFormat.RGBA_8888);
+    }
 
-        mStartBtn.setOnClickListener(this);
-        mStopBtn.setOnClickListener(this);
-
-        mVideoView.setMediaController(new MediaController(this));
-        mVideoView.requestFocus();
-
-        mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                // optional need Vitamio 4.0
-                mediaPlayer.setPlaybackSpeed(1.0f);
-            }
-        });
-        mVideoView.setOnErrorListener(new MediaPlayer.OnErrorListener() {
-            @Override
-            public boolean onError(MediaPlayer mp, int what, int extra) {
-                Toast.makeText(LivePlayActivity.this, "mVideoView error", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
-
-        mVideoView.setOnInfoListener(new MediaPlayer.OnInfoListener() {
-            @Override
-            public boolean onInfo(MediaPlayer mp, int what, int extra) {
-                Toast.makeText(LivePlayActivity.this, "mVideoView info", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
-
+    private void playVideo(Integer Media) {
+        doCleanUp();
+        try {
+            path="rtmp://139.199.205.207:1935/live/livestream";
+            // Create a new media player and set the listeners
+            mMediaPlayer = new MediaPlayer(this);
+            mMediaPlayer.setDataSource(path);
+            mMediaPlayer.setDisplay(holder);
+            mMediaPlayer.prepareAsync();
+            mMediaPlayer.setOnBufferingUpdateListener(this);
+            mMediaPlayer.setOnCompletionListener(this);
+            mMediaPlayer.setOnPreparedListener(this);
+            mMediaPlayer.setOnVideoSizeChangedListener(this);
+            setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        } catch (Exception e) {
+            Log.e(TAG, "error: " + e.getMessage(), e);
+        }
+    }
+    public void onBufferingUpdate(MediaPlayer arg0, int percent) {
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.start:
-                path = mEditText.getText().toString();
-                if (!TextUtils.isEmpty(path)) {
-                    mVideoView.setVideoPath(path);
-                    mVideoView.start();
+    public void onCompletion(MediaPlayer arg0) {
+        Log.d(TAG, "onCompletion called");
+    }
 
-
-                }
-                break;
-            case R.id.stop:
-                mVideoView.stopPlayback();
-                break;
+    public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
+        Log.v(TAG, "onVideoSizeChanged called");
+        if (width == 0 || height == 0) {
+            Log.e(TAG, "invalid video width(" + width + ") or height(" + height + ")");
+            return;
+        }
+        mIsVideoSizeKnown = true;
+        mVideoWidth = width;
+        mVideoHeight = height;
+        if (mIsVideoReadyToBePlayed && mIsVideoSizeKnown) {
+            startVideoPlayback();
         }
     }
 
+    public void onPrepared(MediaPlayer mediaplayer) {
+        Log.d(TAG, "onPrepared called");
+        mIsVideoReadyToBePlayed = true;
+        if (mIsVideoReadyToBePlayed && mIsVideoSizeKnown) {
+            startVideoPlayback();
+        }
+    }
 
+    public void surfaceChanged(SurfaceHolder surfaceholder, int i, int j, int k) {
+        Log.d(TAG, "surfaceChanged called");
+    }
+
+    public void surfaceDestroyed(SurfaceHolder surfaceholder) {
+        Log.d(TAG, "surfaceDestroyed called");
+    }
+
+    public void surfaceCreated(SurfaceHolder holder) {
+        Log.d(TAG, "surfaceCreated called");
+        playVideo(STREAM_VIDEO);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        releaseMediaPlayer();
+        doCleanUp();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        releaseMediaPlayer();
+        doCleanUp();
+    }
+
+    private void releaseMediaPlayer() {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.release();
+            mMediaPlayer = null;
+        }
+    }
+
+    private void doCleanUp() {
+        mVideoWidth = 0;
+        mVideoHeight = 0;
+        mIsVideoReadyToBePlayed = false;
+        mIsVideoSizeKnown = false;
+    }
+
+    private void startVideoPlayback() {
+        Log.v(TAG, "startVideoPlayback");
+        holder.setFixedSize(mVideoWidth, mVideoHeight);
+        mMediaPlayer.start();
+    }
 }
+

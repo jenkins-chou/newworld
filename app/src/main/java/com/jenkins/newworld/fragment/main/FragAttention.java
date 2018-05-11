@@ -51,7 +51,6 @@ public class FragAttention extends Fragment {
 
     @OnClick(R.id.frag_attention_g3_bar)
     void frag_attention_g3_bar(){
-        //new LoginTipDialog(context, R.style.login_tip_dialog).show();
     }
     @Nullable
     @Override
