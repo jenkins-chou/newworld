@@ -17,6 +17,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.activity.LivePlayActivity;
 import com.jenkins.newworld.activity.LiveRecordActivity;
+import com.jenkins.newworld.activity.LoginActivity;
+import com.jenkins.newworld.util.AccountUtil;
 import com.jenkins.newworld.util.LoginTipDialog;
 
 import org.raphets.roundimageview.RoundImageView;
@@ -40,13 +42,24 @@ public class FragAttention extends Fragment {
 
     @OnClick(R.id.frag_attention_g1_bar)
     void frag_attention_g1_bar(){
-        Intent intent = new Intent(context, LiveRecordActivity.class);
-        startActivity(intent);
+        if (AccountUtil.isLogin(context)){
+            Intent intent = new Intent(context, LiveRecordActivity.class);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(context, LoginActivity.class);
+            startActivity(intent);
+        }
+
     }
     @OnClick(R.id.frag_attention_g2_bar)
     void frag_attention_g2_bar(){
-        Intent intent = new Intent(context, LivePlayActivity.class);
-        startActivity(intent);
+        if (AccountUtil.isLogin(context)){
+            Intent intent = new Intent(context, LivePlayActivity.class);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(context, LoginActivity.class);
+            startActivity(intent);
+        }
     }
 
     @OnClick(R.id.frag_attention_g3_bar)

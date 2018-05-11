@@ -29,6 +29,7 @@ import com.jenkins.newworld.R;
 import com.jenkins.newworld.adapter.common.ListViewAdapter;
 import com.jenkins.newworld.model.live.MirrorModel;
 import com.jenkins.newworld.ui.HorizontalListView;
+import com.jenkins.newworld.util.LiveTipDialog;
 import com.seu.magicfilter.utils.MagicFilterType;
 
 import net.ossrs.yasea.SrsCameraView;
@@ -57,6 +58,7 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
     @BindView(R.id.mirror_listview)
     HorizontalListView mirror_listview;
 
+    private boolean isEditLiveInfo = false;//判断是否已经填写直播间信息。
     //data
     private static final String TAG = "CameraActivity";
     private boolean isStart = false;
@@ -142,22 +144,27 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
 
     //开始直播按钮
     @OnClick(R.id.live_record_start)void activity_record_start(){
-        if (isStart == false){
-            isStart=true;//设定当前为播放状态
-            live_record_bianma.setEnabled(false);//禁用编码切换按钮
-            rtmpUrl = mRempUrlEt.getText().toString();
-            if (TextUtils.isEmpty(rtmpUrl)) {
-                Toast.makeText(getApplicationContext(), "地址不能为空！", Toast.LENGTH_SHORT).show();
+        if (isEditLiveInfo){
+            if (isStart == false){
+                isStart=true;//设定当前为播放状态
+                live_record_bianma.setEnabled(false);//禁用编码切换按钮
+                rtmpUrl = mRempUrlEt.getText().toString();
+                if (TextUtils.isEmpty(rtmpUrl)) {
+                    Toast.makeText(getApplicationContext(), "地址不能为空！", Toast.LENGTH_SHORT).show();
+                }
+                mPublisher.startPublish(rtmpUrl);
+                mPublisher.startCamera();
+                live_record_start.setImageResource(R.mipmap.live_record_stop);
+            }else{
+                isStart=false;//设定当前为停止状态
+                live_record_bianma.setEnabled(true);//使能编码切换按钮
+                mPublisher.stopPublish();
+                mPublisher.stopRecord();
+                live_record_start.setImageResource(R.mipmap.live_record_start);
             }
-            mPublisher.startPublish(rtmpUrl);
-            mPublisher.startCamera();
-            live_record_start.setImageResource(R.mipmap.live_record_stop);
         }else{
-            isStart=false;//设定当前为停止状态
-            live_record_bianma.setEnabled(true);//使能编码切换按钮
-            mPublisher.stopPublish();
-            mPublisher.stopRecord();
-            live_record_start.setImageResource(R.mipmap.live_record_start);
+            new LiveTipDialog(this, R.style.login_tip_dialog).show();
+            isEditLiveInfo = true;
         }
     }
 
@@ -176,7 +183,12 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
     //滤镜切换按钮
     @OnClick(R.id.live_record_mirror)void activity_record_mirror_exchange(){
         if (mirror_listview!=null){
-            mirror_listview.setVisibility(View.VISIBLE);
+            if (mirror_listview.getVisibility()==View.VISIBLE){
+                mirror_listview.setVisibility(View.GONE);
+            }else{
+                mirror_listview.setVisibility(View.VISIBLE);
+            }
+
         }
     }
     //编码方式切换
