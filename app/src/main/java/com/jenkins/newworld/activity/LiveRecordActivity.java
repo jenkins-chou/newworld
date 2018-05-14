@@ -44,6 +44,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHandler.SrsEncodeListener, RtmpHandler.RtmpListener, SrsRecordHandler.SrsRecordListener{
@@ -65,7 +66,8 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
     private SrsPublisher mPublisher;
     private int encoding = 0;//0为硬编码 ，1为软编码
     private String rtmpUrl;
-
+    private String live_name;//直播间名称
+    Unbinder unbinder;
     //权限代码
     private static final int CODE_GALLERY_REQUEST = 0xa0;
     private static final int CODE_CAMERA_REQUEST = 0xa1;
@@ -163,8 +165,8 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
                 live_record_start.setImageResource(R.mipmap.live_record_start);
             }
         }else{
-            new LiveTipDialog(this, R.style.login_tip_dialog).show();
-            isEditLiveInfo = true;
+            final LiveTipDialog dialog = new LiveTipDialog(this, R.style.login_tip_dialog);
+            dialog.show();
         }
     }
 
@@ -381,7 +383,7 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
             }
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.RECORD_AUDIO}, CAMERA_PERMISSIONS_REQUEST_CODE);
         }else{
-            Toast.makeText(this, "已经获取过权限啦，亲", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "已经获取过权限啦，亲", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -392,7 +394,7 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
             //调用系统相机申请拍照权限回调
             case CAMERA_PERMISSIONS_REQUEST_CODE: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "已经获取到权限", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "已经获取到权限", Toast.LENGTH_SHORT).show();
                     initmPublisher();
                 } else {
                     Toast.makeText(this, "请允许打开相机", Toast.LENGTH_SHORT).show();

@@ -5,12 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.activity.LoginActivity;
 import com.jenkins.newworld.activity.RegisterActivity;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -18,53 +21,35 @@ import butterknife.OnClick;
  * Created by zhouzhenjian on 2018/5/7.
  */
 public class LiveTipDialog extends Dialog implements View.OnClickListener{
-        private TextView contentTxt;
-        private TextView titleTxt;
-        private TextView submitTxt;
-        private TextView cancelTxt;
 
-        private Context mContext;
-        private String content;
-        private OnCloseListener listener;
-        private String positiveName;
-        private String negativeName;
-        private String title;
+        private Context context;
+        @BindView(R.id.live_name)
+        EditText live_name;
+        @BindView(R.id.submit)
+        Button submit;
 
         public LiveTipDialog(Context context) {
             super(context);
-            this.mContext = context;
+            this.context = context;
         }
 
         public LiveTipDialog(Context context, int themeResId) {
             super(context, themeResId);
-            this.mContext = context;
+            this.context = context;
         }
 
-        public LiveTipDialog(Context context, int themeResId, String content, OnCloseListener listener) {
-            super(context, themeResId);
-            this.mContext = context;
-            this.content = content;
-            this.listener = listener;
-        }
-
-        protected LiveTipDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
-            super(context, cancelable, cancelListener);
-            this.mContext = context;
-        }
-
-        public LiveTipDialog setTitle(String title){
-            this.title = title;
+        public LiveTipDialog setOnClickListener(View.OnClickListener listener){
+            if (listener!=null){
+                submit.setOnClickListener(listener);
+            }
             return this;
         }
 
-        public LiveTipDialog setPositiveButton(String name){
-            this.positiveName = name;
-            return this;
-        }
-
-        public LiveTipDialog setNegativeButton(String name){
-            this.negativeName = name;
-            return this;
+        public String getLiveName(){
+            if (live_name!=null){
+                return live_name.getText().toString();
+            }
+            return "";
         }
 
         @Override
