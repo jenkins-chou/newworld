@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -51,6 +52,8 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHandler.SrsEncodeListener, RtmpHandler.RtmpListener, SrsRecordHandler.SrsRecordListener, LiveContract.MView{
 
     //view
+    @BindView(R.id.live_name)
+    EditText live_name;
     @BindView(R.id.live_record_bianma)
     ImageView live_record_bianma;
     @BindView(R.id.live_record_start)
@@ -59,16 +62,14 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
     HorizontalListView mirror_listview;
 
     private String live_name_str;//直播间名称
-    LiveTipDialog dialog;//填写直播间的弹窗
 
     //data
     private Context context;
     private LivePresenter livePresenter;
-    private static final String TAG = "CameraActivity";
     private boolean isStart = false;
     private SrsPublisher mPublisher;
     private int encoding = 0;//0为硬编码 ，1为软编码
-    private String rtmpUrl = "";
+    private String rtmpUrl = "rtmp://139.199.205.207:1935/live/";
     Unbinder unbinder;
     //权限代码
     private static final int CAMERA_PERMISSIONS_REQUEST_CODE = 0x03;
@@ -82,7 +83,6 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
         initMirrorListView();
         context = this;
         livePresenter = new LivePresenter(this,this);//初始化presenter
-        dialog = new LiveTipDialog(this, R.style.login_tip_dialog);//填写直播间信息的弹窗.
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
             //没有权限
             autoObtainCameraPermission();
@@ -147,7 +147,7 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
 
     //开始直播按钮
     @OnClick(R.id.live_record_start)void activity_record_start(){
-        live_name_str = dialog.getLive_name_str();
+        live_name_str = live_name.getText().toString();
         if (live_name_str!=null&&!live_name_str.equals("")){
             if (isStart == false){
                 //rtmpUrl = "rtmp://139.199.205.207:1935/live/livestream";
@@ -166,7 +166,6 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
                 live_record_start.setImageResource(R.mipmap.live_record_start);
             }
         }else{
-            dialog.show();
         }
     }
 
@@ -435,6 +434,7 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
             ResultModel resultModel = (ResultModel) object;
             if (resultModel.getStatus().equals("200")){
                 //200表示增加成功
+                live_name.setFocusable(false);//禁止重新输入直播间名称
                 isStart=true;//设定当前为播放状态
                 live_record_bianma.setEnabled(false);//禁用编码切换按钮
                 live_record_start.setImageResource(R.mipmap.live_record_stop);
