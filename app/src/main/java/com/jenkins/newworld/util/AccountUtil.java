@@ -9,6 +9,9 @@ import io.vov.vitamio.utils.Log;
  */
 
 public class AccountUtil {
+    public static String getUserID(Context context){
+        return (String)SPHelper.get(context,"user_id","");
+    }
     public static boolean isLogin(Context context){
         boolean result = false;
         if (context==null){

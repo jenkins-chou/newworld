@@ -1,34 +1,33 @@
 package com.jenkins.newworld.activity;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.hardware.Camera;
-import android.net.Uri;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.github.faucamp.simplertmp.RtmpHandler;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.adapter.common.ListViewAdapter;
+import com.jenkins.newworld.api.BaseAPI;
+import com.jenkins.newworld.contract.live.LiveContract;
+import com.jenkins.newworld.model.base.ResultModel;
 import com.jenkins.newworld.model.live.MirrorModel;
+import com.jenkins.newworld.presenter.live.LivePresenter;
 import com.jenkins.newworld.ui.HorizontalListView;
+import com.jenkins.newworld.util.AccountUtil;
+import com.jenkins.newworld.util.CommonDialog;
 import com.jenkins.newworld.util.LiveTipDialog;
 import com.seu.magicfilter.utils.MagicFilterType;
 
@@ -40,18 +39,18 @@ import net.ossrs.yasea.SrsRecordHandler;
 import java.io.IOException;
 import java.net.SocketException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import de.hdodenhof.circleimageview.CircleImageView;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHandler.SrsEncodeListener, RtmpHandler.RtmpListener, SrsRecordHandler.SrsRecordListener{
+public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHandler.SrsEncodeListener, RtmpHandler.RtmpListener, SrsRecordHandler.SrsRecordListener, LiveContract.MView{
 
     //view
-    @BindView(R.id.url)
-    EditText mRempUrlEt;//获取url的输入框
     @BindView(R.id.live_record_bianma)
     ImageView live_record_bianma;
     @BindView(R.id.live_record_start)
@@ -59,21 +58,20 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
     @BindView(R.id.mirror_listview)
     HorizontalListView mirror_listview;
 
-    private boolean isEditLiveInfo = false;//判断是否已经填写直播间信息。
+    private String live_name_str;//直播间名称
+    LiveTipDialog dialog;//填写直播间的弹窗
+
     //data
+    private Context context;
+    private LivePresenter livePresenter;
     private static final String TAG = "CameraActivity";
     private boolean isStart = false;
     private SrsPublisher mPublisher;
     private int encoding = 0;//0为硬编码 ，1为软编码
-    private String rtmpUrl;
-    private String live_name;//直播间名称
+    private String rtmpUrl = "";
     Unbinder unbinder;
     //权限代码
-    private static final int CODE_GALLERY_REQUEST = 0xa0;
-    private static final int CODE_CAMERA_REQUEST = 0xa1;
-    private static final int CODE_RESULT_REQUEST = 0xa2;
     private static final int CAMERA_PERMISSIONS_REQUEST_CODE = 0x03;
-    private static final int STORAGE_PERMISSIONS_REQUEST_CODE = 0x04;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,6 +80,9 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
         setContentView(R.layout.activity_live_record);
         ButterKnife.bind(this);
         initMirrorListView();
+        context = this;
+        livePresenter = new LivePresenter(this,this);//初始化presenter
+        dialog = new LiveTipDialog(this, R.style.login_tip_dialog);//填写直播间信息的弹窗.
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
             //没有权限
             autoObtainCameraPermission();
@@ -146,17 +147,17 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
 
     //开始直播按钮
     @OnClick(R.id.live_record_start)void activity_record_start(){
-        if (isEditLiveInfo){
+        live_name_str = dialog.getLive_name_str();
+        if (live_name_str!=null&&!live_name_str.equals("")){
             if (isStart == false){
-                isStart=true;//设定当前为播放状态
-                live_record_bianma.setEnabled(false);//禁用编码切换按钮
-                rtmpUrl = mRempUrlEt.getText().toString();
-                if (TextUtils.isEmpty(rtmpUrl)) {
-                    Toast.makeText(getApplicationContext(), "地址不能为空！", Toast.LENGTH_SHORT).show();
-                }
-                mPublisher.startPublish(rtmpUrl);
-                mPublisher.startCamera();
-                live_record_start.setImageResource(R.mipmap.live_record_stop);
+                //rtmpUrl = "rtmp://139.199.205.207:1935/live/livestream";
+                rtmpUrl = BaseAPI.rtmp_url + "/live/"+ AccountUtil.getUserID(this)+"/"+live_name_str;
+                Map<String,Object> params = new HashMap<String,Object>();
+                params.put("live_name",live_name_str);
+                params.put("live_url",rtmpUrl);
+                params.put("live_author_id",AccountUtil.getUserID(this));
+                params.put("live_status","start");
+                livePresenter.addLive(params);
             }else{
                 isStart=false;//设定当前为停止状态
                 live_record_bianma.setEnabled(true);//使能编码切换按钮
@@ -165,14 +166,24 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
                 live_record_start.setImageResource(R.mipmap.live_record_start);
             }
         }else{
-            final LiveTipDialog dialog = new LiveTipDialog(this, R.style.login_tip_dialog);
             dialog.show();
         }
     }
 
-    //摄像头切换按钮
+    //关闭录制按钮
     @OnClick(R.id.live_record_close)void live_record_close(){
-        this.finish();
+        CommonDialog.showConfirmDialog(this,"","是否关闭录制",new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sDialog) {
+                sDialog.dismissWithAnimation();
+                Map<String, Object> params = new HashMap<String,Object>();
+                params.put("live_name",live_name_str);
+                params.put("live_author_id",AccountUtil.getUserID(context));
+                livePresenter.removeLive(params);
+                finish();
+            }
+        });
+        //this.finish();
     }
     //摄像头切换按钮
     @OnClick(R.id.live_record_camera)void activity_record_exchange_camera(){
@@ -208,8 +219,6 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
             mPublisher.switchToHardEncoder();
         }
     }
-
-
 
     @Override
     protected void onResume() {
@@ -400,6 +409,51 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
                     Toast.makeText(this, "请允许打开相机", Toast.LENGTH_SHORT).show();
                 }
                 break;
+            }
+        }
+    }
+
+    //网络请求返回函数
+    @Override
+    public void success(Object object) {
+
+    }
+
+    @Override
+    public void failed(Object object) {
+
+    }
+
+    @Override
+    public void completed(Object object) {
+
+    }
+
+    @Override
+    public void addLiveResult(Object object) {
+        if (object!=null){
+            ResultModel resultModel = (ResultModel) object;
+            if (resultModel.getStatus().equals("200")){
+                //200表示增加成功
+                isStart=true;//设定当前为播放状态
+                live_record_bianma.setEnabled(false);//禁用编码切换按钮
+                live_record_start.setImageResource(R.mipmap.live_record_stop);
+                mPublisher.startPublish(rtmpUrl);
+                mPublisher.startCamera();
+            }
+        }
+    }
+
+    @Override
+    public void removeLiveResult(Object object) {
+        if (object!=null){
+            ResultModel resultModel = (ResultModel) object;
+            if (resultModel.getStatus().equals("200")){
+                //200表示增加成功
+                //mPublisher.stopRecord();
+                finish();
+            }else{
+                finish();
             }
         }
     }

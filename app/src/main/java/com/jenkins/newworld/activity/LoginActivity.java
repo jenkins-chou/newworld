@@ -76,6 +76,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.MV
             if (users!=null){
                 if (users.size()>=1){
                     //CommonDialog.showSuccessDialog(this,"","登录成功");
+                    SPHelper.put(this,"user_id",users.get(0).getUser_id());
                     SPHelper.put(this,"user_name",users.get(0).getUser_name());
                     SPHelper.put(this,"user_pass",users.get(0).getUser_pass());
                     SPHelper.put(this,"user_avatar_url",users.get(0).getUser_avatar_url());

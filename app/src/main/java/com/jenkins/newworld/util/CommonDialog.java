@@ -57,17 +57,12 @@ public class CommonDialog {
     }
 
     //显示带确认按钮和监听器的dialog
-    public static void showConfirmDialog(Context context,String title,String message){
+    public static void showConfirmDialog(Context context,String title,String message,SweetAlertDialog.OnSweetClickListener onSweetClickListener){
         new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE)
-                .setTitleText("Are you sure?")
-                .setContentText("Won't be able to recover this file!")
-                .setConfirmText("Yes,delete it!")
-                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sDialog) {
-                        sDialog.dismissWithAnimation();
-                    }
-                })
+                .setTitleText(title+"")
+                .setContentText(message+"")
+                .setConfirmText("确定")
+                .setConfirmClickListener(onSweetClickListener)
                 .show();
     }
     //显示带取消按钮和监听器的dialog

@@ -24,4 +24,12 @@ public interface ApiService {
     @POST("user/adduser")
     Observable<ResultModel<ArrayList<User>>> register(@Body RequestBody body);
 
+    //addlive
+    @POST("live/addlive")
+    Observable<ResultModel<String>> addlive(@Body RequestBody body);
+
+    //removelive
+    @POST("live/removelive")
+    Observable<ResultModel<String>> removelive(@Body RequestBody body);
+
 }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.activity.LoginActivity;
@@ -23,33 +24,31 @@ import butterknife.OnClick;
 public class LiveTipDialog extends Dialog implements View.OnClickListener{
 
         private Context context;
+        private String live_name_str;
         @BindView(R.id.live_name)
         EditText live_name;
-        @BindView(R.id.submit)
-        Button submit;
+        @OnClick(R.id.submit)void setSubmit(){
+            //Toast.makeText(context, "提交", Toast.LENGTH_SHORT).show();
+            live_name_str = live_name.getText().toString();
+            if (live_name_str!=null&&!live_name_str.equals("")){
+                this.dismiss();
+            }else{
+                Toast.makeText(context, "直播间名称不能为空", Toast.LENGTH_SHORT).show();
+            }
+        }
 
         public LiveTipDialog(Context context) {
             super(context);
             this.context = context;
         }
 
+        public String getLive_name_str(){
+            return live_name_str;
+        }
+
         public LiveTipDialog(Context context, int themeResId) {
             super(context, themeResId);
             this.context = context;
-        }
-
-        public LiveTipDialog setOnClickListener(View.OnClickListener listener){
-            if (listener!=null){
-                submit.setOnClickListener(listener);
-            }
-            return this;
-        }
-
-        public String getLiveName(){
-            if (live_name!=null){
-                return live_name.getText().toString();
-            }
-            return "";
         }
 
         @Override
