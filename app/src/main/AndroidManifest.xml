@@ -52,6 +52,7 @@
         <!-- 直播录制界面 -->
         <activity
             android:name=".activity.LiveRecordActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
             android:screenOrientation="portrait"
             android:theme="@style/TranslucentTheme" />
         <!-- 直播播放界面 -->

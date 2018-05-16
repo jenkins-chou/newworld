@@ -28,10 +28,6 @@ public class LivePlayActivity extends Activity implements MediaPlayer.OnBufferin
     private SurfaceView mPreview;
     private SurfaceHolder holder;
     private String path;
-    private static final int LOCAL_AUDIO = 1;
-    private static final int STREAM_AUDIO = 2;
-    private static final int RESOURCES_AUDIO = 3;
-    private static final int LOCAL_VIDEO = 4;
     private static final int STREAM_VIDEO = 5;
     private boolean mIsVideoSizeKnown = false;
     private boolean mIsVideoReadyToBePlayed = false;
@@ -39,27 +35,24 @@ public class LivePlayActivity extends Activity implements MediaPlayer.OnBufferin
     @OnClick(R.id.close)void close(){
         finish();
     }
-    /**
-     *
-     * Called when the activity is first created.
-     */
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         Vitamio.isInitialized(getApplicationContext());
         setContentView(R.layout.activity_live_play);
         ButterKnife.bind(this);
+
         mPreview = (SurfaceView) findViewById(R.id.surface);
         holder = mPreview.getHolder();
         holder.addCallback(this);
         holder.setFormat(PixelFormat.RGBA_8888);
+
     }
 
-    private void playVideo(Integer Media) {
+    private void playVideo() {
         doCleanUp();
         try {
             path="rtmp://139.199.205.207:1935/live/livestream";
-            // Create a new media player and set the listeners
             mMediaPlayer = new MediaPlayer(this);
             mMediaPlayer.setDataSource(path);
             mMediaPlayer.setDisplay(holder);
@@ -113,7 +106,7 @@ public class LivePlayActivity extends Activity implements MediaPlayer.OnBufferin
 
     public void surfaceCreated(SurfaceHolder holder) {
         Log.d(TAG, "surfaceCreated called");
-        playVideo(STREAM_VIDEO);
+        playVideo();
 
     }
 

@@ -4,18 +4,24 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.PixelFormat;
 import android.hardware.Camera;
+import android.media.AudioManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.github.faucamp.simplertmp.RtmpHandler;
@@ -48,9 +54,16 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import io.vov.vitamio.MediaPlayer;
+import io.vov.vitamio.Vitamio;
 
-public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHandler.SrsEncodeListener, RtmpHandler.RtmpListener, SrsRecordHandler.SrsRecordListener, LiveContract.MView{
+public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHandler.SrsEncodeListener,
+        RtmpHandler.RtmpListener,
+        SrsRecordHandler.SrsRecordListener,
+        LiveContract.MView
+        {
 
+    private static final String TAG = "LiveRecordActivity";
     //view
     @BindView(R.id.live_name)
     EditText live_name;
@@ -59,7 +72,9 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
     @BindView(R.id.live_record_start)
     ImageView live_record_start;
     @BindView(R.id.mirror_listview)
-    HorizontalListView mirror_listview;
+    ListView mirror_listview;
+//    @BindView(R.id.preview_surface)
+//    SurfaceView preview_surface;
 
     private String live_name_str;//直播间名称
 
@@ -69,14 +84,17 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
     private boolean isStart = false;
     private SrsPublisher mPublisher;
     private int encoding = 0;//0为硬编码 ，1为软编码
-    private String rtmpUrl = "rtmp://139.199.205.207:1935/live/";
+    private String rtmpUrl = "";
+
     Unbinder unbinder;
+
     //权限代码
     private static final int CAMERA_PERMISSIONS_REQUEST_CODE = 0x03;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Vitamio.isInitialized(getApplicationContext());
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_live_record);
         ButterKnife.bind(this);
@@ -140,7 +158,7 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
                 if (mPublisher!=null){
                     mPublisher.switchCameraFilter(mirrorDatas.get(position).getType());
                 }
-                mirror_listview.setVisibility(View.GONE);
+                mirror_listview.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -150,8 +168,7 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
         live_name_str = live_name.getText().toString();
         if (live_name_str!=null&&!live_name_str.equals("")){
             if (isStart == false){
-                //rtmpUrl = "rtmp://139.199.205.207:1935/live/livestream";
-                rtmpUrl = BaseAPI.rtmp_url + "/live/"+ AccountUtil.getUserID(this)+"/"+live_name_str;
+                rtmpUrl = BaseAPI.rtmp_url + "/live/"+ AccountUtil.getUserID(this)+live_name_str;
                 Map<String,Object> params = new HashMap<String,Object>();
                 params.put("live_name",live_name_str);
                 params.put("live_url",rtmpUrl);
@@ -166,6 +183,7 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
                 live_record_start.setImageResource(R.mipmap.live_record_start);
             }
         }else{
+            CommonDialog.showBaseDialog(context,"请输入直播间名称");
         }
     }
 
@@ -175,10 +193,7 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
             @Override
             public void onClick(SweetAlertDialog sDialog) {
                 sDialog.dismissWithAnimation();
-                Map<String, Object> params = new HashMap<String,Object>();
-                params.put("live_name",live_name_str);
-                params.put("live_author_id",AccountUtil.getUserID(context));
-                livePresenter.removeLive(params);
+
                 finish();
             }
         });
@@ -196,7 +211,7 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
     @OnClick(R.id.live_record_mirror)void activity_record_mirror_exchange(){
         if (mirror_listview!=null){
             if (mirror_listview.getVisibility()==View.VISIBLE){
-                mirror_listview.setVisibility(View.GONE);
+                mirror_listview.setVisibility(View.INVISIBLE);
             }else{
                 mirror_listview.setVisibility(View.VISIBLE);
             }
@@ -219,6 +234,11 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
         }
     }
 
+    @OnClick(R.id.show_preview)
+    void showPreview(){
+        Toast.makeText(context, "预览", Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -233,7 +253,16 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
             mPublisher.pauseRecord();
     }
 
-    @Override
+            @Override
+            public void finish() {
+                super.finish();
+                Map<String, Object> params = new HashMap<String,Object>();
+                params.put("live_name",live_name_str);
+                params.put("live_author_id",AccountUtil.getUserID(context));
+                livePresenter.removeLive(params);
+            }
+
+            @Override
     protected void onDestroy() {
         super.onDestroy();
         if (mPublisher!=null){
