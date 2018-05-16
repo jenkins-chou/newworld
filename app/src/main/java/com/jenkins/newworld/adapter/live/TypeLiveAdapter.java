@@ -12,8 +12,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
+import com.jenkins.newworld.model.live.LiveModel;
 import com.jenkins.newworld.model.video.Video;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -29,16 +31,16 @@ public class TypeLiveAdapter extends RecyclerView.Adapter<TypeLiveAdapter.TypeLi
 
     private Context mContext;
 
-    private List<Video> Videos;
+    private ArrayList<LiveModel> liveModels;
 
     private LayoutInflater inflater;
 
     //listener
     private OnItemClickListener onItemClickListener;
 
-    public TypeLiveAdapter(Context mContext, List<Video> Videos) {
+    public TypeLiveAdapter(Context mContext, ArrayList<LiveModel> liveModels) {
         this.mContext = mContext;
-        this.Videos = Videos;
+        this.liveModels = liveModels;
         inflater = LayoutInflater.from(mContext);
     }
 
@@ -51,21 +53,24 @@ public class TypeLiveAdapter extends RecyclerView.Adapter<TypeLiveAdapter.TypeLi
 
     @Override
     public void onBindViewHolder(TypeLineHolder holder, int position) {
-        Video contentBean = Videos.get(position);
-        holder.item_title.setText("" + contentBean.getTitle());
+        LiveModel liveModel = liveModels.get(position);
+        holder.item_title.setText("" + liveModel.getLive_name());
         holder.getView().setTag(position);
         Glide.with(mContext)
-                .load(contentBean.getImageUrl())
-                .error(R.mipmap.avatar)
+                .load(R.mipmap.frag_live_start_bg)
+                .error(R.mipmap.frag_live_start_bg)
                 .into(holder.item_imageView);
     }
 
     @Override
     public int getItemCount() {
-        return Videos == null ? 0 : Videos.size();
+        return liveModels == null ? 0 : liveModels.size();
     }
 
-
+    public void setLiveModels(ArrayList<LiveModel> liveModels){
+        this.liveModels = liveModels;
+        notifyDataSetChanged();
+    }
 
     @Override
     public void onClick(View v) {

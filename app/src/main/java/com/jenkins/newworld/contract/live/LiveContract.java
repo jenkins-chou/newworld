@@ -10,5 +10,6 @@ public class LiveContract {
     public interface MView extends BaseCallBack{
         void addLiveResult(Object object);
         void removeLiveResult(Object object);
+        void getLivesResult(Object object);
     }
 }

@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.Toast;
 
@@ -19,6 +20,10 @@ import com.jenkins.newworld.activity.SearchActivity;
 import com.jenkins.newworld.activity.VideoPlayActivity;
 import com.jenkins.newworld.adapter.common.ListViewAdapter;
 import com.jenkins.newworld.adapter.live.TypeLiveAdapter;
+import com.jenkins.newworld.contract.live.LiveContract;
+import com.jenkins.newworld.model.base.ResultModel;
+import com.jenkins.newworld.model.live.LiveModel;
+import com.jenkins.newworld.presenter.live.LivePresenter;
 import com.jenkins.newworld.ui.HorizontalListView;
 import com.jenkins.newworld.util.DataUtil;
 import com.scwang.smartrefresh.header.MaterialHeader;
@@ -27,8 +32,11 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,12 +46,17 @@ import butterknife.OnClick;
  * Created by zhouzhenjian on 2018/4/18.
  */
 
-public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickListener{
+public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickListener,LiveContract.MView{
 
+    private ArrayList<LiveModel> liveModels;
+    private LivePresenter livePresenter;
+    TypeLiveAdapter typeLiveAdapter;
     @BindView(R.id.live_recyclerview)
     RecyclerView live_recyclerview;
     @BindView(R.id.smartRefreshLayout)
     SmartRefreshLayout smartRefreshLayout;
+    @BindView(R.id.tips_image)
+    ImageView tips_image;
     @OnClick(R.id.share_search_bar)void search_bar(){
         Intent intent = new Intent(this.getContext(),SearchActivity.class);
         startActivity(intent);
@@ -61,8 +74,12 @@ public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickLis
         return view;
     }
 
-    public void initData(){
+    public void initData(){smartRefreshLayout.finishRefresh();
         context = this.getContext();
+        liveModels = new ArrayList<LiveModel>();
+        livePresenter = new LivePresenter(context,this);
+        Map<String,Object> params = new HashMap<>();
+        livePresenter.getLives(params);
     }
 
     public void initSmartRefreshLayout(){
@@ -71,13 +88,15 @@ public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickLis
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
+                Map<String,Object> params = new HashMap<>();
+                livePresenter.getLives(params);
                 smartRefreshLayout.finishRefresh();
             }
         });
     }
     public void initRrecyclerview(){
         live_recyclerview.setLayoutManager(new GridLayoutManager(context,2));
-        TypeLiveAdapter typeLiveAdapter = new TypeLiveAdapter(context, DataUtil.getVideoListData());
+        typeLiveAdapter = new TypeLiveAdapter(context, liveModels);
         live_recyclerview.setAdapter(typeLiveAdapter);
         typeLiveAdapter.setOnItemClickListener(this);
     }
@@ -88,5 +107,46 @@ public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickLis
         Intent intent = new Intent(this.getContext(), VideoPlayActivity.class);
         startActivity(intent);
         this.getActivity().overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+    }
+
+    @Override
+    public void success(Object object) {
+
+    }
+
+    @Override
+    public void failed(Object object) {
+
+    }
+
+    @Override
+    public void completed(Object object) {
+
+    }
+
+    @Override
+    public void addLiveResult(Object object) {
+
+    }
+
+    @Override
+    public void removeLiveResult(Object object) {
+
+    }
+
+    @Override
+    public void getLivesResult(Object object) {
+        if (object!=null){
+            ResultModel resultModel = (ResultModel)object;
+            liveModels = (ArrayList<LiveModel>) resultModel.getData();
+            if (liveModels!=null){
+                if (liveModels.size()!=0){
+                    if (typeLiveAdapter!=null){
+                        typeLiveAdapter.setLiveModels(liveModels);
+                    }
+                    tips_image.setVisibility(View.GONE);
+                }
+            }
+        }
     }
 }

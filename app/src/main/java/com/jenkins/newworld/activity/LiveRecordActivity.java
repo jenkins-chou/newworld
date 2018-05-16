@@ -73,8 +73,6 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
     ImageView live_record_start;
     @BindView(R.id.mirror_listview)
     ListView mirror_listview;
-//    @BindView(R.id.preview_surface)
-//    SurfaceView preview_surface;
 
     private String live_name_str;//直播间名称
 
@@ -485,5 +483,9 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
                 finish();
             }
         }
+    }
+
+    @Override
+    public void getLivesResult(Object object) {
     }
 }

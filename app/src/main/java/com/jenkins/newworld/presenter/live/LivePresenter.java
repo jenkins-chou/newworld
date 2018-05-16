@@ -8,6 +8,7 @@ import com.jenkins.newworld.api.ApiService;
 import com.jenkins.newworld.api.ApiUtil;
 import com.jenkins.newworld.contract.live.LiveContract;
 import com.jenkins.newworld.model.base.ResultModel;
+import com.jenkins.newworld.model.live.LiveModel;
 import com.jenkins.newworld.model.user.User;
 
 import java.util.ArrayList;
@@ -65,7 +66,7 @@ public class LivePresenter {
 
     //更新live状态
     public void removeLive(Map<String,Object> params){
-        Log.e("","p-->"+params.toString());
+        //Log.e("","p-->"+params.toString());
         String paramsJson = new Gson().toJson(params);
         RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=utf-8"),paramsJson);
         new ApiUtil(context)
@@ -83,6 +84,38 @@ public class LivePresenter {
                         Toast.makeText(context, ""+resultModel.toString(), Toast.LENGTH_SHORT).show();
                         Log.e("resultModel",resultModel.toString());
                         mView.removeLiveResult(resultModel);
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.print("error"+e);
+                    }
+                    @Override
+                    public void onComplete() {
+                        Log.e("onComplete","onComplete");
+                    }
+                });
+    }
+
+    //获取所有直播间
+    public void getLives(Map<String,Object> params){
+        Log.e("","p-->"+params.toString());
+        String paramsJson = new Gson().toJson(params);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=utf-8"),paramsJson);
+        new ApiUtil(context)
+                .getServer(ApiService.class)
+                .getlives(body)
+                .subscribeOn(Schedulers.io())//后台处理线程
+                .observeOn(AndroidSchedulers.mainThread())//指定回调发生的线程
+                .subscribe(new Observer<ResultModel<ArrayList<LiveModel>>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        System.out.print(d);
+                    }
+                    @Override
+                    public void onNext(ResultModel<ArrayList<LiveModel>> resultModel) {
+                        //Toast.makeText(context, ""+resultModel.toString(), Toast.LENGTH_SHORT).show();
+                        //Log.e("resultModel",resultModel.toString());
+                        mView.getLivesResult(resultModel);
                     }
                     @Override
                     public void onError(Throwable e) {

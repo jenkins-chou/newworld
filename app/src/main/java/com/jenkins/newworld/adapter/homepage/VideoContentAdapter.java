@@ -87,8 +87,8 @@ public class VideoContentAdapter extends RecyclerView.Adapter<VideoContentAdapte
             mController.setLenght(video.getLength());
             Glide.with(itemView.getContext())
                     .load(video.getImageUrl())
-                    .placeholder(R.drawable.img_default)
-                    .error(R.drawable.img_default)
+                    .placeholder(R.mipmap.frag_live_start_bg)
+                    .error(R.mipmap.frag_live_start_bg)
                     //.crossFade()
                     .into(mController.imageView());
             mVideoPlayer.setUp(video.getVideoUrl(), null);

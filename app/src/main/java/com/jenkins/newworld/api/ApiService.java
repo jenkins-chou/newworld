@@ -1,8 +1,10 @@
 package com.jenkins.newworld.api;
 
 import com.jenkins.newworld.model.base.ResultModel;
+import com.jenkins.newworld.model.live.LiveModel;
 import com.jenkins.newworld.model.user.User;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import io.reactivex.Observable;
@@ -31,5 +33,9 @@ public interface ApiService {
     //removelive
     @POST("live/removelive")
     Observable<ResultModel<String>> removelive(@Body RequestBody body);
+
+    //getlives
+    @POST("live/getlives")
+    Observable<ResultModel<ArrayList<LiveModel>>> getlives(@Body RequestBody body);
 
 }
