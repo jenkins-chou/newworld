@@ -20,7 +20,7 @@ public class AccountActivity extends AppCompatActivity {
 
     //view
     @BindView(R.id.user_avatar)
-    CircleImageView user_avatar;//用户头像
+    CircleImageView user_avatar;//用户头像00
     @BindView(R.id.user_name)
     TextView tv_user_name;//用户名
     @BindView(R.id.user_slogan)
