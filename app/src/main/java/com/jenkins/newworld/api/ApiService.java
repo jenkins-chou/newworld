@@ -2,6 +2,7 @@ package com.jenkins.newworld.api;
 
 import com.jenkins.newworld.model.base.ResultModel;
 import com.jenkins.newworld.model.live.LiveModel;
+import com.jenkins.newworld.model.movie.Movie;
 import com.jenkins.newworld.model.user.User;
 
 import java.lang.reflect.Array;
@@ -37,5 +38,13 @@ public interface ApiService {
     //getlives
     @POST("live/getlives")
     Observable<ResultModel<ArrayList<LiveModel>>> getlives(@Body RequestBody body);
+
+    //getAllMovies
+    @POST("movie/getmovies")
+    Observable<ResultModel<ArrayList<Movie>>> getallmovies(@Body RequestBody body);
+
+    //getMovieByType
+    @POST("movie/getMovieByType")
+    Observable<ResultModel<ArrayList<Movie>>> getMovieByType(@Body RequestBody body);
 
 }

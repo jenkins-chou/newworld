@@ -4,8 +4,13 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.jenkins.newworld.presenter.movie.MoviePresenter;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -18,9 +23,9 @@ import static org.junit.Assert.*;
 public class ExampleInstrumentedTest {
     @Test
     public void useAppContext() throws Exception {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
-
-        assertEquals("com.jenkins.newworld", appContext.getPackageName());
+        MoviePresenter presenter = new MoviePresenter();
+        Map<String,Object> params = new HashMap<>();
+        params.put("start",10);
+        presenter.getAllMovies(params);
     }
 }
