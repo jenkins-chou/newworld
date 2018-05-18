@@ -12,6 +12,10 @@ import android.view.ViewGroup;
 
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.adapter.homepage.VideoRvAdapter;
+import com.jenkins.newworld.contract.mv.MvContract;
+import com.jenkins.newworld.model.base.ResultModel;
+import com.jenkins.newworld.model.mv.Mv;
+import com.jenkins.newworld.presenter.mv.MvPresenter;
 import com.jenkins.newworld.util.DataUtil;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -21,6 +25,8 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,10 +35,12 @@ import butterknife.ButterKnife;
  * Created by zhouzhenjian on 2018/4/9.
  */
 
-public class FragHomePage extends Fragment{
+public class FragHomePage extends Fragment implements MvContract.MView{
     //data
     private Context context;
     private RecyclerView mRecyclerView;
+    private MvPresenter mvPresenter;
+    VideoRvAdapter adapter;
     //view
     @BindView(R.id.smartRefreshLayout)
     SmartRefreshLayout smartRefreshLayout;
@@ -51,6 +59,7 @@ public class FragHomePage extends Fragment{
     }
     public void initDatas(){
         context = this.getContext();
+        mvPresenter = new MvPresenter(this,context);
     }
     public void initViews(){
         /**
@@ -68,33 +77,31 @@ public class FragHomePage extends Fragment{
                 smartRefreshLayout.finishRefresh();
             }
         });
+        Map<String,Object> params = new HashMap<>();
+        params.put("start",0);
+        mvPresenter.getMv(params);
     }
 
 
     public void initvideo_list(){
-        VideoRvAdapter adapter = new VideoRvAdapter(context);
+        adapter = new VideoRvAdapter(context);
         video_list.setAdapter(adapter);
         video_list.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-        adapter.addHeader();
-        adapter.addVideoModels((ArrayList)DataUtil.getVideoListData());
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        //TODO now visible to user
     }
     @Override
     public void onPause() {
         super.onPause();
-        //TODO now invisible to user
         NiceVideoPlayerManager.instance().releaseNiceVideoPlayer();
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        //Log.e("frag","gragment-hide");
         NiceVideoPlayerManager.instance().releaseNiceVideoPlayer();
     }
 
@@ -104,4 +111,22 @@ public class FragHomePage extends Fragment{
         NiceVideoPlayerManager.instance().releaseNiceVideoPlayer();
     }
 
+    @Override
+    public void success(Object object) {
+        if (object!=null){
+            ResultModel resultModel = (ResultModel)object;
+            ArrayList<Mv> mvs = (ArrayList<Mv>)resultModel.getData();
+            adapter.updateMv(mvs);
+        }
+    }
+
+    @Override
+    public void failed(Object object) {
+
+    }
+
+    @Override
+    public void completed(Object object) {
+
+    }
 }

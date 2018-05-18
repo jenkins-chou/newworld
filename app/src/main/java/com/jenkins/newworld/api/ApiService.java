@@ -3,6 +3,7 @@ package com.jenkins.newworld.api;
 import com.jenkins.newworld.model.base.ResultModel;
 import com.jenkins.newworld.model.live.LiveModel;
 import com.jenkins.newworld.model.movie.Movie;
+import com.jenkins.newworld.model.mv.Mv;
 import com.jenkins.newworld.model.user.User;
 
 import java.lang.reflect.Array;
@@ -50,5 +51,9 @@ public interface ApiService {
     //getRecommandMovie
     @POST("movie/getMovieByType")
     Observable<ResultModel<ArrayList<Movie>>> getRecommandMovie(@Body RequestBody body);
+
+    //getAllMv
+    @POST("mv/getmvs")
+    Observable<ResultModel<ArrayList<Mv>>> getAllMv(@Body RequestBody body);
 
 }

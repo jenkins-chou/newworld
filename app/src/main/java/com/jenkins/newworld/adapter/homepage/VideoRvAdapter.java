@@ -17,8 +17,10 @@ import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.activity.CategoryActivity;
 import com.jenkins.newworld.activity.RecommandActivity;
+import com.jenkins.newworld.model.mv.Mv;
 import com.jenkins.newworld.model.video.Video;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -37,9 +39,16 @@ public class VideoRvAdapter extends RecyclerView.Adapter {
     private int headerType = 0;
     private int contentType = 1;
     private LayoutInflater inflater;
+    private ArrayList<Mv> mvs;
+    VideoContentAdapter adapter;
     public VideoRvAdapter(Context context){
         this.context = context;
         inflater = LayoutInflater.from(context);
+
+        mvs = new ArrayList<>();
+        adapter = new VideoContentAdapter(context,mvs);
+        addHeader();
+        addVideoModels();
     }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -69,7 +78,7 @@ public class VideoRvAdapter extends RecyclerView.Adapter {
             initHeader(typeHeaderHolder);
         }else if (position==1){
             TypeContentHolder typeContentHolder = (TypeContentHolder)holder;
-            VideoContentAdapter adapter = new VideoContentAdapter(context,videos);
+
             typeContentHolder.rvtype.setLayoutManager(new GridLayoutManager(context,1));
             typeContentHolder.rvtype.setAdapter(adapter);
         }
@@ -143,9 +152,16 @@ public class VideoRvAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
+    public void updateMv(ArrayList<Mv> mvs){
+        System.out.print("updateMv");
+        if (adapter!=null){
+            System.out.print("进入到该方法");
+            adapter.addData(mvs);
+        }
+    }
+
     //添加单列显示的数据
-    public void addVideoModels(ArrayList<Video> videos){
-        this.videos = videos;
+    public void addVideoModels(){
         count ++;
         notifyDataSetChanged();
     }

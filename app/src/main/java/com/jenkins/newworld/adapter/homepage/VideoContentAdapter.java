@@ -10,10 +10,12 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
+import com.jenkins.newworld.model.mv.Mv;
 import com.jenkins.newworld.model.video.Video;
 import com.xiao.nicevideoplayer.NiceVideoPlayer;
 import com.xiao.nicevideoplayer.TxVideoPlayerController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,15 +26,25 @@ public class VideoContentAdapter extends RecyclerView.Adapter<VideoContentAdapte
 
     private Context mContext;
 
-    private List<Video> videos;
+    private ArrayList<Mv> mvs;
 
     private LayoutInflater inflater;
 
 
-    public VideoContentAdapter(Context mContext, List<Video> videos) {
+    public VideoContentAdapter(Context mContext, ArrayList<Mv> mvs) {
         this.mContext = mContext;
-        this.videos = videos;
+        this.mvs = mvs;
         inflater = LayoutInflater.from(mContext);
+    }
+
+    public void addData(ArrayList<Mv> mvs){
+        if (this.mvs==null){
+            this.mvs = new ArrayList<Mv>();
+        }
+        for (Mv mv : mvs){
+            this.mvs.add(mv);
+        }
+        notifyDataSetChanged();
     }
 
     @Override
@@ -46,15 +58,15 @@ public class VideoContentAdapter extends RecyclerView.Adapter<VideoContentAdapte
 
     @Override
     public void onBindViewHolder(VideoViewHolder holder, int position) {
-        Video video = videos.get(position);
-        holder.bindData(video);
+        Mv mv = mvs.get(position);
+        holder.bindData(mv);
 
         ImageView user_avatar = (ImageView)holder.getItemView().findViewById(R.id.user_avatar);
     }
 
     @Override
     public int getItemCount() {
-        return videos == null ? 0 : videos.size();
+        return mvs == null ? 0 : mvs.size();
     }
 
     public class VideoViewHolder extends RecyclerView.ViewHolder {
@@ -82,16 +94,16 @@ public class VideoContentAdapter extends RecyclerView.Adapter<VideoContentAdapte
             return itemView;
         }
 
-        public void bindData(Video video) {
-            mController.setTitle(video.getTitle());
-            mController.setLenght(video.getLength());
+        public void bindData(Mv mv) {
+            mController.setTitle(mv.getMv_name());
+            mController.setLenght(413000);
             Glide.with(itemView.getContext())
-                    .load(video.getImageUrl())
+                    .load(mv.getMv_image())
                     .placeholder(R.mipmap.frag_live_start_bg)
                     .error(R.mipmap.frag_live_start_bg)
                     //.crossFade()
                     .into(mController.imageView());
-            mVideoPlayer.setUp(video.getVideoUrl(), null);
+            mVideoPlayer.setUp(mv.getMv_url(), null);
         }
 
         public void setText(int id,String value){
