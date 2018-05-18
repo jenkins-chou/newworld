@@ -74,11 +74,8 @@ public class FragShare extends Fragment{
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         //插入数据
-        recyclerViewAdapter.setBannerImages(getBanners());//设置banner轮播图
-        recyclerViewAdapter.setCategorys(textArrays);//设置分类菜单
-        recyclerViewAdapter.setFragShareLineModels(getLineDatas());//设置多列显示的数据
-        recyclerViewAdapter.setSingleLineModels(getLineDatas());//设置单列显示的数据
-
+          recyclerViewAdapter.updateLineData(getLineDatas());//刷新分列列显示的数据
+          recyclerViewAdapter.updateSingleLineData(getLineDatas());//刷新单列显示的数据
     }
 
     //获取直播间地址

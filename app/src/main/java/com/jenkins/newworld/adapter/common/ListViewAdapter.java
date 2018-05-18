@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
 
+import org.raphets.roundimageview.RoundImageView;
+
 import java.util.ArrayList;
 
 /**
@@ -161,10 +163,20 @@ public abstract class ListViewAdapter<T> extends BaseAdapter implements View.OnC
         }
         public ViewHolder setImage(int id,String url){
             View view = getView(id);
+            Glide.with(context).load(url).error(R.drawable.img_default).into((ImageView)view);
             if(view instanceof ImageView){
-                Glide.with(context).load(url).error(R.mipmap.avatar).into((ImageView)view);
+                Glide.with(context).load(url).error(R.drawable.img_default).into((ImageView)view);
             }else{
-                Glide.with(context).load(url).error(R.mipmap.avatar).into((ImageView)view);
+                Glide.with(context).load(url).error(R.drawable.img_default).into((ImageView)view);
+            }
+            return this;
+        }
+        public ViewHolder setRoundImage(int id,String url){
+            View view = getView(id);
+            if(view instanceof RoundImageView){
+                Glide.with(context).load(url).error(R.mipmap.frag_live_start_bg).into((RoundImageView)view);
+            }else{
+                Glide.with(context).load(url).error(R.mipmap.frag_live_start_bg).into((RoundImageView)view);
             }
             return this;
         }

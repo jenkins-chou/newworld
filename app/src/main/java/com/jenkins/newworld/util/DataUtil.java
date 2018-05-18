@@ -14,9 +14,9 @@ public class DataUtil {
     public static List<Video> getVideoListData() {
         List<Video> videoList = new ArrayList<>();
         videoList.add(new Video("办公室小野开番外了，居然在办公室开澡堂！老板还点赞？",
-                98000,
+                9800000,
                 "http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-30-43.jpg",
-                "http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-33-30.mp4"));
+                "http://dl185.80s.im:920/1805/[泡菜爱上小龙虾]预告片/[泡菜爱上小龙虾]预告片_hd.mp4"));
         videoList.add(new Video("小野在办公室用丝袜做茶叶蛋 边上班边看《外科风云》",
                 413000,
                 "http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-10_10-09-58.jpg",

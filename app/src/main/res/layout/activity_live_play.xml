@@ -30,4 +30,24 @@
             android:layout_width="25dp"
             android:layout_height="25dp" />
     </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/loading_bar"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/loading"
+            android:src="@drawable/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:textSize="10sp"
+            android:textColor="#fff"
+            android:text="玩命加载中.."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </RelativeLayout>

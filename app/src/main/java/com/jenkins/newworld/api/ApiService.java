@@ -47,4 +47,8 @@ public interface ApiService {
     @POST("movie/getMovieByType")
     Observable<ResultModel<ArrayList<Movie>>> getMovieByType(@Body RequestBody body);
 
+    //getRecommandMovie
+    @POST("movie/getMovieByType")
+    Observable<ResultModel<ArrayList<Movie>>> getRecommandMovie(@Body RequestBody body);
+
 }

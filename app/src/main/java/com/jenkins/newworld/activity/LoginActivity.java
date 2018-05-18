@@ -1,5 +1,6 @@
 package com.jenkins.newworld.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ import io.vov.vitamio.utils.Log;
 public class LoginActivity extends AppCompatActivity implements LoginContract.MView{
 
     public static final int GOTOREGISTER = 100;//跳转注册
+    private Context context;
     private LoginPresenter loginPresenter;
     @BindView(R.id.login_account)
     EditText login_account;
@@ -58,6 +60,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.MV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        context = this;
         initData();
     }
     private void initData(){
@@ -84,6 +87,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.MV
                     SweetAlertDialog.OnSweetClickListener listener = new SweetAlertDialog.OnSweetClickListener() {
                         @Override
                         public void onClick(SweetAlertDialog sDialog) {
+                            Intent intent = new Intent(context,MainActivity.class);
+                            startActivity(intent);
                             finish();
                         }
                     };

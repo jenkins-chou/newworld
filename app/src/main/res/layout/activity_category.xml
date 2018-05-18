@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jenkins.newworld.activity.CategoryActivity">
+    <!--header-->
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:fitsSystemWindows="true"
+        android:id="@+id/live_topbar"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/common_back_black"
+            android:layout_width="wrap_content"
+            android:layout_height="39dp" />
+        <LinearLayout
+            android:id="@+id/share_search_bar"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/img_back"
+            android:layout_toLeftOf="@+id/frag_share_record_icon"
+            android:background="@drawable/frag_share_searchbar"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="28dp">
+            <ImageView
+                android:src="@mipmap/frag_share_search_icon"
+                android:layout_marginLeft="10dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <TextView
+                android:text="搜索"
+                android:textColor="#8a8a8a"
+                android:textSize="14sp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/frag_share_record_icon"
+            android:id="@+id/frag_share_record_icon"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+        <com.jenkins.newworld.ui.RainbowLine
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="1sp" />
+    </RelativeLayout>
+    <!--header-->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:src="@mipmap/movies_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:text="全部频道"
+                android:textColor="#444"
+                android:textSize="17sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:text="喜剧"
+                android:textColor="#666"
+                android:layout_weight="1"
+                android:background="#f0f0f0"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+            <Button
+                android:text="战争"
+                android:textColor="#666"
+                android:layout_weight="1"
+                android:background="#f0f0f0"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+            <Button
+                android:text="动作"
+                android:textColor="#666"
+                android:layout_weight="1"
+                android:background="#f0f0f0"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:text="奇幻"
+                android:textColor="#666"
+                android:layout_weight="1"
+                android:background="#f0f0f0"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+            <Button
+                android:text="动画"
+                android:textColor="#666"
+                android:layout_weight="1"
+                android:background="#f0f0f0"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+            <Button
+                android:text="爱情"
+                android:textColor="#666"
+                android:layout_weight="1"
+                android:background="#f0f0f0"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:text="犯罪"
+                android:textColor="#666"
+                android:layout_weight="1"
+                android:background="#f0f0f0"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+            <Button
+                android:text="剧情"
+                android:textColor="#666"
+                android:layout_weight="1"
+                android:background="#f0f0f0"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+            <Button
+                android:text="悬疑"
+                android:textColor="#666"
+                android:layout_weight="1"
+                android:background="#f0f0f0"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

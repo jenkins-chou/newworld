@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.model.frag.FragShareLineModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -27,14 +28,14 @@ public class TypeSingleLineAdapter extends RecyclerView.Adapter<TypeSingleLineAd
 
     private Context mContext;
 
-    private List<FragShareLineModel> fragShareLineModels;
+    private ArrayList<FragShareLineModel> fragShareLineModels;
 
     private LayoutInflater inflater;
 
 
-    public TypeSingleLineAdapter(Context mContext, List<FragShareLineModel> fragShareLineModels) {
+    public TypeSingleLineAdapter(Context mContext) {
         this.mContext = mContext;
-        this.fragShareLineModels = fragShareLineModels;
+        this.fragShareLineModels = new ArrayList<>();
         inflater = LayoutInflater.from(mContext);
     }
 
@@ -56,6 +57,15 @@ public class TypeSingleLineAdapter extends RecyclerView.Adapter<TypeSingleLineAd
     @Override
     public int getItemCount() {
         return fragShareLineModels == null ? 0 : fragShareLineModels.size();
+    }
+
+    public void addData(ArrayList<FragShareLineModel> fragShareLineModels) {
+        if (fragShareLineModels!=null){
+            for (int i = 0;i<fragShareLineModels.size();i++){
+                this.fragShareLineModels.add(fragShareLineModels.get(i));
+            }
+        }
+        notifyDataSetChanged();
     }
 
     public class TypeLineHolder extends RecyclerView.ViewHolder {

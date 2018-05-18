@@ -43,13 +43,13 @@
                 <ImageView
                     android:id="@+id/homepage_btn_logo"
                     android:src="@drawable/main_nav_homepage_btn"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp" />
+                    android:layout_width="24dp"
+                    android:layout_height="24dp" />
                 <TextView
-                    android:text="主页"
+                    android:text="视频"
                     android:textSize="11dp"
                     android:id="@+id/homepage_btn"
-                    android:textColor="@drawable/main_nav_text_btn"
+                    android:textColor="@drawable/main_nav_homepage_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -63,13 +63,13 @@
                 <ImageView
                     android:id="@+id/search_btn_logo"
                     android:src="@drawable/main_nav_search_btn"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp" />
+                    android:layout_width="24dp"
+                    android:layout_height="24dp" />
                 <TextView
-                    android:text="推荐"
+                    android:text="直播"
                     android:textSize="11dp"
                     android:id="@+id/search_btn"
-                    android:textColor="@drawable/main_nav_text_btn"
+                    android:textColor="@drawable/main_nav_search_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -83,13 +83,13 @@
                 <ImageView
                     android:id="@+id/share_btn_logo"
                     android:src="@drawable/main_nav_share_btn"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp" />
+                    android:layout_width="24dp"
+                    android:layout_height="24dp" />
                 <TextView
-                    android:text="NewSaria"
+                    android:text="主页"
                     android:textSize="11dp"
                     android:id="@+id/share_btn"
-                    android:textColor="@drawable/main_nav_text_btn"
+                    android:textColor="@drawable/main_nav_share_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -103,13 +103,13 @@
                 <ImageView
                     android:id="@+id/attention_btn_logo"
                     android:src="@drawable/main_nav_attention_btn"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp" />
+                    android:layout_width="24dp"
+                    android:layout_height="24dp" />
                 <TextView
                     android:text="发现"
                     android:textSize="11dp"
                     android:id="@+id/attention_btn"
-                    android:textColor="@drawable/main_nav_text_btn"
+                    android:textColor="@drawable/main_nav_attention_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -123,13 +123,13 @@
                 <ImageView
                     android:id="@+id/personal_btn_logo"
                     android:src="@drawable/main_nav_account_btn"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp" />
+                    android:layout_width="24dp"
+                    android:layout_height="24dp" />
                 <TextView
                     android:text="个人"
                     android:textSize="11dp"
                     android:id="@+id/personal_btn"
-                    android:textColor="@drawable/main_nav_text_btn"
+                    android:textColor="@drawable/main_nav_account_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>

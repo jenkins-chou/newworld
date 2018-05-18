@@ -27,7 +27,7 @@
         <activity
             android:name=".activity.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/TranslucentTheme"></activity>
+            android:theme="@style/TranslucentTheme" />
         <!-- 测试页 -->
         <activity
             android:name=".activity.TestActivity"
@@ -93,6 +93,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.CategoryActivity"
+            android:theme="@style/TranslucentTheme" />
+        <activity android:name=".activity.RecommandActivity"
+            android:theme="@style/TranslucentTheme"/>
     </application>
 
 </manifest>

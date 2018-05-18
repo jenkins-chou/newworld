@@ -1,6 +1,7 @@
 package com.jenkins.newworld.adapter.homepage;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
+import com.jenkins.newworld.activity.CategoryActivity;
+import com.jenkins.newworld.activity.RecommandActivity;
 import com.jenkins.newworld.model.video.Video;
 
 import java.util.ArrayList;
@@ -121,13 +124,15 @@ public class VideoRvAdapter extends RecyclerView.Adapter {
         allsort_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "allsort_btn", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, CategoryActivity.class);
+                context.startActivity(intent);
             }
         });
         recommand_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "recommand_btn", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, RecommandActivity.class);
+                context.startActivity(intent);
             }
         });
 

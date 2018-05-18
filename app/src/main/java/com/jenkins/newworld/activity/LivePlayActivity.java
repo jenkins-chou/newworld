@@ -1,13 +1,20 @@
 package com.jenkins.newworld.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.PixelFormat;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.jenkins.newworld.R;
@@ -22,12 +29,18 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 public class LivePlayActivity extends Activity implements MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnVideoSizeChangedListener, SurfaceHolder.Callback {
 
     private static final String TAG = "MediaPlayerDemo";
+    private String path;
     private int mVideoWidth;
     private int mVideoHeight;
     private MediaPlayer mMediaPlayer;
-    private SurfaceView mPreview;
+
+    @BindView(R.id.surface)
+    SurfaceView mPreview;
+    @BindView(R.id.loading)
+    ImageView loading;
+    @BindView(R.id.loading_bar)
+    LinearLayout loading_bar;
     private SurfaceHolder holder;
-    private String path;
     private static final int STREAM_VIDEO = 5;
     private boolean mIsVideoSizeKnown = false;
     private boolean mIsVideoReadyToBePlayed = false;
@@ -41,18 +54,29 @@ public class LivePlayActivity extends Activity implements MediaPlayer.OnBufferin
         Vitamio.isInitialized(getApplicationContext());
         setContentView(R.layout.activity_live_play);
         ButterKnife.bind(this);
+        initData();
+    }
 
-        mPreview = (SurfaceView) findViewById(R.id.surface);
+    public void initData(){
+        Intent intent = getIntent();
+        String live_url = intent.getStringExtra("live_url");
+        if(live_url!=null&&!live_url.equals("")){
+            path = live_url;
+        }
+        //Drawable drawable = loading.getDrawable();
+        AnimationDrawable animationDrawable = (AnimationDrawable) loading.getDrawable();
+        animationDrawable.start();
         holder = mPreview.getHolder();
         holder.addCallback(this);
         holder.setFormat(PixelFormat.RGBA_8888);
-
     }
-
     private void playVideo() {
         doCleanUp();
         try {
-            path="rtmp://139.199.205.207:1935/live/livestream";
+            if (path.equals("")){
+                Toast.makeText(this, "没有输入路径，取默认路径", Toast.LENGTH_SHORT).show();
+                path="rtmp://139.199.205.207:1935/live/livestream";
+            }
             mMediaPlayer = new MediaPlayer(this);
             mMediaPlayer.setDataSource(path);
             mMediaPlayer.setDisplay(holder);
@@ -67,7 +91,7 @@ public class LivePlayActivity extends Activity implements MediaPlayer.OnBufferin
         }
     }
     public void onBufferingUpdate(MediaPlayer arg0, int percent) {
-
+        //Toast.makeText(this, "percent:"+percent, Toast.LENGTH_SHORT).show();
     }
 
     public void onCompletion(MediaPlayer arg0) {
@@ -76,6 +100,7 @@ public class LivePlayActivity extends Activity implements MediaPlayer.OnBufferin
 
     public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
         Log.v(TAG, "onVideoSizeChanged called");
+        Toast.makeText(this, "invalid video width(" + width + ") or height(" + height + ")",Toast.LENGTH_SHORT).show();
         if (width == 0 || height == 0) {
             Log.e(TAG, "invalid video width(" + width + ") or height(" + height + ")");
             return;
@@ -142,6 +167,7 @@ public class LivePlayActivity extends Activity implements MediaPlayer.OnBufferin
         Log.v(TAG, "startVideoPlayback");
         holder.setFixedSize(mVideoWidth, mVideoHeight);
         mMediaPlayer.start();
+        loading_bar.setVisibility(View.GONE);
     }
 }
 

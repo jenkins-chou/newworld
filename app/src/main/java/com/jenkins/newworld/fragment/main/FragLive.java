@@ -16,6 +16,7 @@ import android.widget.ListAdapter;
 import android.widget.Toast;
 
 import com.jenkins.newworld.R;
+import com.jenkins.newworld.activity.LivePlayActivity;
 import com.jenkins.newworld.activity.SearchActivity;
 import com.jenkins.newworld.activity.VideoPlayActivity;
 import com.jenkins.newworld.adapter.common.ListViewAdapter;
@@ -68,15 +69,18 @@ public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickLis
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_main_live,container,false);
         ButterKnife.bind(this,view);
-        initData();//初始化数据
+        context = this.getContext();
         initSmartRefreshLayout();//设置下拉刷新
         initRrecyclerview();//初始化Rrecyclerview
         return view;
     }
 
-    public void initData(){smartRefreshLayout.finishRefresh();
-        context = this.getContext();
+    public void initData(){
+
         liveModels = new ArrayList<LiveModel>();
+        if (typeLiveAdapter!=null){
+            typeLiveAdapter.clear();
+        }
         livePresenter = new LivePresenter(context,this);
         Map<String,Object> params = new HashMap<>();
         livePresenter.getLives(params);
@@ -88,6 +92,9 @@ public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickLis
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
+                if (typeLiveAdapter!=null){
+                    typeLiveAdapter.clear();
+                }
                 Map<String,Object> params = new HashMap<>();
                 livePresenter.getLives(params);
                 smartRefreshLayout.finishRefresh();
@@ -102,13 +109,19 @@ public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickLis
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        initData();//初始化数据
+    }
+
+    @Override
     public void onItemClick(int position) {
         Toast.makeText(context, "position:"+position, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this.getContext(), VideoPlayActivity.class);
+        Intent intent = new Intent(this.getContext(), LivePlayActivity.class);
+        intent.putExtra("live_url",liveModels.get(position).getLive_url());
         startActivity(intent);
         this.getActivity().overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
     }
-
     @Override
     public void success(Object object) {
 
@@ -145,6 +158,8 @@ public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickLis
                         typeLiveAdapter.setLiveModels(liveModels);
                     }
                     tips_image.setVisibility(View.GONE);
+                }else{
+                    tips_image.setVisibility(View.VISIBLE);
                 }
             }
         }

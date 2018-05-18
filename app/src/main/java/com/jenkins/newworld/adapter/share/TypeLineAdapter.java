@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.model.frag.FragShareLineModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -33,9 +34,9 @@ public class TypeLineAdapter extends RecyclerView.Adapter<TypeLineAdapter.TypeLi
     private LayoutInflater inflater;
 
 
-    public TypeLineAdapter(Context mContext, List<FragShareLineModel> fragShareLineModels) {
+    public TypeLineAdapter(Context mContext) {
         this.mContext = mContext;
-        this.fragShareLineModels = fragShareLineModels;
+        this.fragShareLineModels = new ArrayList<FragShareLineModel>();
         inflater = LayoutInflater.from(mContext);
     }
 
@@ -72,6 +73,16 @@ public class TypeLineAdapter extends RecyclerView.Adapter<TypeLineAdapter.TypeLi
     @Override
     public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
 
+    }
+
+    //添加数据
+    public void addData(ArrayList<FragShareLineModel> fragShareLineModels) {
+        if (fragShareLineModels!=null){
+            for (int i = 0;i<fragShareLineModels.size();i++){
+                this.fragShareLineModels.add(fragShareLineModels.get(i));
+            }
+        }
+        notifyDataSetChanged();
     }
 
     public class TypeLineHolder extends RecyclerView.ViewHolder {

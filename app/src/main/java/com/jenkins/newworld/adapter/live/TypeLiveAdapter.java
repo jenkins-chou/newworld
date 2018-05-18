@@ -83,6 +83,13 @@ public class TypeLiveAdapter extends RecyclerView.Adapter<TypeLiveAdapter.TypeLi
         this.onItemClickListener = onItemClickListener;
     }
 
+    public void clear() {
+        if (liveModels!=null){
+            liveModels.clear();
+            notifyDataSetChanged();
+        }
+    }
+
     public class TypeLineHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.item_title)
         TextView item_title;

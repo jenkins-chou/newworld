@@ -42,13 +42,25 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     private final int Line_mode = 2;//多列显示模式
     private int SingleLine_mode = 3;//单列显示模式
     private int count = 0;
-    private int currentType = 0;
-    private ArrayList<FragShareLineModel> sindleLineModels;
+    private String [] textArrays = new String[]{"this is content No.1","this is content No.2","this is content No.3"};
 
+    TypeLineAdapter lineAdapter;//分列显示adapter
+    TypeSingleLineAdapter singlelineAdapter;//单列显示adapter
+
+    private ArrayList<FragShareLineModel> sindleLineModels;
 
     public RecyclerViewAdapter(Context context){
         this.context = context;
         inflater = LayoutInflater.from(context);
+        sindleLineModels = new ArrayList<>();
+        lineAdapter = new TypeLineAdapter(context);//单列显示的adapter
+        singlelineAdapter= new TypeSingleLineAdapter(context);//单列显示adapter
+
+        setBannerImages(getBanners());//初始化轮播图
+        setCategorys(textArrays);//初始化分类菜单
+        setFragShareLineModels(sindleLineModels);//多列显示
+        setSingleLineModels(sindleLineModels);//单列显示
+
     }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -102,12 +114,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         }else if (position == Line_mode){
             TypeLineHolder holder1 = (TypeLineHolder)holder;
             holder1.rvtype.setLayoutManager(new GridLayoutManager(context, 2));
-            TypeLineAdapter lineAdapter = new TypeLineAdapter(context, fragShareLineModels);
             holder1.rvtype.setAdapter(lineAdapter);
         }else if(position==SingleLine_mode){
             TypeSingleLineHolder holder1 = (TypeSingleLineHolder)holder;
             holder1.rvtype.setLayoutManager(new GridLayoutManager(context, 2));
-            TypeSingleLineAdapter singlelineAdapter = new TypeSingleLineAdapter(context, sindleLineModels);
             holder1.rvtype.setAdapter(singlelineAdapter);
         }
     }
@@ -130,18 +140,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
 
             }
         });
-    }
-    //初始化分类菜单
-    public void initCategory(TypeCategoryHolder holder1, String[] textArray) {
-        LinearLayout linearLayout = (LinearLayout)holder1.rvtype;
-        MarqueeTextView marqueeTv = (MarqueeTextView)linearLayout.findViewById(R.id.marqueeTv);
-        marqueeTv.setTextArraysAndClickListener(textArray, new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-        Log.e("initCategory","initCategory");
     }
 
     @Override
@@ -166,6 +164,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         }
     }
 
+
     //初始化轮播图banner
     public void initBanner(TypeBannerHolder holder,ArrayList<String> datas){
         Log.e("initBanner","initBanner");
@@ -183,28 +182,50 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
                 .start();
     }
 
-    //设置分列显示的数据集
+    //初始化分类菜单
+    public void initCategory(TypeCategoryHolder holder1, String[] textArray) {
+        LinearLayout linearLayout = (LinearLayout)holder1.rvtype;
+        MarqueeTextView marqueeTv = (MarqueeTextView)linearLayout.findViewById(R.id.marqueeTv);
+        marqueeTv.setTextArraysAndClickListener(textArray, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        Log.e("initCategory","initCategory");
+    }
+
+    //添加设置分列显示的数据集
     public void setFragShareLineModels(ArrayList<FragShareLineModel> fragShareLineModels){
         this.fragShareLineModels = fragShareLineModels;
         count ++;
         notifyDataSetChanged();
     }
 
-    //设置单列显示的数据集
+    //添加单列显示的数据集
     public void setSingleLineModels(ArrayList<FragShareLineModel> sindleLineModels){
         this.sindleLineModels = sindleLineModels;
         count ++;
         notifyDataSetChanged();
     }
 
-    //设置分类菜单
+    //添加分类菜单
     public void setCategorys(String[] arrays){
         textArray = arrays;
         count ++;
         notifyDataSetChanged();
     }
 
-    //设置轮播图的数据集
+    //刷新分列显示的数据
+    public void updateLineData(ArrayList<FragShareLineModel> fragShareLineModels){
+        lineAdapter.addData(fragShareLineModels);
+    }
+
+    public void updateSingleLineData(ArrayList<FragShareLineModel> fragShareLineModels){
+        singlelineAdapter.addData(fragShareLineModels);
+    }
+
+    //添加轮播图的数据集
     public void setBannerImages(ArrayList<String> bannerImages){
         this.bannerImages = bannerImages;
         //Log.e("setFragShareLineModels",fragShareLineModels.size()+"");
@@ -250,5 +271,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
         }
     }
 
+    //获取轮播图图片
+    public ArrayList<String> getBanners(){
+        ArrayList<String> result = new ArrayList<>();
+        result.add(new String("http://i1.17173cdn.com/2fhnvk/YWxqaGBf/cms3/tRmNBdblckzgleB.jpg"));
+        result.add(new String("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2430902877,3253634722&fm=11&gp=0.jpg"));
+        result.add(new String("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524119767644&di=7e4d49e2a0fe62cf2970a2d70f5f866c&imgtype=0&src=http%3A%2F%2Fpic3.16pic.com%2F00%2F55%2F07%2F16pic_5507165_b.jpg"));
+        result.add(new String("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524119802221&di=462774704dedd46f548d22eb5c102966&imgtype=0&src=http%3A%2F%2Fp11.aipai.com%2Fphoto%2F980%2F24057980%2Fphoto%2F72%2F2779208%2F2779208_normal.jpg"));
+        result.add(new String("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524119823918&di=4acb671e216d3db38a7b6fd4d2c201b6&imgtype=0&src=http%3A%2F%2Fimg.3dmgame.com%2Fuploads%2Fallimg%2F170516%2F316-1F5161K137.jpg"));
+        return result;
+    }
 
 }
