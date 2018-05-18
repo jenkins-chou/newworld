@@ -174,9 +174,9 @@ public abstract class ListViewAdapter<T> extends BaseAdapter implements View.OnC
         public ViewHolder setRoundImage(int id,String url){
             View view = getView(id);
             if(view instanceof RoundImageView){
-                Glide.with(context).load(url).error(R.mipmap.frag_live_start_bg).into((RoundImageView)view);
+                Glide.with(context).load(url).error(R.mipmap.frag_live_start_bg).placeholder(R.mipmap.frag_live_start_bg).into((RoundImageView)view);
             }else{
-                Glide.with(context).load(url).error(R.mipmap.frag_live_start_bg).into((RoundImageView)view);
+                Glide.with(context).load(url).error(R.mipmap.frag_live_start_bg).placeholder(R.mipmap.frag_live_start_bg).into((RoundImageView)view);
             }
             return this;
         }

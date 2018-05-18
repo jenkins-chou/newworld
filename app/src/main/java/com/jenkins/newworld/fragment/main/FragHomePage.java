@@ -114,8 +114,14 @@ public class FragHomePage extends Fragment implements MvContract.MView{
     @Override
     public void success(Object object) {
         if (object!=null){
+            System.out.println("success");
             ResultModel resultModel = (ResultModel)object;
+
+            //System.out.print("");
             ArrayList<Mv> mvs = (ArrayList<Mv>)resultModel.getData();
+            for (Mv mv : mvs){
+                System.out.println(mv.toString());
+            }
             adapter.updateMv(mvs);
         }
     }

@@ -158,6 +158,7 @@ public class VideoRvAdapter extends RecyclerView.Adapter {
             System.out.print("进入到该方法");
             adapter.addData(mvs);
         }
+        notifyDataSetChanged();
     }
 
     //添加单列显示的数据

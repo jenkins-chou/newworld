@@ -9,6 +9,7 @@ import com.jenkins.newworld.api.ApiUtil;
 import com.jenkins.newworld.contract.recommand.RecommandContract;
 import com.jenkins.newworld.model.base.ResultModel;
 import com.jenkins.newworld.model.movie.Movie;
+import com.jenkins.newworld.model.mv.Mv;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -37,22 +38,22 @@ public class RecommandPresenter {
         this.context = context;
     }
 
-    public void getRecommandMovie(Map<String,Object> params){
+    public void getRecommandMv(Map<String,Object> params){
         Log.e("","p-->"+params.toString());
         String paramsJson = new Gson().toJson(params);
         RequestBody body = RequestBody.create(MediaType.parse("application/json;charset=utf-8"),paramsJson);
         new ApiUtil(context)
                 .getServer(ApiService.class)
-                .getRecommandMovie(body)
+                .getRecommandMv(body)
                 .subscribeOn(Schedulers.io())//后台处理线程
                 .observeOn(AndroidSchedulers.mainThread())//指定回调发生的线程
-                .subscribe(new Observer<ResultModel<ArrayList<Movie>>>() {
+                .subscribe(new Observer<ResultModel<ArrayList<Mv>>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         System.out.print(d);
                     }
                     @Override
-                    public void onNext(ResultModel<ArrayList<Movie>> resultModel) {
+                    public void onNext(ResultModel<ArrayList<Mv>> resultModel) {
 //                        Toast.makeText(context, ""+resultModel.toString(), Toast.LENGTH_SHORT).show();
 //                        Log.e("resultModel",resultModel.toString());
 //                        System.out.println("------------------"+resultModel.toString());

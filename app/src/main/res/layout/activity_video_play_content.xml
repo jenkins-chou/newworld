@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/video_name"
             android:text="西溪路里的美丽传说"
             android:textSize="18sp"
             android:textColor="#000"
@@ -26,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/video_author"
             android:text="David ·"
             android:textColor="#ff6600"
             android:layout_width="wrap_content"
@@ -34,8 +36,9 @@
             android:text="出品人"
             android:layout_marginLeft="2dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" />count
         <TextView
+            android:id="@+id/video_count"
             android:text="100+次播放"
             android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"

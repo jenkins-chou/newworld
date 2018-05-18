@@ -2,15 +2,19 @@ package com.jenkins.newworld.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextDirectionHeuristics;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.adapter.common.ListViewAdapter;
+import com.jenkins.newworld.model.mv.Mv;
 import com.jenkins.newworld.model.video.Comment;
 import com.jenkins.newworld.model.video.Video;
 import com.jenkins.newworld.ui.StaticListView;
@@ -36,6 +40,13 @@ public class VideoPlayActivity extends AppCompatActivity {
     private NiceVideoPlayer mNiceVideoPlayer;
     @BindView(R.id.comment_listview)
     StaticListView comment_listview;
+    @BindView(R.id.video_name)
+    TextView video_name;//视频名称
+    @BindView(R.id.video_author)
+    TextView video_author;//视频author
+    @BindView(R.id.video_count)
+    TextView video_count;//视频观看次数
+
     @OnClick(R.id.img_back)
     void img_back(){
         finish();
@@ -44,7 +55,7 @@ public class VideoPlayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //设置状态栏文字亮色
-        //CommonWindowUtil.FlymeSetStatusBarLightMode(this.getWindow(),false);
+        CommonWindowUtil.FlymeSetStatusBarLightMode(this.getWindow(),false);
         //设置状态栏文字亮色
         CommonWindowUtil.setLightStatusBar(this.getWindow());
         setContentView(R.layout.activity_video_play);
@@ -56,24 +67,42 @@ public class VideoPlayActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        videoUrl = "";
-        imageUrl = "http://imgsrc.baidu.com/image/c0%3Dshijue%2C0%2C0%2C245%2C40/sign=304dee3ab299a9012f38537575fc600e/91529822720e0cf3f8b77cd50046f21fbe09aa5f.jpg";
-        init();
-        initCommentList();//初始化评论列表
+        String model = getIntent().getStringExtra("mv");
+        if (model!=null&&!model.equals("")){
+            Mv mv = new Gson().fromJson(model,Mv.class);
+                System.out.println("----------mv");
+                videoUrl = mv.getMv_url();
+                imageUrl = mv.getMv_image();
+            initMvInfo(mv);
+        }
+        initPlayer();//初始化播放器
+        initCommentList();//初始化推荐列表
     }
-    private void init() {
+
+    //初始化mv数据
+    public void initMvInfo(Mv mv){
+        if (mv!=null){
+            video_name.setText(mv.getMv_name());
+            video_author.setText("老了个周");
+            video_count.setText(mv.getMv_count()+" 次播放");
+        }
+    }
+
+    private void initPlayer() {
+        mNiceVideoPlayer = null;
         mNiceVideoPlayer = (NiceVideoPlayer) findViewById(R.id.nice_video_player);
         mNiceVideoPlayer.setPlayerType(NiceVideoPlayer.TYPE_IJK); // IjkPlayer or MediaPlayer
         TxVideoPlayerController controller = new TxVideoPlayerController(this);
         controller.setTitle("");
         controller.setLenght(117000);
-        controller.setClarity(getClarites(), 0);
+        //controller.setClarity(getClarites(), 0);
         Glide.with(this)
                 .load(imageUrl)
                 .placeholder(R.drawable.img_default)
                 .crossFade()
                 .into(controller.imageView());
         mNiceVideoPlayer.setController(controller);
+        mNiceVideoPlayer.setUp(videoUrl,null);
 }
 
     public List<Clarity> getClarites() {

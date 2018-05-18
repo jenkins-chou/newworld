@@ -56,4 +56,8 @@ public interface ApiService {
     @POST("mv/getmvs")
     Observable<ResultModel<ArrayList<Mv>>> getAllMv(@Body RequestBody body);
 
+    //getAllMv
+    @POST("mv/getrecommandmv")
+    Observable<ResultModel<ArrayList<Mv>>> getRecommandMv(@Body RequestBody body);
+
 }
