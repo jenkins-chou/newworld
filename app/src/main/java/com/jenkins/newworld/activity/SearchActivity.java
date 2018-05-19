@@ -38,7 +38,7 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        CommonWindowUtil.FlymeSetStatusBarLightMode(this.getWindow(),true);
+        CommonWindowUtil.SetStatusBarLightMode(this.getWindow(),true);
         CommonWindowUtil.setLightStatusBar(this.getWindow());
         setContentView(R.layout.activity_search);
         ButterKnife.bind(this);

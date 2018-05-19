@@ -44,7 +44,7 @@ public class RecommandActivity extends AppCompatActivity implements RecommandCon
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //设置状态栏文字
-        CommonWindowUtil.FlymeSetStatusBarLightMode(this.getWindow(),true);
+        CommonWindowUtil.SetStatusBarLightMode(this.getWindow(),true);
         setContentView(R.layout.activity_recommand);
         ButterKnife.bind(this);
         init();

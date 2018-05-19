@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //设置状态栏
-        setStatusBar();
+        CommonWindowUtil.SetStatusBarLightMode(this.getWindow(),true);
         //更改字体
         FontManager.changeFonts(((ViewGroup)findViewById(android.R.id.content)),this);
         setContentView(R.layout.activity_main);
@@ -101,16 +101,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         share_btn.performClick();
         showLoginTipDialog();
     }
-    public void setStatusBar(){
-        int version = android.os.Build.VERSION.SDK_INT;
-        if (version >= 24) {
-            this.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        }else{
-            CommonWindowUtil.FlymeSetStatusBarLightMode(this.getWindow(),true);
-        }
-    }
-
-
 
     public void init(){
         fManager = getSupportFragmentManager();

@@ -24,7 +24,7 @@
         <com.jenkins.newworld.ui.RainbowLine
             android:layout_above="@+id/nav_bar"
             android:layout_width="match_parent"
-            android:layout_height="1px"></com.jenkins.newworld.ui.RainbowLine>
+            android:layout_height="1sp"></com.jenkins.newworld.ui.RainbowLine>
         <LinearLayout
             android:id="@+id/nav_bar"
             android:background="#fff"

@@ -191,7 +191,6 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
             @Override
             public void onClick(SweetAlertDialog sDialog) {
                 sDialog.dismissWithAnimation();
-
                 finish();
             }
         });
@@ -250,15 +249,16 @@ public class LiveRecordActivity extends AppCompatActivity implements SrsEncodeHa
         if (mPublisher!=null)
             mPublisher.pauseRecord();
     }
-
-            @Override
-            public void finish() {
-                super.finish();
-                Map<String, Object> params = new HashMap<String,Object>();
-                params.put("live_name",live_name_str);
-                params.put("live_author_id",AccountUtil.getUserID(context));
-                livePresenter.removeLive(params);
-            }
+    @Override
+    public void finish() {
+           super.finish();
+           Map<String, Object> params = new HashMap<String,Object>();
+           params.put("live_name",live_name_str);
+           params.put("live_author_id",AccountUtil.getUserID(context));
+           System.out.println("live_name:"+live_name_str);
+            System.out.println("live_author_id:"+AccountUtil.getUserID(context));
+           livePresenter.removeLive(params);
+     }
 
             @Override
     protected void onDestroy() {

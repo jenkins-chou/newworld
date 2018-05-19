@@ -16,7 +16,7 @@ public class TestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        CommonWindowUtil.FlymeSetStatusBarLightMode(this.getWindow(),true);
+        CommonWindowUtil.SetStatusBarLightMode(this.getWindow(),true);
         setContentView(R.layout.activity_test);
         ButterKnife.bind(this);
     }

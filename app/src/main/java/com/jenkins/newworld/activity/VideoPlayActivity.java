@@ -55,7 +55,7 @@ public class VideoPlayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //设置状态栏文字亮色
-        CommonWindowUtil.FlymeSetStatusBarLightMode(this.getWindow(),false);
+        CommonWindowUtil.SetStatusBarLightMode(this.getWindow(),false);
         //设置状态栏文字亮色
         CommonWindowUtil.setLightStatusBar(this.getWindow());
         setContentView(R.layout.activity_video_play);
