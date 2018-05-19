@@ -15,7 +15,7 @@ public class CommonWindowUtil {
     //flyme系统修改状态栏文字
     public static boolean FlymeSetStatusBarLightMode(Window window, boolean dark) {
         //状态栏文字深色
-        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        //window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         boolean result = false;
         if (window != null) {
             try {

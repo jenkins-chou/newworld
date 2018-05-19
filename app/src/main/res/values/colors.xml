@@ -28,7 +28,7 @@
     <color name="black">#000</color>
 
     <!--登录页主题背景色-->
-    <color name="login_bg">#ff8800</color>
+    <color name="login_bg">#6bbcff</color>
     <!--彩虹条颜色-->
     <color name="rainbow_red">#FF0000</color>
     <color name="rainbow_orange">#FF7F00</color>

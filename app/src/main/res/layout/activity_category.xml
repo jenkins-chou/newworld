@@ -92,9 +92,9 @@
             android:layout_height="wrap_content">
             <Button
                 android:text="喜剧"
-                android:textColor="#666"
+                android:textColor="#fff"
                 android:layout_weight="1"
-                android:background="#f0f0f0"
+                android:background="#b6d7a8"
                 android:layout_margin="5dp"
                 android:padding="5dp"
                 style="?android:attr/borderlessButtonStyle"
@@ -102,9 +102,9 @@
                 android:layout_height="40dp" />
             <Button
                 android:text="战争"
-                android:textColor="#666"
+                android:textColor="#fff"
                 android:layout_weight="1"
-                android:background="#f0f0f0"
+                android:background="#a2c4c9"
                 android:layout_margin="5dp"
                 android:padding="5dp"
                 style="?android:attr/borderlessButtonStyle"
@@ -112,9 +112,9 @@
                 android:layout_height="40dp" />
             <Button
                 android:text="动作"
-                android:textColor="#666"
+                android:textColor="#fff"
                 android:layout_weight="1"
-                android:background="#f0f0f0"
+                android:background="#a4c2f4"
                 android:layout_margin="5dp"
                 android:padding="5dp"
                 style="?android:attr/borderlessButtonStyle"
@@ -128,9 +128,9 @@
             android:layout_height="wrap_content">
             <Button
                 android:text="奇幻"
-                android:textColor="#666"
+                android:textColor="#fff"
                 android:layout_weight="1"
-                android:background="#f0f0f0"
+                android:background="#abdb96"
                 android:layout_margin="5dp"
                 android:padding="5dp"
                 style="?android:attr/borderlessButtonStyle"
@@ -138,9 +138,9 @@
                 android:layout_height="40dp" />
             <Button
                 android:text="动画"
-                android:textColor="#666"
+                android:textColor="#fff"
                 android:layout_weight="1"
-                android:background="#f0f0f0"
+                android:background="#76a5af"
                 android:layout_margin="5dp"
                 android:padding="5dp"
                 style="?android:attr/borderlessButtonStyle"
@@ -148,9 +148,9 @@
                 android:layout_height="40dp" />
             <Button
                 android:text="爱情"
-                android:textColor="#666"
+                android:textColor="#fff"
                 android:layout_weight="1"
-                android:background="#f0f0f0"
+                android:background="#6d9eeb"
                 android:layout_margin="5dp"
                 android:padding="5dp"
                 style="?android:attr/borderlessButtonStyle"
@@ -164,9 +164,9 @@
             android:layout_height="wrap_content">
             <Button
                 android:text="犯罪"
-                android:textColor="#666"
+                android:textColor="#fff"
                 android:layout_weight="1"
-                android:background="#f0f0f0"
+                android:background="#80ae6c"
                 android:layout_margin="5dp"
                 android:padding="5dp"
                 style="?android:attr/borderlessButtonStyle"
@@ -174,9 +174,9 @@
                 android:layout_height="40dp" />
             <Button
                 android:text="剧情"
-                android:textColor="#666"
+                android:textColor="#fff"
                 android:layout_weight="1"
-                android:background="#f0f0f0"
+                android:background="#6f9da7"
                 android:layout_margin="5dp"
                 android:padding="5dp"
                 style="?android:attr/borderlessButtonStyle"
@@ -184,9 +184,9 @@
                 android:layout_height="40dp" />
             <Button
                 android:text="悬疑"
-                android:textColor="#666"
+                android:textColor="#fff"
                 android:layout_weight="1"
-                android:background="#f0f0f0"
+                android:background="#5683ca"
                 android:layout_margin="5dp"
                 android:padding="5dp"
                 style="?android:attr/borderlessButtonStyle"
@@ -195,4 +195,65 @@
         </LinearLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:src="@mipmap/videos_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:text="短视频"
+                android:textColor="#444"
+                android:textSize="17sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:text="幽默"
+                android:textColor="#fff"
+                android:layout_weight="1"
+                android:background="#dd7e6b"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+            <Button
+                android:text="日常"
+                android:textColor="#fff"
+                android:layout_weight="1"
+                android:background="#e06666"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+            <Button
+                android:text="解说"
+                android:textColor="#fff"
+                android:layout_weight="1"
+                android:background="#e69138"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
