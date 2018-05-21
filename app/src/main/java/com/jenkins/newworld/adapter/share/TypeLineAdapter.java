@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,7 +41,7 @@ public class TypeLineAdapter extends RecyclerView.Adapter<TypeLineAdapter.TypeLi
 
     @Override
     public TypeLineHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new TypeLineHolder(inflater.inflate(R.layout.frag_main_share_recyclerview_line_item, parent, false));
+        return new TypeLineHolder(inflater.inflate(R.layout.frag_main_homepage_recyclerview_line_item, parent, false));
     }
 
     @Override

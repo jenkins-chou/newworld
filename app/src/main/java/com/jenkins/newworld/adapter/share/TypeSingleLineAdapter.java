@@ -3,19 +3,16 @@ package com.jenkins.newworld.adapter.share;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.model.frag.FragShareLineModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,7 +38,7 @@ public class TypeSingleLineAdapter extends RecyclerView.Adapter<TypeSingleLineAd
 
     @Override
     public TypeLineHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new TypeLineHolder(inflater.inflate(R.layout.frag_main_share_recyclerview_singleline_item, parent, false));
+        return new TypeLineHolder(inflater.inflate(R.layout.frag_main_homepage_recyclerview_singleline_item, parent, false));
     }
 
     @Override

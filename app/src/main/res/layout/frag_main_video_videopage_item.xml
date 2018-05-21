@@ -37,12 +37,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-
-        <ImageView
+        <TextView
+            android:layout_centerVertical="true"
+            android:id="@+id/watch_count"
+            android:text="观看次数"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/frag_homepage_more"
-            android:layout_width="25dp"
-            android:layout_height="25dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
     <View
         android:background="#f3f3f3"

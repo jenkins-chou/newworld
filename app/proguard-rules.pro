@@ -21,3 +21,5 @@
 #-renamesourcefileattribute SourceFile
 -keep class com\hengyi.** { *; }
 -keep class tv\danmaku.** { *; }
+-keep class com.wang.avi.** { *; }
+-keep class com.wang.avi.indicators.** { *; }

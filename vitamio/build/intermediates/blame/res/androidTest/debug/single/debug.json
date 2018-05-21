@@ -12,12 +12,12 @@
         "source": "C:\\AppWorkSpace\\newworld\\vitamio\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_pressed_holo.png"
     },
     {
-        "merged": "C:\\AppWorkSpace\\newworld\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_scrubber_primary_holo.9.png.flat",
-        "source": "C:\\AppWorkSpace\\newworld\\vitamio\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_primary_holo.9.png"
-    },
-    {
         "merged": "D:\\git\\newworld\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_scrubber_control_focused_holo.png.flat",
         "source": "D:\\git\\newworld\\vitamio\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png"
+    },
+    {
+        "merged": "C:\\AppWorkSpace\\newworld\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_scrubber_primary_holo.9.png.flat",
+        "source": "C:\\AppWorkSpace\\newworld\\vitamio\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_primary_holo.9.png"
     },
     {
         "merged": "D:\\git\\newworld\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_mediacontroller.xml.flat",

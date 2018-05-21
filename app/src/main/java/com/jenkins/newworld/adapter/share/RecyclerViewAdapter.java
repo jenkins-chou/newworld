@@ -66,7 +66,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType==Banner_mode){
             //轮播图
-            View view = inflater.inflate(R.layout.frag_main_share_content_banner, parent, false);
+            View view = inflater.inflate(R.layout.frag_main_homepage_content_banner, parent, false);
             StaggeredGridLayoutManager.LayoutParams params2 =
                     (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
             params2.setFullSpan(true);
@@ -74,7 +74,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             return new TypeBannerHolder(view);
         }else if(viewType==Category_mode){
             //category
-            View view = inflater.inflate(R.layout.frag_main_share_content_navbar, parent, false);
+            View view = inflater.inflate(R.layout.frag_main_homepage_content_navbar, parent, false);
             StaggeredGridLayoutManager.LayoutParams params2 =
                     (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
             params2.setFullSpan(true);
@@ -82,7 +82,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             return new TypeCategoryHolder(view);
         }else if(viewType==Line_mode){
             //多列显示
-            View view = inflater.inflate(R.layout.frag_main_share_recyclerview_line, parent, false);
+            View view = inflater.inflate(R.layout.frag_main_homepage_recyclerview_line, parent, false);
             StaggeredGridLayoutManager.LayoutParams params2 =
                     (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
             params2.setFullSpan(true);
@@ -90,7 +90,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
             return new TypeLineHolder(view);
         }else if(viewType==SingleLine_mode){
             //单列显示
-            View view = inflater.inflate(R.layout.frag_main_share_recyclerview_singleline, parent, false);
+            View view = inflater.inflate(R.layout.frag_main_homepage_recyclerview_singleline, parent, false);
             StaggeredGridLayoutManager.LayoutParams params2 =
                     (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
             params2.setFullSpan(true);

@@ -34,7 +34,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoViewHolder> {
 
     @Override
     public VideoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(mContext).inflate(R.layout.frag_main_homepage_video_item, parent, false);
+        View itemView = LayoutInflater.from(mContext).inflate(R.layout.frag_main_video_item, parent, false);
         VideoViewHolder holder = new VideoViewHolder(itemView);
         TxVideoPlayerController controller = new TxVideoPlayerController(mContext);
         holder.setController(controller);

@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
@@ -20,7 +19,6 @@ import com.jenkins.newworld.activity.RecommandActivity;
 import com.jenkins.newworld.model.mv.Mv;
 import com.jenkins.newworld.model.video.Video;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -54,14 +52,14 @@ public class VideoRvAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == headerType){
             //头部菜单
-            View view = inflater.inflate(R.layout.frag_main_homepage_videopage_header, parent, false);
+            View view = inflater.inflate(R.layout.frag_main_video_videopage_header, parent, false);
             StaggeredGridLayoutManager.LayoutParams params2 =
                     (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
             params2.setFullSpan(true);
             view.setLayoutParams(params2);
             return new TypeHeaderHolder(view);
         }else if(viewType == contentType){
-            View view = inflater.inflate(R.layout.frag_main_homepage_videopage_content, parent, false);
+            View view = inflater.inflate(R.layout.frag_main_video_videopage_content, parent, false);
             StaggeredGridLayoutManager.LayoutParams params2 =
                     (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
             params2.setFullSpan(true);
@@ -78,7 +76,6 @@ public class VideoRvAdapter extends RecyclerView.Adapter {
             initHeader(typeHeaderHolder);
         }else if (position==1){
             TypeContentHolder typeContentHolder = (TypeContentHolder)holder;
-
             typeContentHolder.rvtype.setLayoutManager(new GridLayoutManager(context,1));
             typeContentHolder.rvtype.setAdapter(adapter);
         }
@@ -153,9 +150,9 @@ public class VideoRvAdapter extends RecyclerView.Adapter {
     }
 
     public void updateMv(ArrayList<Mv> mvs){
-        System.out.print("updateMv");
+        //System.out.print("updateMv");
         if (adapter!=null){
-            System.out.print("进入到该方法");
+            //System.out.print("进入到该方法");
             adapter.addData(mvs);
         }
         notifyDataSetChanged();

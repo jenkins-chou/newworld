@@ -11,12 +11,10 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.model.mv.Mv;
-import com.jenkins.newworld.model.video.Video;
 import com.xiao.nicevideoplayer.NiceVideoPlayer;
 import com.xiao.nicevideoplayer.TxVideoPlayerController;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by zhouzhenjian on 2018/4/17.
@@ -49,7 +47,7 @@ public class VideoContentAdapter extends RecyclerView.Adapter<VideoContentAdapte
 
     @Override
     public VideoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View item  = inflater.inflate(R.layout.frag_main_homepage_videopage_item, parent, false);
+        View item  = inflater.inflate(R.layout.frag_main_video_videopage_item, parent, false);
         VideoViewHolder holder = new VideoViewHolder(item);
         TxVideoPlayerController controller = new TxVideoPlayerController(mContext);
         holder.setController(controller);
@@ -62,6 +60,8 @@ public class VideoContentAdapter extends RecyclerView.Adapter<VideoContentAdapte
         holder.bindData(mv);
 
         ImageView user_avatar = (ImageView)holder.getItemView().findViewById(R.id.user_avatar);
+        TextView watch_count = (TextView) holder.getItemView().findViewById(R.id.watch_count);
+        watch_count.setText(mv.getMv_count()+"次播放");
     }
 
     @Override
@@ -95,6 +95,7 @@ public class VideoContentAdapter extends RecyclerView.Adapter<VideoContentAdapte
         }
 
         public void bindData(Mv mv) {
+
             mController.setTitle(mv.getMv_name());
             mController.setLenght(413000);
             Glide.with(itemView.getContext())

@@ -1,7 +1,6 @@
 package com.jenkins.newworld.activity;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -13,25 +12,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.fragment.main.FragAttention;
-import com.jenkins.newworld.fragment.main.FragHomePage;
 import com.jenkins.newworld.fragment.main.FragPersonal;
-import com.jenkins.newworld.fragment.main.FragShare;
+import com.jenkins.newworld.fragment.main.FragHomepage;
 import com.jenkins.newworld.fragment.main.FragLive;
+import com.jenkins.newworld.fragment.main.FragVideo;
 import com.jenkins.newworld.util.AccountUtil;
 import com.jenkins.newworld.util.CommonWindowUtil;
 import com.jenkins.newworld.util.FontManager;
 import com.jenkins.newworld.util.LoginTipDialog;
-
-import java.util.Timer;
-import java.util.TimerTask;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.vov.vitamio.utils.Log;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -45,10 +38,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Context context;
     private FragmentManager fManager;
     private FragAttention fragAttention;
-    private FragHomePage fragHomePage;
+    private FragVideo fragVideo;
     private FragPersonal fragPersonal;
     private FragLive fragLive;
-    private FragShare fragShare;
+    private FragHomepage fragHomepage;
     //view
     @BindView(R.id.root_layout)
     RelativeLayout root_layout;//根布局
@@ -140,10 +133,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //隐藏所有Fragment
     private void hideAllFragment(FragmentTransaction fragmentTransaction){
         if(fragAttention != null)fragmentTransaction.hide(fragAttention);
-        if(fragHomePage != null)fragmentTransaction.hide(fragHomePage);
+        if(fragVideo != null)fragmentTransaction.hide(fragVideo);
         if(fragPersonal != null)fragmentTransaction.hide(fragPersonal);
         if(fragLive != null)fragmentTransaction.hide(fragLive);
-        if(fragShare != null)fragmentTransaction.hide(fragShare);
+        if(fragHomepage != null)fragmentTransaction.hide(fragHomepage);
     }
     public void showLoginTipDialog(){
         if (AccountUtil.isLogin(this)){
@@ -171,11 +164,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
                 homepage_btn.setSelected(true);
                 homepage_btn_logo.setSelected(true);
-                if(fragHomePage == null){
-                    fragHomePage = new FragHomePage();
-                    fTransaction.add(R.id.frag_content,fragHomePage);
+                if(fragVideo == null){
+                    fragVideo = new FragVideo();
+                    fTransaction.add(R.id.frag_content,fragVideo);
                 }else{
-                    fTransaction.show(fragHomePage);
+                    fTransaction.show(fragVideo);
                 }
                 break;
             case R.id.search_btn_bar:case R.id.search_btn:case R.id.search_btn_logo:
@@ -193,11 +186,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //root_layout.setBackgroundColor(getResources().getColor(R.color.root_white));
                 share_btn.setSelected(true);
                 share_btn_logo.setSelected(true);
-                if(fragShare == null){
-                    fragShare = new FragShare();
-                    fTransaction.add(R.id.frag_content,fragShare);
+                if(fragHomepage == null){
+                    fragHomepage = new FragHomepage();
+                    fTransaction.add(R.id.frag_content,fragHomepage);
                 }else{
-                    fTransaction.show(fragShare);
+                    fTransaction.show(fragHomepage);
                 }
                 break;
             case R.id.attention_btn_bar:case R.id.attention_btn:case R.id.attention_btn_logo:

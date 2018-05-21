@@ -11,21 +11,14 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.activity.SearchActivity;
 import com.jenkins.newworld.adapter.share.RecyclerViewAdapter;
-import com.jenkins.newworld.loader.GlideImageLoader;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import com.jenkins.newworld.model.frag.FragShareLineModel;
-import com.jenkins.newworld.ui.MarqueeTextView;
-import com.youth.banner.Banner;
-import com.youth.banner.listener.OnBannerListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,7 +28,7 @@ import butterknife.OnClick;
  * Created by zhouzhenjian on 2018/4/9.
  */
 //Banner github : https://github.com/youth5201314/banner
-public class FragShare extends Fragment{
+public class FragHomepage extends Fragment{
 
     //data
     private Context context;
@@ -54,7 +47,7 @@ public class FragShare extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_main_share,container,false);
+        View view = inflater.inflate(R.layout.frag_main_homepage,container,false);
         ButterKnife.bind(this,view);
         initData();
         initView();

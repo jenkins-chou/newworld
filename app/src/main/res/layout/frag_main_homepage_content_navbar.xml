@@ -29,11 +29,11 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/frag_share_bbc"
+                    android:src="@mipmap/frag_homepage_navbar_c1"
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
-                    android:text="BBC"
+                    android:text="手游"
                     android:textSize="12sp"
                     android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
@@ -50,11 +50,11 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/frag_share_dianying"
+                    android:src="@mipmap/frag_homepage_navbar_c2"
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
-                    android:text="电影"
+                    android:text="日常"
                     android:textSize="12sp"
                     android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
@@ -71,11 +71,11 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/frag_share_duanshipin"
+                    android:src="@mipmap/frag_homepage_navbar_c3"
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
-                    android:text="段视频"
+                    android:text="颜值"
                     android:textSize="12sp"
                     android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
@@ -92,11 +92,11 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/frag_share_jilupian"
+                    android:src="@mipmap/frag_homepage_navbar_c4"
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
-                    android:text="纪录片"
+                    android:text="美妆"
                     android:textSize="12sp"
                     android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
@@ -122,11 +122,11 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/frag_share_maoxian"
+                    android:src="@mipmap/frag_homepage_navbar_c5"
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
-                    android:text="冒险"
+                    android:text="短视频"
                     android:textSize="12sp"
                     android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
@@ -143,11 +143,11 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/frag_share_tiyu"
+                    android:src="@mipmap/frag_homepage_navbar_c6"
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
-                    android:text="体育"
+                    android:text="解说"
                     android:textSize="12sp"
                     android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
@@ -164,11 +164,11 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/frag_share_yule"
+                    android:src="@mipmap/frag_homepage_navbar_c7"
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
-                    android:text="娱乐频道"
+                    android:text="免费电影"
                     android:textSize="12sp"
                     android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
@@ -185,11 +185,11 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/frag_share_zongyi"
+                    android:src="@mipmap/frag_homepage_navbar_c8"
                     app:civ_border_width="0dp"
                     app:civ_border_color="#FF000000"/>
                 <TextView
-                    android:text="综艺节目"
+                    android:text="更多"
                     android:textSize="12sp"
                     android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"

@@ -28,6 +28,7 @@ import com.jenkins.newworld.presenter.live.LivePresenter;
 import com.jenkins.newworld.ui.HorizontalListView;
 import com.jenkins.newworld.util.DataUtil;
 import com.scwang.smartrefresh.header.MaterialHeader;
+import com.scwang.smartrefresh.header.PhoenixHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
@@ -87,7 +88,7 @@ public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickLis
     }
 
     public void initSmartRefreshLayout(){
-        smartRefreshLayout.setRefreshHeader(new MaterialHeader(context));
+        smartRefreshLayout.setRefreshHeader(new PhoenixHeader(context));
         smartRefreshLayout.setRefreshFooter(new BallPulseFooter(context));
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override

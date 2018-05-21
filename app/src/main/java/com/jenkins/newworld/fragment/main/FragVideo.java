@@ -16,12 +16,12 @@ import com.jenkins.newworld.contract.mv.MvContract;
 import com.jenkins.newworld.model.base.ResultModel;
 import com.jenkins.newworld.model.mv.Mv;
 import com.jenkins.newworld.presenter.mv.MvPresenter;
-import com.jenkins.newworld.util.DataUtil;
-import com.scwang.smartrefresh.header.MaterialHeader;
+import com.scwang.smartrefresh.header.PhoenixHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.wang.avi.AVLoadingIndicatorView;
 import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
 
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ import butterknife.ButterKnife;
  * Created by zhouzhenjian on 2018/4/9.
  */
 
-public class FragHomePage extends Fragment implements MvContract.MView{
+public class FragVideo extends Fragment implements MvContract.MView{
     //data
     private Context context;
     private RecyclerView mRecyclerView;
@@ -46,12 +46,15 @@ public class FragHomePage extends Fragment implements MvContract.MView{
     SmartRefreshLayout smartRefreshLayout;
     @BindView(R.id.video_list)
     RecyclerView video_list;
+    @BindView(R.id.loading)
+    AVLoadingIndicatorView loading;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_main_homepage,container,false);
+        View view = inflater.inflate(R.layout.frag_main_video,container,false);
         ButterKnife.bind(this,view);
+        startLoading();
         initDatas();
         initViews();
         initvideo_list();
@@ -69,7 +72,7 @@ public class FragHomePage extends Fragment implements MvContract.MView{
          * 3：地球仪特效 new MaterialHeader(view.getContext()).setShowBezierWave(true)
          * 4.官方特效new MaterialHeader(view.getContext())
          */
-        smartRefreshLayout.setRefreshHeader(new MaterialHeader(context));
+        smartRefreshLayout.setRefreshHeader(new PhoenixHeader(context));
         smartRefreshLayout.setRefreshFooter(new BallPulseFooter(context));
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
@@ -116,12 +119,12 @@ public class FragHomePage extends Fragment implements MvContract.MView{
         if (object!=null){
             System.out.println("success");
             ResultModel resultModel = (ResultModel)object;
-
             //System.out.print("");
             ArrayList<Mv> mvs = (ArrayList<Mv>)resultModel.getData();
-            for (Mv mv : mvs){
-                System.out.println(mv.toString());
-            }
+//            for (Mv mv : mvs){
+//                System.out.println(mv.toString());
+//            }
+            stopLoading();
             adapter.updateMv(mvs);
         }
     }
@@ -134,5 +137,15 @@ public class FragHomePage extends Fragment implements MvContract.MView{
     @Override
     public void completed(Object object) {
 
+    }
+
+    void startLoading(){
+        loading.show();
+        // or avi.smoothToShow();
+    }
+
+    void stopLoading(){
+        loading.hide();
+        // or avi.smoothToHide();
     }
 }

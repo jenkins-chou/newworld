@@ -43,7 +43,7 @@ public class MarqueeTextView extends LinearLayout {
     }
 
     public void initBasicView() {//加载布局，初始化ViewFlipper组件及效果
-        marqueeTextView = LayoutInflater.from(mContext).inflate(R.layout.frag_main_share_marquee_textview_layout, null);
+        marqueeTextView = LayoutInflater.from(mContext).inflate(R.layout.frag_main_homepage_marquee_textview_layout, null);
         LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         addView(marqueeTextView, layoutParams);
 
