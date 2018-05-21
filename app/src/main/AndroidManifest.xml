@@ -96,8 +96,10 @@
         <activity
             android:name=".activity.CategoryActivity"
             android:theme="@style/TranslucentTheme" />
-        <activity android:name=".activity.RecommandActivity"
-            android:theme="@style/TranslucentTheme"/>
+        <activity
+            android:name=".activity.RecommandActivity"
+            android:theme="@style/TranslucentTheme" />
+        <activity android:name=".activity.ContentActivity"></activity>
     </application>
 
 </manifest>
