@@ -88,7 +88,7 @@ public class FragLive extends Fragment implements TypeLiveAdapter.OnItemClickLis
     }
 
     public void initSmartRefreshLayout(){
-        smartRefreshLayout.setRefreshHeader(new PhoenixHeader(context));
+        smartRefreshLayout.setRefreshHeader(new MaterialHeader(context));
         smartRefreshLayout.setRefreshFooter(new BallPulseFooter(context));
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override

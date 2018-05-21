@@ -39,9 +39,7 @@ public class VideoContentAdapter extends RecyclerView.Adapter<VideoContentAdapte
         if (this.mvs==null){
             this.mvs = new ArrayList<Mv>();
         }
-        for (Mv mv : mvs){
-            this.mvs.add(mv);
-        }
+        this.mvs = mvs;
         notifyDataSetChanged();
     }
 
