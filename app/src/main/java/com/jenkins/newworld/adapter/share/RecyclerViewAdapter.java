@@ -16,6 +16,8 @@ import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.loader.GlideImageLoader;
 import com.jenkins.newworld.model.frag.FragShareLineModel;
+import com.jenkins.newworld.model.movie.Movie;
+import com.jenkins.newworld.model.mv.Mv;
 import com.jenkins.newworld.ui.MarqueeTextView;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
@@ -217,18 +219,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     }
 
     //刷新分列显示的数据
-    public void updateLineData(ArrayList<FragShareLineModel> fragShareLineModels){
-        lineAdapter.addData(fragShareLineModels);
+    public void updateLineData(ArrayList<Mv> mvs){
+        lineAdapter.addData(mvs);
     }
 
-    public void updateSingleLineData(ArrayList<FragShareLineModel> fragShareLineModels){
-        singlelineAdapter.addData(fragShareLineModels);
+    public void updateSingleLineData(ArrayList<Movie> movies){
+        singlelineAdapter.addData(movies);
     }
 
     //添加轮播图的数据集
     public void setBannerImages(ArrayList<String> bannerImages){
         this.bannerImages = bannerImages;
-        //Log.e("setFragShareLineModels",fragShareLineModels.size()+"");
         count ++;
         notifyDataSetChanged();
     }

@@ -84,6 +84,7 @@
         <activity
             android:name=".activity.AccountActivity"
             android:theme="@style/TranslucentTheme" />
+        <!--欢迎页activity-->
         <activity
             android:name=".activity.GuideActivity"
             android:theme="@style/TranslucentTheme">
@@ -93,13 +94,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--全部目录activity-->
         <activity
             android:name=".activity.CategoryActivity"
             android:theme="@style/TranslucentTheme" />
+        <!--推荐短视频activity-->
         <activity
             android:name=".activity.RecommandActivity"
             android:theme="@style/TranslucentTheme" />
-        <activity android:name=".activity.ContentActivity"></activity>
+        <!--容器activity-->
+        <activity android:name=".activity.ContentActivity"
+            android:theme="@style/TranslucentTheme">
+
+        </activity>
     </application>
 
 </manifest>

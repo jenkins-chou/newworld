@@ -4,10 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.util.CommonWindowUtil;
-
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 

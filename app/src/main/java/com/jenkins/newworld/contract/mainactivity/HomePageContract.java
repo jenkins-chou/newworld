@@ -9,6 +9,7 @@ import com.jenkins.newworld.contract.base.BaseCallBack;
 
 public class HomePageContract {
     public interface MView extends BaseCallBack{
-
+        void getMvResult(Object object);
+        void getMovieResult(Object object);
     }
 }

@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.adapter.common.ListViewAdapter;
+import com.jenkins.newworld.model.movie.Movie;
 import com.jenkins.newworld.model.mv.Mv;
 import com.jenkins.newworld.model.video.Comment;
 import com.jenkins.newworld.model.video.Video;
@@ -67,17 +68,25 @@ public class VideoPlayActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        String model = getIntent().getStringExtra("mv");
-        if (model!=null&&!model.equals("")){
-            Mv mv = new Gson().fromJson(model,Mv.class);
+        String mvJsoon = getIntent().getStringExtra("mv");
+        String movieJson = getIntent().getStringExtra("movie");
+        if (mvJsoon!=null&&!mvJsoon.equals("")){
+            Mv mv = new Gson().fromJson(mvJsoon,Mv.class);
                 System.out.println("----------mv");
                 videoUrl = mv.getMv_url();
                 imageUrl = mv.getMv_image();
             initMvInfo(mv);
+        }else if (movieJson!=null&&!movieJson.equals("")){
+            Movie movie = new Gson().fromJson(movieJson,Movie.class);
+            videoUrl = movie.getMovie_url();
+            imageUrl = "http:"+movie.getMovie_image();
+            initMovieInfo(movie);
         }
         initPlayer();//初始化播放器
         initCommentList();//初始化推荐列表
     }
+
+
 
     //初始化mv数据
     public void initMvInfo(Mv mv){
@@ -85,6 +94,15 @@ public class VideoPlayActivity extends AppCompatActivity {
             video_name.setText(mv.getMv_name());
             video_author.setText("老了个周");
             video_count.setText(mv.getMv_count()+" 次播放");
+        }
+    }
+
+    //初始化movie数据
+    private void initMovieInfo(Movie movie) {
+        if (movie!=null){
+            video_name.setText(movie.getMovie_name());
+            video_author.setText(movie.getMovie_actor()+"");
+            video_count.setText(movie.getMovie_grade()+"分");
         }
     }
 

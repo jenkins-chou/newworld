@@ -1,16 +1,21 @@
 package com.jenkins.newworld.adapter.share;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.jenkins.newworld.R;
+import com.jenkins.newworld.activity.VideoPlayActivity;
 import com.jenkins.newworld.model.frag.FragShareLineModel;
+import com.jenkins.newworld.model.movie.Movie;
 
 import java.util.ArrayList;
 
@@ -25,14 +30,14 @@ public class TypeSingleLineAdapter extends RecyclerView.Adapter<TypeSingleLineAd
 
     private Context mContext;
 
-    private ArrayList<FragShareLineModel> fragShareLineModels;
+    private ArrayList<Movie> movies;
 
     private LayoutInflater inflater;
 
 
     public TypeSingleLineAdapter(Context mContext) {
         this.mContext = mContext;
-        this.fragShareLineModels = new ArrayList<>();
+        this.movies = new ArrayList<>();
         inflater = LayoutInflater.from(mContext);
     }
 
@@ -43,23 +48,32 @@ public class TypeSingleLineAdapter extends RecyclerView.Adapter<TypeSingleLineAd
 
     @Override
     public void onBindViewHolder(TypeLineHolder holder, int position) {
-        FragShareLineModel contentBean = fragShareLineModels.get(position);
-        holder.item_title.setText("#" + contentBean.getTitle());
+        final Movie movie= movies.get(position);
+        holder.item_title.setText("" + movie.getMovie_name());
         Glide.with(mContext)
-                .load(contentBean.getImageUrls())
+                .load("http://"+movie.getMovie_image())
                 .error(R.mipmap.avatar)
                 .into(holder.item_imageView);
+        holder.item_view.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, VideoPlayActivity.class);
+                intent.putExtra("movie",new Gson().toJson(movie));
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return fragShareLineModels == null ? 0 : fragShareLineModels.size();
+        return movies == null ? 0 : movies.size();
     }
 
-    public void addData(ArrayList<FragShareLineModel> fragShareLineModels) {
-        if (fragShareLineModels!=null){
-            for (int i = 0;i<fragShareLineModels.size();i++){
-                this.fragShareLineModels.add(fragShareLineModels.get(i));
+    public void addData(ArrayList<Movie> movies) {
+        if (movies!=null){
+            for (int i = 0;i<movies.size();i++){
+                this.movies.add(movies.get(i));
             }
         }
         notifyDataSetChanged();
@@ -70,6 +84,9 @@ public class TypeSingleLineAdapter extends RecyclerView.Adapter<TypeSingleLineAd
         TextView item_title;
         @BindView(R.id.item_image)
         ImageView item_imageView;
+        @BindView(R.id.item_view)
+        RelativeLayout item_view;
+
 
         public TypeLineHolder(View view) {
             super(view);

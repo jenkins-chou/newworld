@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:context="com.jenkins.newworld.activity.VideoPlayActivity">
     <RelativeLayout
         android:id="@+id/player_bar"
@@ -23,15 +22,15 @@
             android:layout_height="1px"/>
     </RelativeLayout>
     <LinearLayout
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/img_back"
             android:src="@mipmap/common_back"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
     </LinearLayout>
     <ScrollView
         android:background="#fff"
@@ -61,6 +60,7 @@
                 android:id="@+id/comment_listview"
                 android:divider="#eee"
                 android:dividerHeight="1px"
+                android:layout_marginBottom="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
