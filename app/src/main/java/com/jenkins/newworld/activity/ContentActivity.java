@@ -11,6 +11,7 @@ import butterknife.Unbinder;
 
 public class ContentActivity extends AppCompatActivity {
 
+    //github: https://github.com/KCrason/DynamicPagerIndicator
     private Context context;
     private Unbinder unbinder;
     private static String ALL = "all";
@@ -49,30 +50,5 @@ public class ContentActivity extends AppCompatActivity {
         if (type!=null&&!type.equals("")){
             this.currentType = type;
         }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
     }
 }

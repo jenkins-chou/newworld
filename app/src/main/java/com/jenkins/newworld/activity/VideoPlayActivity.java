@@ -79,7 +79,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         }else if (movieJson!=null&&!movieJson.equals("")){
             Movie movie = new Gson().fromJson(movieJson,Movie.class);
             videoUrl = movie.getMovie_url();
-            imageUrl = "http:"+movie.getMovie_image();
+            imageUrl = ""+movie.getMovie_image();
             initMovieInfo(movie);
         }
         initPlayer();//初始化播放器
@@ -116,7 +116,8 @@ public class VideoPlayActivity extends AppCompatActivity {
         //controller.setClarity(getClarites(), 0);
         Glide.with(this)
                 .load(imageUrl)
-                .placeholder(R.drawable.img_default)
+                .placeholder(R.mipmap.frag_live_start_bg)
+                .error(R.mipmap.frag_live_start_bg)
                 .crossFade()
                 .into(controller.imageView());
         mNiceVideoPlayer.setController(controller);
