@@ -28,7 +28,7 @@
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/img_back"
-            android:src="@mipmap/common_back"
+            android:src="@mipmap/activity_videoplay_circle_back"
             android:layout_width="25dp"
             android:layout_height="25dp" />
     </LinearLayout>

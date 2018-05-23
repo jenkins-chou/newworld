@@ -1,6 +1,7 @@
 package com.jenkins.newworld.adapter.share;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
+import com.jenkins.newworld.activity.ContentActivity;
 import com.jenkins.newworld.loader.GlideImageLoader;
 import com.jenkins.newworld.model.frag.FragShareLineModel;
 import com.jenkins.newworld.model.movie.Movie;
@@ -26,6 +28,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by zhouzhenjian on 2018/4/17.
@@ -44,7 +47,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     private final int Line_mode = 2;//多列显示模式
     private int SingleLine_mode = 3;//单列显示模式
     private int count = 0;
-    private String [] textArrays = new String[]{"this is content No.1","this is content No.2","this is content No.3"};
+    private String [] textArrays = new String[]{"当时间变成货币，你可能活不过明天","韩剧中让人又心疼又好笑的片段集锦","窃画行动，让你意想不到的剧情"};
 
     TypeLineAdapter lineAdapter;//分列显示adapter
     TypeSingleLineAdapter singlelineAdapter;//单列显示adapter
@@ -194,7 +197,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
 
             }
         });
-        Log.e("initCategory","initCategory");
+        //Log.e("initCategory","initCategory");
     }
 
     //添加设置分列显示的数据集
@@ -247,6 +250,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     public class TypeCategoryHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.frag_share_category)
         LinearLayout rvtype;
+        @OnClick({R.id.c1,R.id.c2,R.id.c3,R.id.c4,R.id.c5,R.id.c6,R.id.c7,R.id.c8})
+        void click(){
+            Intent intent = new Intent(context, ContentActivity.class);
+            context.startActivity(intent);
+        }
         public TypeCategoryHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
