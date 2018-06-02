@@ -84,7 +84,7 @@
         <activity
             android:name=".activity.AccountActivity"
             android:theme="@style/TranslucentTheme" />
-        <!--欢迎页activity-->
+        <!-- 欢迎页activity -->
         <activity
             android:name=".activity.GuideActivity"
             android:theme="@style/TranslucentTheme">
@@ -94,19 +94,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--全部目录activity-->
+        <!-- 全部目录activity -->
         <activity
             android:name=".activity.CategoryActivity"
             android:theme="@style/TranslucentTheme" />
-        <!--推荐短视频activity-->
+        <!-- 推荐短视频activity -->
         <activity
             android:name=".activity.RecommandActivity"
             android:theme="@style/TranslucentTheme" />
-        <!--容器activity-->
-        <activity android:name=".activity.ContentActivity"
-            android:theme="@style/TranslucentTheme">
-
-        </activity>
+        <!-- 容器activity -->
+        <activity
+            android:name=".activity.ContentActivity"
+            android:theme="@style/TranslucentTheme" />
+        <!-- 订阅列表页面 -->
+        <activity
+            android:name=".activity.SubcribeActivity"
+            android:theme="@style/TranslucentTheme" />
+        <!-- 我的收藏页面 -->
+        <activity
+            android:name=".activity.CollectActivity"
+            android:theme="@style/TranslucentTheme" />
+        <!-- 主播认证 -->
+        <activity
+            android:name=".activity.AuthenticationActivity"
+            android:theme="@style/TranslucentTheme" />
+        <activity android:name=".activity.HelpActivity"></activity>
     </application>
 
 </manifest>

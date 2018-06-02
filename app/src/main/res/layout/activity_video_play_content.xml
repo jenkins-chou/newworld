@@ -56,12 +56,14 @@
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <ImageView
+        <TextView
+            android:text="收藏 +"
+            android:id="@+id/collect"
+            android:textColor="#ff6600"
             android:layout_marginRight="15dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/activity_video_play_saysomething"
-            android:layout_width="20dp"
+            android:layout_width="wrap_content"
             android:layout_height="20dp" />
     </RelativeLayout>
     <View

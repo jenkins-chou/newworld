@@ -16,9 +16,13 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.activity.AccountActivity;
+import com.jenkins.newworld.activity.AuthenticationActivity;
+import com.jenkins.newworld.activity.CollectActivity;
+import com.jenkins.newworld.activity.HelpActivity;
 import com.jenkins.newworld.activity.LivePlayActivity;
 import com.jenkins.newworld.activity.LiveRecordActivity;
 import com.jenkins.newworld.activity.LoginActivity;
+import com.jenkins.newworld.activity.SubcribeActivity;
 import com.jenkins.newworld.activity.TestActivity;
 import com.jenkins.newworld.contract.mainactivity.PersonalPageContract;
 import com.jenkins.newworld.presenter.mainactivity.PersonalPagePresenter;
@@ -52,8 +56,20 @@ public class FragPersonal extends Fragment implements PersonalPageContract.MView
     //data
     private Context context;
 
+    @OnClick(R.id.personal_subcribe_bar)
+    void personal_subcribe_bar(){
+        Intent intent = new Intent(context, SubcribeActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.personal_attention_bar)
+    void personal_attention_bar(){
+        Intent intent = new Intent(context, CollectActivity.class);
+        startActivity(intent);
+    }
+
     //action
-    @OnClick({R.id.personal_subcribe_bar,R.id.personal_attention_bar,R.id.personal_seed_bar})void showTip(){
+    @OnClick({R.id.personal_seed_bar})void showTip(){
         CommonDialog.showBaseDialog(context,"玩命开发中");
     }
     //成为主播
@@ -62,7 +78,8 @@ public class FragPersonal extends Fragment implements PersonalPageContract.MView
             Toast.makeText(context, "请登录", Toast.LENGTH_SHORT).show();
             gotoLogin();//还没有登录，必须先登录
         }else{
-            CommonDialog.showBaseDialog(context,"玩命开发中");
+            Intent intent = new Intent(context, AuthenticationActivity.class);
+            startActivity(intent);
         }
     }
     //我的直播
@@ -87,7 +104,8 @@ public class FragPersonal extends Fragment implements PersonalPageContract.MView
             Toast.makeText(context, "请登录", Toast.LENGTH_SHORT).show();
             gotoLogin();//还没有登录，必须先登录
         }else{
-            CommonDialog.showBaseDialog(context,"玩命开发中");
+            Intent intent = new Intent(context, HelpActivity.class);
+            startActivity(intent);
         }
     }
     //点击图标栏动作
@@ -99,7 +117,6 @@ public class FragPersonal extends Fragment implements PersonalPageContract.MView
         }else{
             Intent intent = new Intent(context, AccountActivity.class);
             context.startActivity(intent);
-            this.getActivity().overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
         }
     }
     //presenter

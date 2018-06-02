@@ -82,8 +82,18 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.MV
                     SPHelper.put(this,"user_id",users.get(0).getUser_id());
                     SPHelper.put(this,"user_name",users.get(0).getUser_name());
                     SPHelper.put(this,"user_pass",users.get(0).getUser_pass());
+                    SPHelper.put(this,"user_real_name",users.get(0).getUser_real_name());
                     SPHelper.put(this,"user_avatar_url",users.get(0).getUser_avatar_url());
+                    SPHelper.put(this,"user_health",users.get(0).getUser_health());
+                    SPHelper.put(this,"user_phone",users.get(0).getUser_phone());
+                    SPHelper.put(this,"user_email",users.get(0).getUser_email());
+                    SPHelper.put(this,"user_address",users.get(0).getUser_address());
                     SPHelper.put(this,"user_slogan",users.get(0).getUser_slogan());
+                    SPHelper.put(this,"user_status",users.get(0).getUser_status());
+                    SPHelper.put(this,"user_create_time",users.get(0).getUser_create_time());
+                    SPHelper.put(this,"user_remark",users.get(0).getUser_remark());
+                    SPHelper.put(this,"user_del",users.get(0).getUser_del());
+
                     SweetAlertDialog.OnSweetClickListener listener = new SweetAlertDialog.OnSweetClickListener() {
                         @Override
                         public void onClick(SweetAlertDialog sDialog) {

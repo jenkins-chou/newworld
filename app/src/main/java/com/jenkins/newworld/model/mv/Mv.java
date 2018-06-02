@@ -10,13 +10,19 @@ public class Mv {
     private String mv_url;
     private String mv_image;
     private String mv_count;
+    private String mv_type;
 
-    public Mv(String mv_id, String mv_name, String mv_url, String mv_image, String mv_count) {
+    public Mv(){
+
+    }
+
+    public Mv(String mv_id, String mv_name, String mv_url, String mv_image, String mv_count, String mv_type) {
         this.mv_id = mv_id;
         this.mv_name = mv_name;
         this.mv_url = mv_url;
         this.mv_image = mv_image;
         this.mv_count = mv_count;
+        this.mv_type = mv_type;
     }
 
     public String getMv_id() {
@@ -59,6 +65,14 @@ public class Mv {
         this.mv_count = mv_count;
     }
 
+    public String getMv_type() {
+        return mv_type;
+    }
+
+    public void setMv_type(String mv_type) {
+        this.mv_type = mv_type;
+    }
+
     @Override
     public String toString() {
         return "Mv{" +
@@ -67,6 +81,7 @@ public class Mv {
                 ", mv_url='" + mv_url + '\'' +
                 ", mv_image='" + mv_image + '\'' +
                 ", mv_count='" + mv_count + '\'' +
+                ", mv_type='" + mv_type + '\'' +
                 '}';
     }
 }

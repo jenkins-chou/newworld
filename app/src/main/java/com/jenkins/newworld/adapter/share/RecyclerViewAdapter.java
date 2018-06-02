@@ -250,9 +250,41 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
     public class TypeCategoryHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.frag_share_category)
         LinearLayout rvtype;
-        @OnClick({R.id.c1,R.id.c2,R.id.c3,R.id.c4,R.id.c5,R.id.c6,R.id.c7,R.id.c8})
-        void click(){
+        @OnClick(R.id.c1)
+        void clickc1(){
+            gotoOthder(0);
+        }
+        @OnClick(R.id.c2)
+        void clickc2(){
+            gotoOthder(1);
+        }
+        @OnClick(R.id.c3)
+        void clickc3(){
+            gotoOthder(2);
+        }
+        @OnClick(R.id.c4)
+        void clickc4(){
+            gotoOthder(3);
+        }
+        @OnClick(R.id.c5)
+        void clickc5(){
+            gotoOthder(4);
+        }
+        @OnClick(R.id.c6)
+        void clickc6(){
+            gotoOthder(5);
+        }
+        @OnClick(R.id.c7)
+        void clickc7(){
+            gotoOthder(6);
+        }
+        @OnClick({R.id.c8,R.id.share_content_MarqueeTextziew_btn})
+        void clickc8(){
+            gotoOthder(7);
+        }
+        public void gotoOthder(int page){
             Intent intent = new Intent(context, ContentActivity.class);
+            intent.putExtra("page",page);
             context.startActivity(intent);
         }
         public TypeCategoryHolder(View view) {

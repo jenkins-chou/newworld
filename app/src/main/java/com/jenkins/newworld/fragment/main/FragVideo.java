@@ -173,4 +173,14 @@ public class FragVideo extends Fragment implements MvContract.MView{
         loading.hide();
         // or avi.smoothToHide();
     }
+
+    @Override
+    public void collectResult(Object object) {
+
+    }
+
+    @Override
+    public void getCollectMv(Object object) {
+
+    }
 }

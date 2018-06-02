@@ -8,6 +8,7 @@ import com.jenkins.newworld.contract.base.BaseCallBack;
 
 public class MvContract {
     public interface MView extends BaseCallBack{
-
+        void collectResult(Object object);
+        void getCollectMv(Object object);
     }
 }

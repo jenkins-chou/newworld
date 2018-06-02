@@ -1,5 +1,7 @@
 package com.jenkins.newworld.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextDirectionHeuristics;
@@ -14,11 +16,16 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.jenkins.newworld.R;
 import com.jenkins.newworld.adapter.common.ListViewAdapter;
+import com.jenkins.newworld.contract.mv.MvContract;
+import com.jenkins.newworld.model.base.ResultModel;
 import com.jenkins.newworld.model.movie.Movie;
 import com.jenkins.newworld.model.mv.Mv;
 import com.jenkins.newworld.model.video.Comment;
 import com.jenkins.newworld.model.video.Video;
+import com.jenkins.newworld.presenter.mv.MvPresenter;
 import com.jenkins.newworld.ui.StaticListView;
+import com.jenkins.newworld.util.AccountUtil;
+import com.jenkins.newworld.util.CommonDialog;
 import com.jenkins.newworld.util.CommonWindowUtil;
 import com.jenkins.newworld.util.DataUtil;
 import com.xiao.nicevideoplayer.Clarity;
@@ -27,18 +34,27 @@ import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
 import com.xiao.nicevideoplayer.TxVideoPlayerController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class VideoPlayActivity extends AppCompatActivity {
+public class VideoPlayActivity extends AppCompatActivity implements MvContract.MView{
 
     //data
     private String imageUrl;
     private String videoUrl;
+    private String mv_id;
     private NiceVideoPlayer mNiceVideoPlayer;
+    private String video_type;
+    private MvPresenter presenter;
+    private ArrayList<Mv> mvs;
+    private ListViewAdapter<Mv> adapter;
+    private Context context;
+
     @BindView(R.id.comment_listview)
     StaticListView comment_listview;
     @BindView(R.id.video_name)
@@ -47,7 +63,14 @@ public class VideoPlayActivity extends AppCompatActivity {
     TextView video_author;//视频author
     @BindView(R.id.video_count)
     TextView video_count;//视频观看次数
-
+    @OnClick(R.id.collect)
+    void collect(){
+        //Toast.makeText(context, "collect", Toast.LENGTH_SHORT).show();
+        Map<String,Object> params = new HashMap<>();
+        params.put("user_id", AccountUtil.getUserID(this));
+        params.put("mv_id",mv_id);
+        presenter.collectMv(params);
+    }
     @OnClick(R.id.img_back)
     void img_back(){
         finish();
@@ -61,7 +84,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         CommonWindowUtil.setLightStatusBar(this.getWindow());
         setContentView(R.layout.activity_video_play);
         ButterKnife.bind(this);
-
+        context = this;
         //caculateLocation();
     }
 
@@ -72,9 +95,11 @@ public class VideoPlayActivity extends AppCompatActivity {
         String movieJson = getIntent().getStringExtra("movie");
         if (mvJsoon!=null&&!mvJsoon.equals("")){
             Mv mv = new Gson().fromJson(mvJsoon,Mv.class);
-                System.out.println("----------mv");
-                videoUrl = mv.getMv_url();
-                imageUrl = mv.getMv_image();
+            //System.out.println("----------mv");
+            videoUrl = mv.getMv_url();
+            imageUrl = mv.getMv_image();
+            video_type = mv.getMv_type();
+            mv_id = mv.getMv_id();
             initMvInfo(mv);
         }else if (movieJson!=null&&!movieJson.equals("")){
             Movie movie = new Gson().fromJson(movieJson,Movie.class);
@@ -122,23 +147,18 @@ public class VideoPlayActivity extends AppCompatActivity {
                 .into(controller.imageView());
         mNiceVideoPlayer.setController(controller);
         mNiceVideoPlayer.setUp(videoUrl,null);
+        mNiceVideoPlayer.start();
 }
 
-    public List<Clarity> getClarites() {
-        List<Clarity> clarities = new ArrayList<>();
-        clarities.add(new Clarity("标清", "270P", "http://play.g3proxy.lecloud.com/vod/v2/MjUxLzE2LzgvbGV0di11dHMvMTQvdmVyXzAwXzIyLTExMDc2NDEzODctYXZjLTE5OTgxOS1hYWMtNDgwMDAtNTI2MTEwLTE3MDg3NjEzLWY1OGY2YzM1NjkwZTA2ZGFmYjg2MTVlYzc5MjEyZjU4LTE0OTg1NTc2ODY4MjMubXA0?b=259&mmsid=65565355&tm=1499247143&key=f0eadb4f30c404d49ff8ebad673d3742&platid=3&splatid=345&playid=0&tss=no&vtype=21&cvid=2026135183914&payff=0&pip=08cc52f8b09acd3eff8bf31688ddeced&format=0&sign=mb&dname=mobile&expect=1&tag=mobile&xformat=super"));
-        clarities.add(new Clarity("高清", "480P", "http://play.g3proxy.lecloud.com/vod/v2/MjQ5LzM3LzIwL2xldHYtdXRzLzE0L3Zlcl8wMF8yMi0xMTA3NjQxMzkwLWF2Yy00MTk4MTAtYWFjLTQ4MDAwLTUyNjExMC0zMTU1NTY1Mi00ZmJjYzFkNzA1NWMyNDc4MDc5OTYxODg1N2RjNzEwMi0xNDk4NTU3OTYxNzQ4Lm1wNA==?b=479&mmsid=65565355&tm=1499247143&key=98c7e781f1145aba07cb0d6ec06f6c12&platid=3&splatid=345&playid=0&tss=no&vtype=13&cvid=2026135183914&payff=0&pip=08cc52f8b09acd3eff8bf31688ddeced&format=0&sign=mb&dname=mobile&expect=1&tag=mobile&xformat=super"));
-        clarities.add(new Clarity("超清", "720P", "http://play.g3proxy.lecloud.com/vod/v2/MjQ5LzM3LzIwL2xldHYtdXRzLzE0L3Zlcl8wMF8yMi0xMTA3NjQxMzkwLWF2Yy00MTk4MTAtYWFjLTQ4MDAwLTUyNjExMC0zMTU1NTY1Mi00ZmJjYzFkNzA1NWMyNDc4MDc5OTYxODg1N2RjNzEwMi0xNDk4NTU3OTYxNzQ4Lm1wNA==?b=479&mmsid=65565355&tm=1499247143&key=98c7e781f1145aba07cb0d6ec06f6c12&platid=3&splatid=345&playid=0&tss=no&vtype=13&cvid=2026135183914&payff=0&pip=08cc52f8b09acd3eff8bf31688ddeced&format=0&sign=mb&dname=mobile&expect=1&tag=mobile&xformat=super"));
-        clarities.add(new Clarity("蓝光", "1080P", "http://play.g3proxy.lecloud.com/vod/v2/MjQ5LzM3LzIwL2xldHYtdXRzLzE0L3Zlcl8wMF8yMi0xMTA3NjQxMzkwLWF2Yy00MTk4MTAtYWFjLTQ4MDAwLTUyNjExMC0zMTU1NTY1Mi00ZmJjYzFkNzA1NWMyNDc4MDc5OTYxODg1N2RjNzEwMi0xNDk4NTU3OTYxNzQ4Lm1wNA==?b=479&mmsid=65565355&tm=1499247143&key=98c7e781f1145aba07cb0d6ec06f6c12&platid=3&splatid=345&playid=0&tss=no&vtype=13&cvid=2026135183914&payff=0&pip=08cc52f8b09acd3eff8bf31688ddeced&format=0&sign=mb&dname=mobile&expect=1&tag=mobile&xformat=super"));
-        return clarities;
-    }
-
     public void initCommentList(){
-        ListViewAdapter<Video> adapter = new ListViewAdapter<Video>(getComments(),R.layout.activity_video_play_comment_item) {
+        presenter = new MvPresenter(this,this);
+        mvs = new ArrayList<>();
+        adapter = new ListViewAdapter<Mv>(mvs,R.layout.activity_video_play_comment_item) {
             @Override
-            public void bindView(ViewHolder holder, Video obj) {
-                holder.setImage(R.id.video_image,obj.getImageUrl());
-                holder.setText(R.id.video_name,obj.getTitle());
+            public void bindView(ViewHolder holder, Mv obj) {
+                holder.setImage(R.id.video_image,obj.getMv_image());
+                holder.setText(R.id.video_name,obj.getMv_name());
+                holder.setText(R.id.video_tag,obj.getMv_count()+"播放");
             }
         };
         comment_listview.setAdapter(adapter);
@@ -146,13 +166,16 @@ public class VideoPlayActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(VideoPlayActivity.this, "position :"+i, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, VideoPlayActivity.class);
+                intent.putExtra("mv",new Gson().toJson(mvs.get(i)));
+                startActivity(intent);
+                finish();
             }
         });
-    }
-    public ArrayList<Video> getComments(){
-        ArrayList<Video> videos = new ArrayList<>();
-        videos = (ArrayList) DataUtil.getVideoListData();
-        return videos;
+        Map<String,Object> params = new HashMap<>();
+        params.put("type",video_type);
+        params.put("start",0);
+        presenter.getTypeMv(params);
     }
 
     public void enterTinyWindow(View view) {
@@ -178,5 +201,46 @@ public class VideoPlayActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (NiceVideoPlayerManager.instance().onBackPressd()) return;
         super.onBackPressed();
+    }
+
+    @Override
+    public void success(Object object) {
+        if (object!=null){
+            ResultModel resultModel = (ResultModel) object;
+            ArrayList<Mv> mvs = (ArrayList<Mv>)resultModel.getData();
+            this.mvs = mvs;
+            adapter.addList(mvs);
+            //adapter.addData(mvs);
+        }
+    }
+
+    @Override
+    public void failed(Object object) {
+
+    }
+
+    @Override
+    public void completed(Object object) {
+
+    }
+
+    //收藏视频的返回结果
+    @Override
+    public void collectResult(Object object) {
+        if (object!=null){
+            ResultModel resultModel = (ResultModel)object;
+            if (resultModel.getStatus().equals("200")){
+                CommonDialog.showSuccessDialog(this,"","收藏成功");
+            }else if (resultModel.getStatus().equals("201")){
+                CommonDialog.showWarningDialog(this,"","收藏过了");
+            }else{
+                CommonDialog.showWarningDialog(this,"","收藏失败");
+            }
+        }
+    }
+
+    @Override
+    public void getCollectMv(Object object) {
+
     }
 }

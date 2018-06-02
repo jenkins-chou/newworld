@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginRight="5dp"
     android:layout_marginBottom="5dp"
+    android:id="@+id/item_view"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout
         android:layout_alignParentTop="true"
@@ -61,12 +62,13 @@
                 android:textColor="#fff"
                 android:textSize="8sp"
                 android:id="@+id/item_tag"
-                android:text="奥迪哈哈大家撒"
+                android:text="原创"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/item_tag_bar2"
             android:background="@drawable/frag_live_item_tagbar2"
             android:layout_marginTop="30dp"

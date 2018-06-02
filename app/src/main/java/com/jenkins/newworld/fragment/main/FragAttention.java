@@ -19,6 +19,7 @@ import com.jenkins.newworld.activity.LivePlayActivity;
 import com.jenkins.newworld.activity.LiveRecordActivity;
 import com.jenkins.newworld.activity.LoginActivity;
 import com.jenkins.newworld.util.AccountUtil;
+import com.jenkins.newworld.util.CommonDialog;
 import com.jenkins.newworld.util.LoginTipDialog;
 
 import org.raphets.roundimageview.RoundImageView;
@@ -54,8 +55,7 @@ public class FragAttention extends Fragment {
     @OnClick(R.id.frag_attention_g2_bar)
     void frag_attention_g2_bar(){
         if (AccountUtil.isLogin(context)){
-            Intent intent = new Intent(context, LivePlayActivity.class);
-            startActivity(intent);
+            CommonDialog.showBaseDialog(context,"玩命开发中");
         }else{
             Intent intent = new Intent(context, LoginActivity.class);
             startActivity(intent);

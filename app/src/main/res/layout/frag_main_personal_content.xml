@@ -96,45 +96,48 @@
         <!--我的订阅-->
         <RelativeLayout
             android:id="@+id/personal_subcribe_bar"
-            android:background="#fff"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#fff">
+
             <ImageView
                 android:id="@+id/frag_personal_subscriber"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="20dp"
                 android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="15dp"
-                android:src="@mipmap/frag_personal_subscriber"
-                android:layout_width="20dp"
-                android:layout_height="20dp" />
-            <TextView
-                android:textSize="12sp"
-                android:textColor="#444"
-                android:text="我的订阅"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/frag_personal_subscriber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:src="@mipmap/frag_personal_subscriber" />
 
             <TextView
-                android:textSize="12sp"
-                android:textColor="#b0b0b0"
-                android:text="登录后查看"
-                android:layout_marginRight="15dp"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/frag_personal_subscriber_right"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/frag_personal_subscriber"
+                android:text="我的订阅"
+                android:textColor="#444"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:layout_toLeftOf="@+id/frag_personal_subscriber_right"
+                android:text="登录后查看"
+                android:textColor="#b0b0b0"
+                android:textSize="12sp" />
+
             <ImageView
                 android:id="@+id/frag_personal_subscriber_right"
-                android:src="@mipmap/frag_personal_right"
-                android:layout_marginRight="15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_width="20dp"
-                android:layout_height="20dp" />
+                android:layout_marginRight="15dp"
+                android:src="@mipmap/frag_personal_right" />
         </RelativeLayout>
         <!--我的关注-->
         <RelativeLayout
@@ -156,7 +159,7 @@
             <TextView
                 android:textSize="12sp"
                 android:textColor="#444"
-                android:text="我的关注"
+                android:text="我的收藏"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/frag_personal_attention"
                 android:layout_width="wrap_content"

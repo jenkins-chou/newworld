@@ -10,7 +10,7 @@ import com.seu.magicfilter.utils.MagicFilterType;
 import java.io.File;
 
 /**
- * Created by Leo Ma on 2016/7/25.
+ * Created by on 2016/7/25.
  */
 public class SrsPublisher {
 
@@ -150,7 +150,6 @@ public class SrsPublisher {
         }
 
         mCameraView.enableEncoding();
-
         startAudio();
     }
 

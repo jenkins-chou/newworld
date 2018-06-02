@@ -19,30 +19,9 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <LinearLayout
                 android:id="@+id/c1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content">
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@mipmap/frag_homepage_navbar_c1"
-                    app:civ_border_width="0dp"
-                    app:civ_border_color="#FF000000"/>
-                <TextView
-                    android:text="手游"
-                    android:textSize="12sp"
-                    android:textColor="@color/frag_share_font_color"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/c2"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_weight="1"
@@ -64,7 +43,7 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/c3"
+                android:id="@+id/c2"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_weight="1"
@@ -86,7 +65,7 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/c4"
+                android:id="@+id/c3"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_weight="1"
@@ -107,18 +86,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-        </LinearLayout>
-
-        <!--第二栏-->
-        <LinearLayout
-
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
             <LinearLayout
-                android:id="@+id/c5"
+                android:id="@+id/c4"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_weight="1"
@@ -139,8 +108,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
+        </LinearLayout>
+
+        <!--第二栏-->
+        <LinearLayout
+
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
             <LinearLayout
-                android:id="@+id/c6"
+                android:id="@+id/c5"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_weight="1"
@@ -155,6 +135,28 @@
                     app:civ_border_color="#FF000000"/>
                 <TextView
                     android:text="解说"
+                    android:textSize="12sp"
+                    android:textColor="@color/frag_share_font_color"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/c6"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@mipmap/frag_homepage_navbar_c1"
+                    app:civ_border_width="0dp"
+                    app:civ_border_color="#FF000000"/>
+                <TextView
+                    android:text="手游"
                     android:textSize="12sp"
                     android:textColor="@color/frag_share_font_color"
                     android:layout_marginTop="5dp"
